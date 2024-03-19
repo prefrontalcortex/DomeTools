@@ -1,0 +1,7 @@
+Test Patterns are copyrighted by their respective creators.
+They do NOT fall under the MIT license.
+Please check with the respective creator for licensing for general usage.
+
+VIOSO Testpatterns: https://vioso.com/testpattern-generator/  
+prefrontal cortex Dome Pattern: CC-BY-4.0, https://prefrontalcortex.de  
+Dan Neafus Fulldome Spec Grid: https://www.imersa.org/fulldome-file-specifications

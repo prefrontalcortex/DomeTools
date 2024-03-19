@@ -1,0 +1,29 @@
+{
+    "name": "pfc.Fulldome.Rendering",
+    "rootNamespace": "",
+    "references": [
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Lightweight.Runtime",
+        "Unity.RenderPipelines.Core.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "0.0.0",
+            "define": "HAVE_RENDERPIPELINE_UNIVERSAL"
+        },
+        {
+            "name": "com.unity.render-pipelines.lightweight",
+            "expression": "0.0.0",
+            "define": "HAVE_RENDERPIPELINE_LWRP"
+        }
+    ],
+    "noEngineReferences": false
+}

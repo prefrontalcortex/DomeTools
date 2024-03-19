@@ -1,0 +1,32 @@
+{
+    "name": "pfc.Fulldome.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5463658a07509d94bb3e5b1c66328633",
+        "GUID:457756d89b35d2941b3e7b37b4ece6f1",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:b59f669f136310547b59ad72df53b42f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "",
+            "define": "HAVE_HDRP"
+        },
+        {
+            "name": "jp.keijiro.klak.ndi",
+            "expression": "",
+            "define": "HAVE_NDI"
+        }
+    ],
+    "noEngineReferences": false
+}

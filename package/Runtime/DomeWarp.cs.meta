@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 412f7c8920fcb7249bc75ee33c4e93fe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shader: {fileID: 4800000, guid: 95291c47c4326834e9c047cc7d4c2a10, type: 3}
+  - mat: {fileID: 2100000, guid: 4d8d47a7479b1cc4b83a8f15c480e446, type: 2}
+  - matHDRP: {fileID: 2100000, guid: adb5d0355fea1d44fa27a25d696fbc2d, type: 2}
+  - targetTexture: {fileID: 8400000, guid: 54b745df278d953498d9484d22bd4730, type: 2}
+  - dome: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
