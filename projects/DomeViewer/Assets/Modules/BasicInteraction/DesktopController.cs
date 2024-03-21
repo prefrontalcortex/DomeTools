@@ -82,24 +82,24 @@ namespace pfc.Fulldome
 
         private void FixedUpdate()
         {
-            Move(MoveAction.action.ReadValue<Vector2>());
-            if (LookAction && canLook) Look(lookBuffer);
-            if (FOVAction) FOV(fovBuffer);
+            Move(MoveAction.action.ReadValue<Vector2>(), Time.fixedDeltaTime);
+            if (LookAction && canLook) Look(lookBuffer, Time.fixedDeltaTime);
             lookBuffer = Vector2.zero;
-            fovBuffer = Vector2.zero;
         }
 
         void Update()
         {
+            if (FOVAction) FOV(fovBuffer);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationLerpSpeed);
+            fovBuffer = Vector2.zero;
         }
 
         
-        private void Move(Vector2 direction)
+        private void Move(Vector2 direction, float deltaTime)
         {
             if (!isActiveAndEnabled) return;
 
-            var scaledMoveSpeed = moveSpeed * Time.fixedDeltaTime;
+            var scaledMoveSpeed = moveSpeed * deltaTime;
             var move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y);
             velocity += move * scaledMoveSpeed;
             velocity *= damping;
@@ -107,7 +107,7 @@ namespace pfc.Fulldome
         }
 
         
-        private void Look(Vector2 rotate)
+        private void Look(Vector2 rotate, float deltaTime)
         {
             if (!isActiveAndEnabled || !canLook) return;
 
@@ -120,7 +120,7 @@ namespace pfc.Fulldome
             var angleToHorizon = Vector3.SignedAngle(transform.forward, horizontalFwd, horizontalRight);
             var absAngleToHorizon = Mathf.Abs(angleToHorizon);
 
-            var scaledRotateSpeed = rotateSpeed * Time.fixedDeltaTime;
+            var scaledRotateSpeed = rotateSpeed * deltaTime;
 
             // adjust by field of view
             scaledRotateSpeed *= FirstPersonCamera.fieldOfView / 60f;
