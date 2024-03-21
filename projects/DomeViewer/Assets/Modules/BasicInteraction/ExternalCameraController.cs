@@ -54,19 +54,20 @@ namespace pfc.Fulldome
         bool canLook = false;
         Vector2 lookBuffer = Vector2.zero, fovBuffer = Vector2.zero;
 
-        private void FixedUpdate(){
-            if(canLook) OrbitCam(lookBuffer);
-            FOV(fovBuffer);
+        private void Update()
+        {
+            if(ZoomAction) FOV(fovBuffer, Time.deltaTime);
+            if(canLook) OrbitCam(lookBuffer, Time.deltaTime);
             lookBuffer = Vector2.zero;
             fovBuffer = Vector2.zero;
         }
 
-        private void OrbitCam(Vector2 mouseDelta)
+        private void OrbitCam(Vector2 mouseDelta, float deltaTime)
         {
             if (!isActiveAndEnabled) return;
             if (focusObj == null) return;
             
-            var scaledRotateSpeed = rotateSpeed * Time.fixedDeltaTime;
+            var scaledRotateSpeed = rotateSpeed * deltaTime;
             
             //rotate camera around focusObj
             var pos = focusObj.transform.position;
@@ -95,10 +96,10 @@ namespace pfc.Fulldome
             }
         }
         
-        private void FOV(Vector2 value)
+        private void FOV(Vector2 value, float deltaTime)
         {
             if (!isActiveAndEnabled) return;
-            targetZoomAmoumt -= value.y * zoomMultiplier * Time.fixedDeltaTime;
+            targetZoomAmoumt -= value.y * zoomMultiplier * deltaTime;
             targetZoomAmoumt = Mathf.Clamp(targetZoomAmoumt, 0, 1);
             endSmoothZoomTime = Time.fixedTime + 1.0f;
             if (smoothZoomCoroutine == null) smoothZoomCoroutine = StartCoroutine(LerpZoom());
