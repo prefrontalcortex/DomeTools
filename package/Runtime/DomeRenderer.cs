@@ -50,8 +50,8 @@ namespace pfc.Fulldome
 
         public void SetContentRenderTexture(RenderTexture rt)
         {
-            const string undoMsg = "Set Content Render Texture";
 #if UNITY_EDITOR
+            const string undoMsg = "Set Content Render Texture";
             Undo.RegisterCompleteObjectUndo(this, undoMsg);
 #endif
             domeContentTexture = rt;
@@ -76,8 +76,8 @@ namespace pfc.Fulldome
 
         public void SetOutputRenderTexture(RenderTexture objectReferenceValue)
         {
-            const string undoMsg = "Set Output Render Texture";
 #if UNITY_EDITOR
+            const string undoMsg = "Set Output Render Texture";
             Undo.RegisterCompleteObjectUndo(this, undoMsg);
 #endif
             domeMasterTexture = objectReferenceValue;

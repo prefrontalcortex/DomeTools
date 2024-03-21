@@ -24890,20 +24890,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 99.2
       objectReference: {fileID: 0}
-    - target: {fileID: 4503340997065896592, guid: b28efc7d916fd724c99703ee995bf8a5,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Virtual Dome is a tool for fast interactive viewing of dome content
-        from input sources such as NDI, images and videos.
-
-
-        It is designed
-        for cases where access to a physical dome is cost or time prohibitive.
-
-
-        Virtual
-        Dome is part of Dome Tools by prefrontal cortex.'
-      objectReference: {fileID: 0}
     - target: {fileID: 4631535976894603954, guid: b28efc7d916fd724c99703ee995bf8a5,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -27,7 +27,8 @@ namespace pfc.Fulldome
 
         private void SetTargetTextureFromDomeRenderer()
         {
-            if (!domeRenderer) {
+            if (!domeRenderer)
+            {
                 domeRenderer = FindAnyObjectByType<DomeRenderer>();
 #if UNITY_EDITOR
                 if (domeRenderer)
@@ -45,12 +46,16 @@ namespace pfc.Fulldome
             if (domeOutputCamera && domeRenderer.domeMasterTexture)
             {
                 domeOutputCamera.targetTexture = domeRenderer.domeMasterTexture;
+#if UNITY_EDITOR
                 EditorUtility.SetDirty(domeOutputCamera);
+#endif
 #if HAVE_NDI
                 if (ndiSender)
                 {
                     ndiSender.sourceTexture = domeRenderer.domeMasterTexture;
+#if UNITY_EDITOR
                     EditorUtility.SetDirty(ndiSender);
+#endif
                 }   
 #endif
             }

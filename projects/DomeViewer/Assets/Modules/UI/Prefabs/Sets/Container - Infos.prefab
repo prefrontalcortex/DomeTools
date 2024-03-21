@@ -439,15 +439,19 @@ PrefabInstance:
     - target: {fileID: 2936087879146872275, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_Text
-      value: 'Virtual Dome is a tool for fast interactive viewing of dome content
-        from input sources such as NDI, images and videos.
-
-        It is designed
-        for cases where access to a physical dome is cost or time prohibitive.
+      value: 'Dome Viewer is a tool for fast interactive viewing of dome content
+        from input sources such as NDI, Spout, videos and images.
 
 
-        Virtual
-        Dome is part of Dome Tools by prefrontal cortex.'
+        It is
+        designed to support fulldome productions, including realtime previews and
+        group showcases, and where access to a physical dome is cost or time prohibitive.
+
+
+        Dome
+        Viewer is part of Dome Tools by prefrontal cortex.
+
+        github.com/prefrontalcortex/dometools'
       objectReference: {fileID: 0}
     - target: {fileID: 2936087879146872275, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
