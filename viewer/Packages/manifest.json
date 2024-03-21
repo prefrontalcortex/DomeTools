@@ -36,7 +36,7 @@
     "com.unity.xr.management": "4.3.3",
     "com.unity.xr.oculus": "3.3.0",
     "com.unity.xr.openxr": "1.8.2",
-    "jp.keijiro.klak.ndi": "file:../../packages/KlakNDI/jp.keijiro.klak.ndi",
+    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
     "jp.keijiro.klak.spout": "2.0.3",
     "org.nuget.system.memory": "4.5.5",
     "com.unity.modules.ai": "1.0.0",

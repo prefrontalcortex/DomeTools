@@ -11,15 +11,15 @@ projects/*/.vscode
 projects/*/*.sln.DotSettings.user
 projects/*/*.sln.DotSettings
 
-viewer/*/Library
-viewer/*/Temp
-viewer/*/*.csproj
-viewer/*/*.sln
-viewer/*/Logs
-viewer/*/UserSettings
-viewer/*/.idea
-viewer/*/obj
-viewer/*/Builds
-viewer/*/.vscode
-viewer/*/*.sln.DotSettings.user
-viewer/*/*.sln.DotSettings
+/viewer/Library
+/viewer/Temp
+/viewer/*.csproj
+/viewer/*.sln
+/viewer/Logs
+/viewer/UserSettings
+/viewer/.idea
+/viewer/obj
+/viewer/Builds
+/viewer/.vscode
+/viewer/*.sln.DotSettings.user
+/viewer/*.sln.DotSettings

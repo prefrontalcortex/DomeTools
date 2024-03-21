@@ -1,14 +1,7 @@
 {
   "dependencies": {
-    "com.needle.missing-component-info": {
-      "version": "1.6.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.needle.tools"
-    },
     "com.pfc.dome-tools": {
-      "version": "file:../../../../pfc-packages-master/development/pfc-fulldome/package",
+      "version": "file:../../package",
       "depth": 0,
       "source": "local",
       "dependencies": {
@@ -240,12 +233,13 @@
       "url": "https://packages.unity.com"
     },
     "jp.keijiro.klak.ndi": {
-      "version": "file:../../packages/KlakNDI/jp.keijiro.klak.ndi",
+      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.unity.modules.screencapture": "1.0.0"
-      }
+      },
+      "hash": "6f66e95a1443a5b778c8e711d215bbd766d90b36"
     },
     "jp.keijiro.klak.spout": {
       "version": "2.0.3",
