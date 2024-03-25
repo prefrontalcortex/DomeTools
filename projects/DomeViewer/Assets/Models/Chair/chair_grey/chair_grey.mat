@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: chair_grey
-  m_Shader: {fileID: -6465566751694194690, guid: 524a8b4a7dbef234cb7a0f393aebcd5f,
+  m_Shader: {fileID: -6465566751694194690, guid: c479cd987d2a4a747bd316c5c2dc73a2,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -63,6 +63,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_48d4e3828c0d4a5c8ed5bc0190d1c440_Texture_1:
+        m_Texture: {fileID: 2800000, guid: b2f4df2d82d6f814fb2551b4a34f7f90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Source:
