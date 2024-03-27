@@ -43,15 +43,6 @@
   },
   "scopedRegistries": [
     {
-      "name": "pfc",
-      "url": "https://packages.prefrontalcortex.de/b5ae82d7-6109-471c-a533-0497d4d714f5",
-      "scopes": [
-        "com.pfc",
-        "org.khronos",
-        "com.needle"
-      ]
-    },
-    {
       "name": "OpenUPM",
       "url": "https://package.openupm.com",
       "scopes": [

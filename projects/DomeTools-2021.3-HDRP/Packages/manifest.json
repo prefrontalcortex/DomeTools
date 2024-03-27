@@ -1,8 +1,6 @@
 {
   "dependencies": {
     "com.atteneder.gltfast": "4.3.1",
-    "com.needle.package-credentials": "1.2.0",
-    "com.needle.package-tools": "0.9.12",
     "com.pfc.dome-tools": "file:../../../package",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.25",
@@ -47,15 +45,6 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
-    {
-      "name": "pfc",
-      "url": "https://packages.prefrontalcortex.de/b5ae82d7-6109-471c-a533-0497d4d714f5",
-      "scopes": [
-        "com.pfc",
-        "org.khronos",
-        "com.needle"
-      ]
-    },
     {
       "name": "OpenUPM",
       "url": "https://package.openupm.com",

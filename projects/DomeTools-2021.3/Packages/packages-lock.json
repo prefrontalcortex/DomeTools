@@ -1,21 +1,5 @@
 {
   "dependencies": {
-    "com.needle.package-credentials": {
-      "version": "1.2.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0"
-      },
-      "url": "https://packages.prefrontalcortex.de/b5ae82d7-6109-471c-a533-0497d4d714f5"
-    },
-    "com.needle.package-tools": {
-      "version": "0.9.12",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.prefrontalcortex.de/b5ae82d7-6109-471c-a533-0497d4d714f5"
-    },
     "com.pfc.dome-tools": {
       "version": "file:../../../package",
       "depth": 0,
@@ -89,13 +73,6 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
