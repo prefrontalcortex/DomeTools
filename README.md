@@ -29,8 +29,8 @@ You can use the Dome Tools package in your Unity project, and use the Dome Viewe
 
 [Download Dome Tools for Unity package installer]()  
 
-[Download Dome Viewer for Windows]()  
-[Download Dome Viewer for Quest from App Lab]()  
+(Coming soon) [Download Dome Viewer for Windows]()  
+(Coming soon) [Download Dome Viewer for Quest from App Lab]()  
 
 The viewer supports both desktop usage and VR usage with hands or controllers.  
 It has been tested on Windows (with and without VR), Quest 2/3, and Pico 4.  

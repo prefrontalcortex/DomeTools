@@ -6,7 +6,7 @@
     "email": "contact@prefrontalcortex.de",
     "url": "https://prefrontalcortex.de"
   },
-  "version": "0.5.0-pre",
+  "version": "0.6.0",
   "unity": "2021.3",
   "displayName": "pfc Dome Tools",
   "keywords": [
