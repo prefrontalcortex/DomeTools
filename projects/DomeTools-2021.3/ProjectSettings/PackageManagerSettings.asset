@@ -26,16 +26,6 @@ MonoBehaviour:
     m_IsDefault: 1
     m_Capabilities: 7
     m_ConfigSource: 0
-  - m_Id: scoped:project:pfc
-    m_Name: pfc
-    m_Url: https://packages.prefrontalcortex.de/b5ae82d7-6109-471c-a533-0497d4d714f5
-    m_Scopes:
-    - com.pfc
-    - org.khronos
-    - com.needle
-    m_IsDefault: 0
-    m_Capabilities: 0
-    m_ConfigSource: 4
   - m_Id: scoped:project:OpenUPM
     m_Name: OpenUPM
     m_Url: https://package.openupm.com
