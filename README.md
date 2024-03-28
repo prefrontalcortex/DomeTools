@@ -17,7 +17,8 @@ The typical workflow is:
    Add the Dome Tools package to your Unity project using the installer below. 
 
 2. **Add Dome Tools prefabs to your scene.**
-   Add the `Dome (camera rig)`, `Canvas (DomeMaster)` and `Canvas (Final Output)` prefabs to your scene. Position , rotate, and scale the camera rig where you want the viewer to be.  
+   Add the `Dome (camera rig)`, `Canvas (DomeMaster)` and `Canvas (Final Output)` prefabs to your scene. Position , rotate, and scale the camera rig where you want the viewer to be.
+   See the [Dome Tools Readme](https://github.com/prefrontalcortex/DomeTools/blob/main/package/README.md) for more information.
 
 1. **Create content.**  
    Create your scene, animate the dome rig or its parameters, animate postprocessing effects, and so on.  
@@ -27,7 +28,7 @@ The typical workflow is:
 
 You can use the Dome Tools package in your Unity project, and use the Dome Viewer to display the output on a Virtual Dome or a physical dome.
 
-[Download Dome Tools for Unity package installer]()  
+[Download Dome Tools for Unity package installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
 (Coming soon) [Download Dome Viewer for Windows]()  
 (Coming soon) [Download Dome Viewer for Quest from App Lab]()  
@@ -39,7 +40,7 @@ For VR on Windows, use an OpenXR-compatible headset and runtime (for example, he
 
 ## Dome Setup
 
-> **Under construction 🏗️**. This section will contain information regarding various dome systems and how to display NDI content on them. If you want to provide steps for your dome system, please [open an issue](https://github.com/prefrontalcortex/Dome-Tools/issues/new/choose) or make a pull request.  
+> **Under construction 🏗️**. This section will contain information regarding various dome systems and how to display NDI content on them. If you want to provide steps for your dome system, please [open an issue](https://github.com/prefrontalcortex/DomeTools/issues/new/choose) or make a pull request.  
 
 NDI is a widely supported protocol for streaming video content. It is supported by many dome systems. Please refer to the docs of your dome system for instructions on how to receive NDI streams.  
 
