@@ -4595,6 +4595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157452665}
   - component: {fileID: 157452666}
+  - component: {fileID: 157452667}
   m_Layer: 0
   m_Name: Media
   m_TagString: Untagged
@@ -4635,6 +4636,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MediaSourceSelectionContainer, pfc.Fulldome.Viewer
   defaultSelection: {fileID: 501231984}
+--- !u!114 &157452667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157452664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697f5633d68f6a45ab6f5271f32f433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &163272986
 PrefabInstance:
   m_ObjectHideFlags: 0
