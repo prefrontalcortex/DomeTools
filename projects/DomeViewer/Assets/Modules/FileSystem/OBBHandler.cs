@@ -15,8 +15,8 @@ namespace pfc.Fulldome
 
             // we declare a hardcoded location for meta quest / in case of other devices with different path or without sdcard we catch error
 
-            string obbFolderPath = "/sdcard/Android/obb/"+Application.identifier;
-            string destinationPath = "/sdcard/Download/DomeViewer";
+            private string obbFolderPath = "/sdcard/Android/obb/"+Application.identifier;
+            private string destinationPath = "/sdcard/Download/DomeViewer";
 
             try
                 {
@@ -32,7 +32,7 @@ namespace pfc.Fulldome
                 // check obb folder existence
                 if (Directory.Exists(obbFolderPath))
                 {
-                    string[] obbFiles = Directory.GetFiles(obbFolderPath);
+                    private string[] obbFiles = Directory.GetFiles(obbFolderPath);
 
                     foreach (string obbFile in obbFiles)
                     {
