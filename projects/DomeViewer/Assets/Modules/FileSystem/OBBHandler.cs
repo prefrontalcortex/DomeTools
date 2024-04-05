@@ -12,10 +12,10 @@ namespace pfc.Fulldome
         void Start()
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            // Sourcepath OBB-Folder
-            string obbFolderPath = "/sdcard/Android/obb/"+Application.identifier;
 
-            // Targetpath on Android Device
+            // we declare a hardcoded location for meta quest / in case of other devices with different path or without sdcard we catch error
+
+            string obbFolderPath = "/sdcard/Android/obb/"+Application.identifier;
             string destinationPath = "/sdcard/Download/DomeViewer";
 
             try
@@ -29,19 +29,14 @@ namespace pfc.Fulldome
             
             try
             {
-                // checkk obb folder existence
+                // check obb folder existence
                 if (Directory.Exists(obbFolderPath))
                 {
-                    // list all files in obb folder
                     string[] obbFiles = Directory.GetFiles(obbFolderPath);
 
-                    // move all files
                     foreach (string obbFile in obbFiles)
                     {
-                        // get filename
                         string fileName = Path.GetFileName(obbFile);
-
-                        // move current file to target location
                         File.Move(obbFile, Path.Combine(destinationPath, fileName));
                     }
 
@@ -66,6 +61,8 @@ namespace pfc.Fulldome
 
 
     #if UNITY_ANDROID && !UNITY_EDITOR
+            //Examples for different paths if needed
+            
             // AndroidJavaClass Environment = new AndroidJavaClass("android.os.Environment");
             // AndroidJavaObject directory = Environment.CallStatic<AndroidJavaObject>("getExternalStoragePublicDirectory", "Pictures");
             // path = directory.Call<string>("getAbsolutePath");
