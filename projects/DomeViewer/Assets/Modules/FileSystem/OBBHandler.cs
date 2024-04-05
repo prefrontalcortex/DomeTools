@@ -39,8 +39,6 @@ namespace pfc.Fulldome
                         string fileName = Path.GetFileName(obbFile);
                         File.Move(obbFile, Path.Combine(destinationPath, fileName));
                     }
-
-                    Debug.Log("All files are moved successfully.");
                 }
                 else
                 {
@@ -52,7 +50,6 @@ namespace pfc.Fulldome
                 Debug.LogError("Error moving OBB-Files: " + e.Message);
             }
             #else
-            Debug.Log("Move obb files skipped");
             #endif
         }
         private string GetStoragePath()
@@ -62,7 +59,7 @@ namespace pfc.Fulldome
 
     #if UNITY_ANDROID && !UNITY_EDITOR
             //Examples for different paths if needed
-            
+
             // AndroidJavaClass Environment = new AndroidJavaClass("android.os.Environment");
             // AndroidJavaObject directory = Environment.CallStatic<AndroidJavaObject>("getExternalStoragePublicDirectory", "Pictures");
             // path = directory.Call<string>("getAbsolutePath");
