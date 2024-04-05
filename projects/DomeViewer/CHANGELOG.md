@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - ui content buttons have no pressed state
 - no dropdown highlighting on navigating with cursor buttons
 - dropdown scrolling causes Zoom / Fov
+- No Audio-Support for NDI
 - [VR] samples doesn't work on quest standalone at the moment
 - [VR] poor performance on 4k input on quest standalone
 - [VR] hands teleport not working properly and is deactivated
