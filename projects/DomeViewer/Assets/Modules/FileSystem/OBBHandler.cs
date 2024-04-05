@@ -5,12 +5,9 @@ namespace pfc.Fulldome
 
     public class OBBHandler : MonoBehaviour
     {   
-    /*
-        #################################################################################################################
-        Mediafiles need to be in this location on Android (via sideload or via deployment with Meta Quest Developer Hub):
-        sdcard/Android/oob/com.example.myapp/ as *.jpg / *.png / *.mp4
-        #################################################################################################################
-    */
+
+        // Mediafiles need to be in this location on Android (via sideload or via deployment with Meta Quest Developer Hub):
+        // sdcard/Android/oob/com.example.myapp/ as *.jpg / *.png / *.mp4
 
         void Start()
         {
