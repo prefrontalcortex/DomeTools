@@ -1,5 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using System.IO;
+using UnityEngine.Networking;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -25,21 +30,27 @@ namespace pfc.Fulldome
 
         public void Set()
         {
-            if ((string.IsNullOrEmpty(path) || !File.Exists(path)) && texture && target)
+            // fallback to the provided texture
+            if (string.IsNullOrEmpty(path) && texture && target)
             {
                 Graphics.Blit(texture, target);
                 return;
             }
-            
-            if (!File.Exists(path))
+
+            StartCoroutine(LoadTexture());
+        }
+        
+        private IEnumerator LoadTexture()
+        {
+            var request = UnityWebRequestTexture.GetTexture(path);
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogWarning($"No File at {path}!");
-                return;
+                Debug.LogError($"Failed to load texture from {path}: {request.error}");
+                yield break;
             }
             
-            var raw = File.ReadAllBytes(path);
-            var tex = new Texture2D(2, 2);
-            tex.LoadImage(raw);
+            var tex = DownloadHandlerTexture.GetContent(request);
             Graphics.Blit(tex, target);
         }
     }

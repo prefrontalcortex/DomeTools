@@ -1,15 +1,20 @@
-﻿using System;
+﻿// #define DOME_VIEWER_DEBUG
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Debug = UnityEngine.Debug;
 using Directory = System.IO.Directory;
 using Object = UnityEngine.Object;
 
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 #endif
@@ -42,14 +47,25 @@ namespace pfc.Fulldome
                 currentPath = (dropdown.options[dropdown.value] as FileOptionData)?.absolutePath;
             
             var files = GetEligibleFiles("User", userAssetsPath, userAssetsPath, extensions);
-            files.Add(new FileEntry() { type = "User", displayName = "Open " + Application.persistentDataPath, absolutePath = UserAssetKey });
-            files.AddRange(GetStreamingAssets());
+            files.Add(new FileEntry() { type = "User", displayName = "Place assets in " + Application.persistentDataPath, absolutePath = UserAssetKey });
+            
+            // restore absolute path on this platform
+            var streamingAssetsData = GetStreamingAssets();
+            foreach (var f in streamingAssetsData)
+            {
+                if (!f.absolutePath.StartsWith(Application.streamingAssetsPath))
+                    f.absolutePath = Path.Combine(Application.streamingAssetsPath, f.absolutePath);
+            }
+            
+            files.AddRange(streamingAssetsData);
             
             files = files
                 .Distinct()
                 .OrderByDescending(x => x.type)
                 .ThenBy(x => x.absolutePath)
                 .ToList();
+            
+            Log("All files:\n" + string.Join("\n", files.Select(f => f.ToString()).ToArray()));
            
             dropdown.options = new List<Dropdown.OptionData>() { new FileOptionData(null, "None", null) };
             dropdown.options.AddRange(
@@ -104,7 +120,7 @@ namespace pfc.Fulldome
         
         private void ActivateObjectFromPath(string path)
         {
-            Debug.Log($"Activating: {path}");
+            Log($"Activating: {path}");
             if (path == UserAssetKey)
             {
                 // Open explorer / finder etc.
@@ -188,7 +204,7 @@ namespace pfc.Fulldome
             }
         }
 
-        [SerializeField] 
+        [SerializeField]
         private List<FileEntry> streamingAssets;
         
         private List<FileEntry> GetStreamingAssets()
@@ -197,13 +213,27 @@ namespace pfc.Fulldome
         }
 
 #if UNITY_EDITOR
+        [ContextMenu("Update Now")]
         internal void UpdateFilesFromStreamingAssets()
         {
             // collect list of StreamingAssets as flat file list
             streamingAssets = GetEligibleFiles("Demo", Application.streamingAssetsPath, Application.streamingAssetsPath, extensions);
-            Debug.Log("Added StreamingAssets to FilesSourceUI:\n" + string.Join("\n", streamingAssets));
+            foreach (var s in streamingAssets)
+            {
+                // truncate the StreamingAssets path so we can append it again at runtime for the correct platform
+                s.absolutePath = s.absolutePath.Substring(Application.streamingAssetsPath.Length + 1);
+            }
+            
+            EditorUtility.SetDirty(this);
+            Log("Collected StreamingAssets files: " + streamingAssets.Count + "\n" + string.Join("\n", streamingAssets.Select(f => f.ToString()).ToArray()));
         }
 #endif
+
+        [Conditional("DOME_VIEWER_DEBUG")]
+        private static void Log(object message)
+        {
+            Debug.Log(message);
+        }
     }
 
 #if UNITY_EDITOR
@@ -213,11 +243,9 @@ namespace pfc.Fulldome
         
         public void OnProcessScene(Scene scene, BuildReport report)
         {
-            // find FilesSourceUI in the scene
-            var filesSourceUI = Object.FindAnyObjectByType<FilesSourceUI>();
-            if (!filesSourceUI) return;
-            
-            filesSourceUI.UpdateFilesFromStreamingAssets();
+            var filesSourceUI = Object.FindObjectsByType<FilesSourceUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var ui in filesSourceUI)
+                ui.UpdateFilesFromStreamingAssets();
         }
     }
 #endif
