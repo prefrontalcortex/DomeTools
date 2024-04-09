@@ -20,7 +20,7 @@ namespace pfc.Fulldome
         private void OnEnable()
         {
             RefreshSources();
-            if(immediatelyChooseAvailableStream && string.IsNullOrEmpty(receiver.ndiName))
+            if (immediatelyChooseAvailableStream && string.IsNullOrEmpty(receiver.ndiName))
                 receiver.ndiName = NdiFinder.EnumerateSourceNames().FirstOrDefault();
         }
 
@@ -48,13 +48,30 @@ namespace pfc.Fulldome
             onNdiChanged?.Invoke(newSourceName);
         }
 
-        class NdiOptionData : Dropdown.OptionData
+        private class NdiOptionData : Dropdown.OptionData
         {
             public string sourceName;
             
-            public NdiOptionData(string sourceName) : base(sourceName)
+            public NdiOptionData(string sourceName)
             {
                 this.sourceName = sourceName;
+                
+                if (this.sourceName.Contains("(") && this.sourceName.Contains(")"))
+                {
+                    var parts = this.sourceName.Split(new[] {'(', ')'}, StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length == 2)
+                    {
+                        this.text = $"<color=\"#999\">{parts[0]}</color> {parts[1]}";
+                    }
+                    else
+                    {
+                        this.text = this.sourceName;                        
+                    }
+                }
+                else
+                {
+                    this.text = this.sourceName;
+                }
             }
         }
         
