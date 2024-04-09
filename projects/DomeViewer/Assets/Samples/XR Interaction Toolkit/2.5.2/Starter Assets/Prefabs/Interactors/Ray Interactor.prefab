@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7693184380767619946}
   - component: {fileID: 4924506573850889901}
   - component: {fileID: 759886463073337534}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Ray Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -47,7 +47,14 @@ namespace pfc.Fulldome
                 currentPath = (dropdown.options[dropdown.value] as FileOptionData)?.absolutePath;
             
             var files = GetEligibleFiles("User", userAssetsPath, userAssetsPath, extensions);
-            files.Add(new FileEntry() { type = "User", displayName = "Place assets in " + Application.persistentDataPath, absolutePath = UserAssetKey });
+            
+            files = files
+                .Distinct()
+                .OrderByDescending(x => x.type)
+                .ThenBy(x => x.absolutePath)
+                .ToList();
+            
+            files.Add(new FileEntry() { type = null, displayName = "Place assets in " + Application.persistentDataPath, absolutePath = UserAssetKey });
             
             // restore absolute path on this platform
             var streamingAssetsData = GetStreamingAssets();
@@ -58,12 +65,6 @@ namespace pfc.Fulldome
             }
             
             files.AddRange(streamingAssetsData);
-            
-            files = files
-                .Distinct()
-                .OrderByDescending(x => x.type)
-                .ThenBy(x => x.absolutePath)
-                .ToList();
             
             Log("All files:\n" + string.Join("\n", files.Select(f => f.ToString()).ToArray()));
            
