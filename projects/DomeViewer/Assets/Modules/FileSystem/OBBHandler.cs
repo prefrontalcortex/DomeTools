@@ -2,30 +2,27 @@ using UnityEngine;
 
 namespace pfc.Fulldome
 {
-
     public class OBBHandler : MonoBehaviour
     {
-
         // Mediafiles need to be in this location on Android (via sideload or via deployment with Meta Quest Developer Hub):
         // sdcard/Android/oob/com.example.myapp/ as *.jpg / *.png / *.mp4
 
-        void Start()
+        private void Start()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-
             // we declare a hardcoded location for meta quest / in case of other devices with different path or without sdcard we catch error
 
             private string obbFolderPath = "/sdcard/Android/obb/"+Application.identifier;
             private string destinationPath = "/sdcard/Download/DomeViewer";
 
             try
-                {
-                    System.IO.Directory.CreateDirectory(GetStoragePath());
-                }
+            {
+                System.IO.Directory.CreateDirectory(GetStoragePath());
+            }
             catch (System.Exception e)
-                {
-                    Debug.LogError(e.Message);
-                }
+            {
+                Debug.LogError(e.Message);
+            }
             
             try
             {
@@ -52,6 +49,7 @@ namespace pfc.Fulldome
 #else
 #endif
         }
+
         private string GetStoragePath()
         {
             string path = "/sdcard/Download/DomeViewer";
