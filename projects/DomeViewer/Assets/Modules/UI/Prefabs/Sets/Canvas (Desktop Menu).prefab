@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 0}
   imagePlayer: {fileID: 0}
+  streamingAssets: []
 --- !u!114 &8114492065063892293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7086,21 +7087,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -19.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588032295745514419, guid: df1862b4ab98c8e4cbd61489a9a37a38,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588032295745514419, guid: df1862b4ab98c8e4cbd61489a9a37a38,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588032295745514419, guid: df1862b4ab98c8e4cbd61489a9a37a38,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -123.15
       objectReference: {fileID: 0}
     - target: {fileID: 5744943141013882529, guid: df1862b4ab98c8e4cbd61489a9a37a38,
         type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5514807003297744078}
   - component: {fileID: 2977441964348095844}
   - component: {fileID: 644309596432054670}
+  - component: {fileID: 2191723871476022799}
   m_Layer: 5
   m_Name: Version Text (Legacy)
   m_TagString: Untagged
@@ -80,6 +81,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1.0.0
+--- !u!114 &2191723871476022799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185763746150844431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a92b37f292ca5747bf73b5bf5a93b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5594307433444811961
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,10 +249,10 @@ RectTransform:
   m_Father: {fileID: 5594307433444811962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -10, y: 10}
-  m_SizeDelta: {x: 318.1, y: 265.37}
+  m_SizeDelta: {x: 28.100006, y: 18.369995}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4631797112182867260
 CanvasRenderer:
@@ -439,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 2936087879146872275, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_Text
-      value: 'Dome Viewer is a tool for fast interactive viewing of dome content
+      value: '<b>Dome Viewer</b> is a tool for fast interactive viewing of dome content
         from input sources such as NDI, Spout, videos and images.
 
 
@@ -448,8 +461,8 @@ PrefabInstance:
         group showcases, and where access to a physical dome is cost or time prohibitive.
 
 
-        Dome
-        Viewer is part of Dome Tools by prefrontal cortex.
+        <b>Dome
+        Viewer</b> is part of <b>Dome Tools by prefrontal cortex</b>.
 
         github.com/prefrontalcortex/dometools'
       objectReference: {fileID: 0}
@@ -487,7 +500,7 @@ PrefabInstance:
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
@@ -497,7 +510,7 @@ PrefabInstance:
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
@@ -507,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 167.5
+      value: 236.3836
       objectReference: {fileID: 0}
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
@@ -552,7 +565,7 @@ PrefabInstance:
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -162.59177
       objectReference: {fileID: 0}
     - target: {fileID: 3685251789710756697, guid: a80bbcd7d2aec5441a1dfdc5611a18aa,
         type: 3}
