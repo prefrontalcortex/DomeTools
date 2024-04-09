@@ -35,8 +35,9 @@ namespace pfc.Fulldome
         private void FOV(Vector2 value)
         {
             if (!isActiveAndEnabled || FirstPersonCamera == null) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return;
 
-    //add lerp in coroutine to smooth out the zoom
+            //add lerp in coroutine to smooth out the zoom
             targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * fovMultiplier, fovMinMax.x, fovMinMax.y);
             endSmoothZoomTime = Time.time + 1.0f;
             if (smoothZoomCoroutine == null) StartCoroutine(SmoothZoom());
