@@ -126,6 +126,7 @@ MonoBehaviour:
   - {fileID: -666444327707851945}
   - {fileID: -8671053599246552134}
   - {fileID: -3750414475542952496}
+  - {fileID: 521343768984420805}
   - {fileID: -864676765193593109}
   - {fileID: -6606897583889368547}
   - {fileID: 8610872091860090798}
@@ -342,6 +343,26 @@ MonoBehaviour:
   extensionStrings:
   - XR_KHR_binding_modification
   - XR_EXT_dpad_binding
+--- !u!114 &-3372444500236256676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19db6adf5be3433989f34a1788172b2c, type: 3}
+  m_Name: MockInteractionFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Mock Interaction Feature
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.mockinteraction
+  openxrExtensionStrings: 
+  company: Unity
+  priority: -2147483648
+  required: 0
 --- !u!114 &-2835560058063993753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +583,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &521343768984420805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19db6adf5be3433989f34a1788172b2c, type: 3}
+  m_Name: MockInteractionFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Mock Interaction Feature
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.mockinteraction
+  openxrExtensionStrings: 
+  company: Unity
+  priority: -2147483648
+  required: 0
 --- !u!114 &839853745977563583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +667,7 @@ MonoBehaviour:
   - {fileID: -3811904843375064635}
   - {fileID: 839853745977563583}
   - {fileID: 8579871259874086528}
+  - {fileID: -3372444500236256676}
   - {fileID: -4177422587045316927}
   - {fileID: 1987541901806206222}
   - {fileID: 7634398807633215216}

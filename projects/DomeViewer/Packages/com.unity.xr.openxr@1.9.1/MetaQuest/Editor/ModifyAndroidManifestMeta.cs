@@ -8,10 +8,6 @@ using UnityEngine;
 using UnityEngine.XR.OpenXR;
 using UnityEngine.XR.OpenXR.Features.MetaQuestSupport;
 
-#if XR_MGMT_4_4_0_OR_NEWER
-using Unity.XR.Management.AndroidManifest.Editor;
-#endif
-
 namespace UnityEditor.XR.OpenXR.Features.MetaQuestSupport
 {
     internal class ModifyAndroidManifestMeta : OpenXRFeatureBuildHooks
@@ -39,98 +35,6 @@ namespace UnityEditor.XR.OpenXR.Features.MetaQuestSupport
         {
         }
 
-#if XR_MGMT_4_4_0_OR_NEWER
-        public override ManifestRequirement ProvideManifestRequirement()
-        {
-            var elementsToRemove = new List<ManifestElement>()
-            {
-                new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "uses-permission" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "android.permission.BLUETOOTH" }
-                    }
-                }
-            };
-
-            if (ForceRemoveInternetPermission())
-            {
-                elementsToRemove.Add(new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "uses-permission" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "android.permission.INTERNET" }
-                    }
-                });
-            }
-
-            var elementsToAdd = new List<ManifestElement>()
-            {
-                new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "uses-feature" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "android.hardware.vr.headtracking" },
-                        { "required", "true" },
-                        { "version", "1" }
-                    }
-                },
-                new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "application", "meta-data" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "com.oculus.supportedDevices" },
-                        { "value", GetMetaSupportedDevices() }
-                    }
-                },
-                new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "application", "activity", "meta-data" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "com.oculus.vr.focusaware" },
-                        { "value", "true" }
-                    }
-                },
-                new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "application", "activity", "intent-filter", "category" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "com.oculus.intent.category.VR" }
-                    }
-                }
-            };
-
-            if (SystemSplashScreen() != null)
-            {
-                elementsToAdd.Add(new ManifestElement()
-                {
-                    ElementPath = new List<string> { "manifest", "application", "meta-data" },
-                    Attributes = new Dictionary<string, string>
-                    {
-                        { "name", "com.oculus.ossplash" },
-                        { "value", "true" }
-                    }
-                });
-            }
-
-            return new ManifestRequirement
-            {
-                SupportedXRLoaders = new HashSet<Type>()
-                {
-                    typeof(OpenXRLoader)
-                },
-                NewElements = elementsToAdd,
-                RemoveElements = elementsToRemove
-            };
-        }
-
-#endif
 
         private static string GetMetaSupportedDevices()
         {

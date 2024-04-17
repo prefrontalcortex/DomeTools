@@ -6,9 +6,6 @@ using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.XR.OpenXR;
 using UnityEngine.XR.OpenXR.Features;
-#if XR_MGMT_4_4_0_OR_NEWER
-using Unity.XR.Management.AndroidManifest.Editor;
-#endif
 
 namespace UnityEditor.XR.OpenXR.Features
 {
@@ -16,9 +13,7 @@ namespace UnityEditor.XR.OpenXR.Features
     /// Inherit from this class to get callbacks to hook into the build process when your OpenXR Extension is enabled.
     /// </summary>
     public abstract class OpenXRFeatureBuildHooks : IPostGenerateGradleAndroidProject, IPostprocessBuildWithReport, IPreprocessBuildWithReport
-#if XR_MGMT_4_4_0_OR_NEWER
-        , IAndroidManifestRequirementProvider
-#endif
+
     {
         private OpenXRFeature _ext;
         private readonly BootConfigBuilder _bootConfigBuilder = new BootConfigBuilder();
@@ -126,16 +121,5 @@ namespace UnityEditor.XR.OpenXR.Features
         protected virtual void OnProcessBootConfigExt(BuildReport report, BootConfigBuilder builder)
         {
         }
-
-#if XR_MGMT_4_4_0_OR_NEWER
-        /// <summary>
-        /// Called during build process when collecting requirements for Android Manifest. Implement this function to add, override or remove Android manifest entries.
-        /// </summary>
-        public virtual ManifestRequirement ProvideManifestRequirement()
-        {
-            return null;
-        }
-
-#endif
     }
 }
