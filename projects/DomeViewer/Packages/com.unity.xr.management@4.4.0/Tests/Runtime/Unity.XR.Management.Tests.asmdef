@@ -1,0 +1,22 @@
+{
+    "name": "Unity.XR.Management.Tests",
+    "references": [
+        "Unity.XR.Management",
+        "Unity.XR.Management.Tests.Standalone",
+        "Unity.XR.TestSupport"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.subsystemregistration",
+            "define": "USE_LEGACY_SUBSYS_REGISTRATION"
+        }
+    ]
+}

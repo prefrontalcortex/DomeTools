@@ -1,0 +1,42 @@
+{
+  "name": "com.unity.xr.management",
+  "displayName": "XR Plugin Management",
+  "version": "4.4.0",
+  "unity": "2019.4",
+  "unityRelease": "15f1",
+  "description": "Package that provides simple management of XR plug-ins. Manages and offers help with loading, initialization, settings, and build support for XR plug-ins.",
+  "keywords": [
+    "xr",
+    "sdk",
+    "ar",
+    "vr",
+    "management",
+    "build",
+    "plugin"
+  ],
+  "dependencies": {
+    "com.unity.modules.subsystems": "1.0.0",
+    "com.unity.modules.vr": "1.0.0",
+    "com.unity.modules.xr": "1.0.0",
+    "com.unity.xr.legacyinputhelpers": "2.1.7"
+  },
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/xr.sdk.management.git",
+    "type": "git",
+    "revision": "6fefbe0e3deca93f6eb53e66ca554b58f2acf0d8"
+  },
+  "_upm": {
+    "changelog": "### Added\n- Created `AndroidManifestProcessor` as an Android manifest management system for XR packages and providers that target platforms based on Android.\n\n### Removed\n- AndroidManifest.xml is no longer deleted after each Android build."
+  },
+  "upmCi": {
+    "footprint": "eda98e50f28e9cbade3f5ad2433dc3b55cbe5eb5"
+  },
+  "documentationUrl": "https://docs.unity3d.com/Packages/com.unity.xr.management@4.4/manual/index.html",
+  "samples": [
+    {
+      "displayName": "Example XR Management implementation",
+      "description": "Example code showing how to implement various portions of the XR Management API.",
+      "path": "Samples~"
+    }
+  ]
+}
