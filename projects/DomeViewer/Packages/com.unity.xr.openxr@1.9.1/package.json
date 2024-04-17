@@ -1,0 +1,48 @@
+{
+  "name": "com.unity.xr.openxr",
+  "displayName": "OpenXR Plugin",
+  "version": "1.9.1",
+  "unity": "2021.3",
+  "description": "OpenXR is an open, royalty-free standard developed by Khronos that aims to simplify AR/VR development by allowing developers to target a wide range of AR/VR devices. Use this plug-in to enable OpenXR in XR Plug-in Management.",
+  "keywords": [
+    "openxr",
+    "xr",
+    "reality",
+    "xreditorsubsystem"
+  ],
+  "dependencies": {
+    "com.unity.xr.management": "4.4.0",
+    "com.unity.xr.legacyinputhelpers": "2.1.2",
+    "com.unity.inputsystem": "1.6.3",
+    "com.unity.xr.core-utils": "2.1.1"
+  },
+  "samples": [
+    {
+      "displayName": "Controller",
+      "description": "Basic sample showing how to create and reference OpenXR action maps with the new input system.",
+      "path": "Samples~/Controller"
+    },
+    {
+      "displayName": "Meshing Subsystem Feature",
+      "description": "Shows a teapot mesh generated from native mesh subsystem with physics baked in background.",
+      "path": "Samples~/MeshingFeature"
+    },
+    {
+      "displayName": "Intercept Feature",
+      "description": "Demonstrates how to intercept an OpenXR method.",
+      "path": "Samples~/InterceptFeature"
+    }
+  ],
+  "_upm": {
+    "changelog": "### Added\n* Implemented `InputSystem.customBindingPathValidators` interface to show UI warnings in the `InputAsset` Editor when added bindings to a disabled interaction profile and when none of the controller type interaction profiles are enabled, but added bindings using generic XRController.\n* Added APIs `GetInteractionProfileType` and `GetDeviceLayoutName` to support binding path validator feature.\n* Added API `TrySetControllerLateLatchAction` to support controller late latching. Also added MarkLateLatchNode.cs in Controller Sample for usages example.\n* Added support for Meta XR feature `Symmetric Projection`, `Space Warp`, and `Eye Tracked Foveation`.\n* Added the option to enable `Subsampled Layout` when creating a Vulkan swapchain.\n* Added support for recentering Floor tracking origin using new API, `OpenXRSettings.SetAllowRecentering`. This static method allows the app to recenter the tracking origin space when requested by the runtime. Note that calling the method won't trigger a recenter event.\n* Added support for Meta XR feature `System Splash Screen`.\n* Added public API for MetaQuestFeature.forceRemoveInternetPermission\n\n### Changed\n* Updated Input System package dependency to 1.6.3.\n* Updated XR management dependency to 4.4.0.\n* Updated OpenXR loader to 1.0.29.\n* Changed MockRuntime and its FeatureSet to public.\n\n### Fixed\n* Fixed incorect XR Validation rules after regenerating the OpenXR package settings asset.\n* Fixed analytics code being called when disabled.\n* Fixed latency issue with controller poses.\n* Fixed an XR_ERROR_SESSION_NOT_RUNNING error if xrRequestExitSession is called when the session is not running."
+  },
+  "upmCi": {
+    "footprint": "bb9b0332c7d3a4018411302811d49266d10faf6d"
+  },
+  "documentationUrl": "https://docs.unity3d.com/Packages/com.unity.xr.openxr@1.9/manual/index.html",
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/xr.sdk.openxr.git",
+    "type": "git",
+    "revision": "630b0982955a4b4bbc0ee8440739c579544bbd80"
+  }
+}

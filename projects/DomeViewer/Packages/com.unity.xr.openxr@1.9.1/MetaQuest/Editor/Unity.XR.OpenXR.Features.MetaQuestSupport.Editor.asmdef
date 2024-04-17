@@ -1,0 +1,27 @@
+{
+    "name": "Unity.XR.OpenXR.Features.MetaQuestSupport.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:96aa6ba065960476598f8f643e7252b6",
+        "GUID:4847341ff46394e83bb78fbd0652937e",
+        "GUID:95054a9710b0f114a85f6ced6b7f891c",
+        "GUID:f9fe0089ec81f4079af78eb2287a6163"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.management",
+            "expression": "4.4.0",
+            "define": "XR_MGMT_4_4_0_OR_NEWER"
+        }
+    ],
+    "noEngineReferences": false
+}

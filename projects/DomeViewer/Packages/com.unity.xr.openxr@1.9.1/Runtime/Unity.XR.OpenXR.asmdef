@@ -1,0 +1,39 @@
+{
+    "name": "Unity.XR.OpenXR",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e40ba710768534012815d3193fa296cb",
+        "GUID:f9fe0089ec81f4079af78eb2287a6163",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.unityanalytics",
+            "expression": "1.0.0",
+            "define": "UNITY_ANALYTICS"
+        },
+        {
+            "name": "com.microsoft.mixedreality.openxr",
+            "expression": "1.0.0",
+            "define": "MICROSOFT_OPENXR_PACKAGE"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.4.2",
+            "define": "INPUT_SYSTEM_POSE_VALID"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.6.3",
+            "define": "INPUT_SYSTEM_BINDING_VALIDATOR"
+        }
+    ],
+    "noEngineReferences": false
+}

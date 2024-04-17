@@ -220,16 +220,15 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.9.1",
+      "version": "file:com.unity.xr.openxr@1.9.1",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
       "dependencies": {
         "com.unity.xr.management": "4.4.0",
         "com.unity.xr.legacyinputhelpers": "2.1.2",
         "com.unity.inputsystem": "1.6.3",
         "com.unity.xr.core-utils": "2.1.1"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "jp.keijiro.klak.ndi": {
       "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
