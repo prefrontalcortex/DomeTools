@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.XR.Management;
+using UnityEditor.PackageManager;
 
 using UnityEditor.XR.Management.Metadata;
 
@@ -64,8 +66,22 @@ namespace UnityEditor.XR.Management
         }
 
         internal static XRGeneralSettingsPerBuildTarget GetOrCreate()
-            => TryFindSettingsAsset(out var generalSettings) ? generalSettings : CreateAssetSynchronized();
+        {
+            TryFindSettingsAsset(out var generalSettings);
+            generalSettings = generalSettings ?? CreateAssetSynchronized();
 
+            var buildTargetSettings = generalSettings.SettingsForBuildTarget(
+                EditorUserBuildSettings.selectedBuildTargetGroup
+            );
+            var activeLoaderCount = (buildTargetSettings?.AssignedSettings?.activeLoaders?.Count ?? 0);
+            if (IsInURPGraphicsTest() && activeLoaderCount == 0)
+            {
+                Debug.Log("In URP graphics test and no loaders selected. Disabling 'Initialize XR On Startup'");
+                buildTargetSettings.InitManagerOnStart = false;
+            }
+
+            return generalSettings;
+        }
         // Simple class to give us updates when the asset database changes.
         class AssetCallbacks : AssetPostprocessor
         {
@@ -134,6 +150,43 @@ namespace UnityEditor.XR.Management
             }
 
             return false;
+        }
+        
+        // Temporary workaround for a graphics issue
+        static bool? s_IsInURPGraphicsTest = null;
+        internal static bool IsInURPGraphicsTest()
+        {
+            if (!s_IsInURPGraphicsTest.HasValue)
+            {
+                s_IsInURPGraphicsTest = false;
+
+                const string kGfxFramework = "com.unity.testing.urp";
+
+                var request = Client.List(offlineMode: true);
+                while (request.IsCompleted == false)
+                {
+                    Thread.Yield();
+                }
+
+                if (request.Status != StatusCode.Success)
+                {
+                    throw new InvalidOperationException(
+                        $"Unexpected package query failure searching for {kGfxFramework}"
+                    );
+                }
+
+                // if we find the com.unity.testing.urp package then assume we're in the URP
+                // graphics test.
+                foreach (var result in request.Result)
+                {
+                    if (result.packageId.StartsWith(kGfxFramework))
+                    {
+                        s_IsInURPGraphicsTest = true;
+                        break;
+                    }
+                }
+            }
+            return s_IsInURPGraphicsTest.Value;
         }
 #endif
 
@@ -250,7 +303,9 @@ namespace UnityEditor.XR.Management
         /// <returns>The instance of <see cref="XRGeneralSettings"/> assigned to the key, or null if not.</returns>
         public static XRGeneralSettings XRGeneralSettingsForBuildTarget(BuildTargetGroup targetGroup)
         {
-            if (!TryFindSettingsAsset(out var buildTargetSettings))
+            XRGeneralSettingsPerBuildTarget buildTargetSettings = null;
+            EditorBuildSettings.TryGetConfigObject(XRGeneralSettings.k_SettingsKey, out buildTargetSettings);
+            if (buildTargetSettings == null)
                 return null;
 
             return buildTargetSettings.SettingsForBuildTarget(targetGroup);

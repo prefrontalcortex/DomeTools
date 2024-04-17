@@ -119,7 +119,7 @@ namespace UnityEditor.XR.Management
         /// </summary>
         /// <param name="packageName">Package name in Java convention (eg com.package.module).</param>
         /// <returns><see cref="string"/> of the XML file path.</returns>
-        internal static string GetPackagePath(string packageName)
+/*         internal static string GetPackagePath(string packageName)
         {
 #if UNITY_2021_3_OR_NEWER
             var xrManagementPackageInfo = UnityEditor.PackageManager.PackageInfo.GetAllRegisteredPackages()
@@ -129,6 +129,6 @@ namespace UnityEditor.XR.Management
 #else
             throw new System.NotSupportedException("XR Management package couldn't be found, please make sure you have the XR Management package added to your project through the Package Management window.");
 #endif // UNITY_2021_3_OR_NEWER
-        }
+        } */
     }
 }

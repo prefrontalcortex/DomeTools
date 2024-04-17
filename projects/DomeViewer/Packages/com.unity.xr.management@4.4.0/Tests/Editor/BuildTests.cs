@@ -440,5 +440,93 @@ namespace UnityEditor.XR.Management.Tests.BuildTests
                         .AssignedSettings;
         }
     }
+    [TestFixture(BuildTargetGroup.Android, BuildTarget.Android)]
+    class TestAndroidManifestReset
+    {
+        public class PostGradleCallback : IPostGenerateGradleAndroidProject
+        {
+            public int callbackOrder
+            {
+                get { return XRGeneralBuildProcessor.s_CallbackOrder + 1; }
+            }
+
+            public void OnPostGenerateGradleAndroidProject(string path)
+            {
+                s_onPostGenerateGradleAndroidProjectEvent?.Invoke(this, path);
+            }
+        }
+
+        private readonly BuildTargetGroup m_BuildTargetGroup;
+        private readonly BuildTarget m_BuildTarget;
+
+        private XRGeneralSettingsPerBuildTarget m_OldBuildTargetSettings;
+
+        private static event EventHandler<string> s_onPostGenerateGradleAndroidProjectEvent;
+
+        public TestAndroidManifestReset(BuildTargetGroup group, BuildTarget target)
+        {
+            m_BuildTargetGroup = group;
+            m_BuildTarget = target;
+        }
+
+        [Test]
+        public void DoesCleanUpAfterBuild()
+        {
+            const string k_ScenePath = "TestScene.unity";
+            const string k_BuildFolder = "./build";
+            const string k_BuildFile = k_BuildFolder + "/build.apk";
+
+            if (!BuildPipeline.IsBuildTargetSupported(m_BuildTargetGroup, m_BuildTarget))
+            {
+                Debug.LogWarning(
+                    string.Format(
+                        "Test platform lacks {0}/{1} build target support",
+                        m_BuildTargetGroup,
+                        m_BuildTarget
+                    )
+                );
+                return;
+            }
+
+            Scene currentScene = SceneManager.GetActiveScene();
+            currentScene.name = "TestScene";
+            EditorSceneManager.SaveScene(currentScene, k_ScenePath);
+
+            EventHandler<string> gradleCallback = (object sender, string s) =>
+            {
+                Assert.True(File.Exists(XRGeneralBuildProcessor.s_ManifestPath));
+            };
+            s_onPostGenerateGradleAndroidProjectEvent += gradleCallback;
+
+            // if the project is blank and no package name was set, this prevents the test from
+            // failing
+            var packageID = PlayerSettings.GetApplicationIdentifier(m_BuildTargetGroup);
+            bool shouldChange = packageID?.StartsWith("com.DefaultCompany") ?? false;
+            if (shouldChange) {
+                PlayerSettings.SetApplicationIdentifier(m_BuildTargetGroup, "com.unity.test");
+            }
+
+            Directory.CreateDirectory(k_BuildFolder);
+            BuildPipeline.BuildPlayer(
+                new BuildPlayerOptions{
+                    locationPathName = k_BuildFile,
+                    options = BuildOptions.None,
+                    scenes = new string[]{k_ScenePath},
+                    target = m_BuildTarget,
+                    targetGroup =  m_BuildTargetGroup
+                }
+            );
+
+            Assert.False(File.Exists(XRGeneralBuildProcessor.s_ManifestPath));
+
+            File.Delete(k_ScenePath);
+            Directory.Delete(k_BuildFolder, true);
+            if (shouldChange) {
+                PlayerSettings.SetApplicationIdentifier(m_BuildTargetGroup, packageID);
+            }
+
+            s_onPostGenerateGradleAndroidProjectEvent -= gradleCallback;
+        } 
+    }
 }
 #endif //UNITY_EDITOR_WIN || UNITY_EDITOR_OSX

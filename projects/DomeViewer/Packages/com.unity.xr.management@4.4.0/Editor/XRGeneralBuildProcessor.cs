@@ -92,7 +92,7 @@ namespace UnityEditor.XR.Management
         }
     }
 
-    class XRGeneralBuildProcessor : IPreprocessBuildWithReport, IPostprocessBuildWithReport
+    class XRGeneralBuildProcessor : IPreprocessBuildWithReport, IPostprocessBuildWithReport, IPostGenerateGradleAndroidProject
     {
         public static readonly string kPreInitLibraryKey = "xrsdk-pre-init-library";
 
@@ -115,6 +115,10 @@ namespace UnityEditor.XR.Management
         {
             get { return s_CallbackOrder; }
         }
+// This has to be static as the OnPostprocessBuild and OnPostGenerateGradleAndroidProject
+        // callbacks are made on different instances.
+        internal static string s_ManifestPath;
+
 
         void CleanOldSettings()
         {
@@ -153,9 +157,9 @@ namespace UnityEditor.XR.Management
             // dirty later builds with assets that may not be needed or are out of date.
             CleanOldSettings();
 
-	    var buildTargetSettings = XRGeneralSettingsPerBuildTarget.GetOrCreate();
-	    if (!buildTargetSettings)
-		return;
+  // Fix for [1378643](https://fogbugz.unity3d.com/f/cases/1378643/)
+            if (!TryGetSettingsPerBuildTarget(out var buildTargetSettings))
+                return;
 
             XRGeneralSettings settings = buildTargetSettings.SettingsForBuildTarget(targetGroup);
             if (settings == null)
@@ -262,6 +266,34 @@ namespace UnityEditor.XR.Management
             // Always remember to cleanup preloaded assets after build to make sure we don't
             // dirty later builds with assets that may not be needed or are out of date.
             CleanOldSettings();
+            
+            // This is done to clean up XR-provider-specific manifest entries from Android builds when
+            // the incremental build system fails to rebuild the manifest, as there is currently
+            // (2023-09-27) no way to mark the manifest as "dirty."
+            CleanupAndroidManifest();
+        }
+
+        public void CleanupAndroidManifest()
+        {
+            if (!string.IsNullOrEmpty(s_ManifestPath))
+            {
+                try
+                {
+                    File.Delete(s_ManifestPath);
+                }
+                catch (Exception e)
+                {
+                    // This only fails if the file can't be deleted; it is quiet if the file does not exist.
+                    Debug.LogWarning("Failed to clean up AndroidManifest file located at " + s_ManifestPath + " : " + e.ToString());
+                }
+            }
+            s_ManifestPath = "";
+        }
+
+        public void OnPostGenerateGradleAndroidProject(string path)
+        {
+            const string k_ManifestPath = "/src/main/AndroidManifest.xml";
+            s_ManifestPath = path + k_ManifestPath;
         }
     }
 }
