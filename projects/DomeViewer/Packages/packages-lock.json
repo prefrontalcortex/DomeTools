@@ -200,16 +200,16 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "4.4.0",
-      "depth": 1,
-      "source": "registry",
+      "version": "https://github.com/Tunkali/com.unity.xr.management.git?path=#remove-android-manifest-processing",
+      "depth": 0,
+      "source": "git",
       "dependencies": {
         "com.unity.modules.subsystems": "1.0.0",
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.7"
       },
-      "url": "https://packages.unity.com"
+      "hash": "95de291196c828abba87345c0226bf3cd095d32c"
     },
     "com.unity.xr.oculus": {
       "version": "3.3.0",
@@ -221,16 +221,16 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.9.1",
+      "version": "https://github.com/Tunkali/com.unity.xr.openxr.git?path=#remove-manifest-processing",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {
         "com.unity.xr.management": "4.4.0",
         "com.unity.xr.legacyinputhelpers": "2.1.2",
         "com.unity.inputsystem": "1.6.3",
         "com.unity.xr.core-utils": "2.1.1"
       },
-      "url": "https://packages.unity.com"
+      "hash": "2b6723f1625b14ac98b498f5aa6f489eb3bd060e"
     },
     "jp.keijiro.klak.ndi": {
       "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
