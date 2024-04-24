@@ -200,16 +200,16 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "4.3.3",
+      "version": "https://github.com/Tunkali/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {
         "com.unity.modules.subsystems": "1.0.0",
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.7"
       },
-      "url": "https://packages.unity.com"
+      "hash": "ac518c378999d5aba958a12287137013c5c5357e"
     },
     "com.unity.xr.oculus": {
       "version": "3.3.0",
@@ -221,13 +221,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.8.2",
+      "version": "1.9.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.management": "4.0.1",
+        "com.unity.xr.management": "4.4.0",
         "com.unity.xr.legacyinputhelpers": "2.1.2",
-        "com.unity.inputsystem": "1.4.4",
+        "com.unity.inputsystem": "1.6.3",
         "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
