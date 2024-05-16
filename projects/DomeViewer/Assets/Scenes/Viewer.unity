@@ -51916,6 +51916,7 @@ GameObject:
   - component: {fileID: 1787801161}
   - component: {fileID: 1787801160}
   - component: {fileID: 1787801159}
+  - component: {fileID: 1787801162}
   m_Layer: 0
   m_Name: XR Menu
   m_TagString: Untagged
@@ -51998,6 +51999,21 @@ Transform:
   m_Father: {fileID: 1045274810}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787801162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787801158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce37d0929de27b44e96b656f532dbb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 3465296249532420563}
+  offset: {x: 0, y: 0, z: 2}
+  lerpSpeed: 5
 --- !u!1001 &1795255351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63120,6 +63136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.CoreUtils.XROrigin, Unity.XR.CoreUtils
+--- !u!4 &3465296249532420563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6841667398619847847, guid: 05570880398752a4d822d3809b1e511b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3465296249532420561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3776604032756691983
 PrefabInstance:
   m_ObjectHideFlags: 0
