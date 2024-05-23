@@ -16,7 +16,7 @@
       "dependencies": {}
     },
     "com.unity.burst": {
-      "version": "1.8.4",
+      "version": "1.8.11",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -32,7 +32,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.27",
+      "version": "3.0.28",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -51,7 +51,7 @@
     },
     "com.unity.inputsystem": {
       "version": "1.7.0",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
@@ -75,7 +75,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "12.1.12",
+      "version": "12.1.14",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
@@ -85,14 +85,14 @@
       }
     },
     "com.unity.render-pipelines.universal": {
-      "version": "12.1.12",
+      "version": "12.1.14",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
-        "com.unity.burst": "1.8.4",
-        "com.unity.render-pipelines.core": "12.1.12",
-        "com.unity.shadergraph": "12.1.12"
+        "com.unity.burst": "1.8.9",
+        "com.unity.render-pipelines.core": "12.1.14",
+        "com.unity.shadergraph": "12.1.14"
       }
     },
     "com.unity.searcher": {
@@ -103,11 +103,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.shadergraph": {
-      "version": "12.1.12",
+      "version": "12.1.14",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
-        "com.unity.render-pipelines.core": "12.1.12",
+        "com.unity.render-pipelines.core": "12.1.14",
         "com.unity.searcher": "4.9.1"
       }
     },
@@ -153,7 +153,7 @@
       }
     },
     "com.unity.xr.core-utils": {
-      "version": "2.2.3",
+      "version": "2.3.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -213,16 +213,16 @@
       "hash": "ac518c378999d5aba958a12287137013c5c5357e"
     },
     "com.unity.xr.oculus": {
-      "version": "3.3.0",
+      "version": "3.4.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.management": "4.2.0"
+        "com.unity.xr.management": "4.4.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.9.1",
+      "version": "1.10.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
