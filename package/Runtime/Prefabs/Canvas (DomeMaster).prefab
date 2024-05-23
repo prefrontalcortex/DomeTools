@@ -564,6 +564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ndiName: DomeMaster
+  audioMode: 0
+  virtualListenerDistance: 10
+  useCameraPositionForVirtualAttenuation: 0
   _keepAlpha: 0
   _captureMethod: 2
   _sourceCamera: {fileID: 0}

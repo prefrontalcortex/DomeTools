@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8711029951155028342}
   m_Layer: 0
   m_Name: DomeWarping (single camera)
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 7902094913906437564}
   m_Layer: 0
   m_Name: Traditional (cubemap)
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

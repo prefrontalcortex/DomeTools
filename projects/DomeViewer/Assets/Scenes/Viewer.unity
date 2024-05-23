@@ -9345,7 +9345,10 @@ MonoBehaviour:
   _targetTexture: {fileID: 8400000, guid: 0937d98d4f905fc44b66134d830a5b62, type: 2}
   _targetRenderer: {fileID: 0}
   _targetMaterialProperty: 
+  _audioSource: {fileID: 0}
+  _createVirtualSpeakers: 1
   _resources: {fileID: 11400000, guid: 69304b86950074db7ba8caba75214004, type: 2}
+  virtualSpeakerDistances: 10
 --- !u!4 &374287693
 Transform:
   m_ObjectHideFlags: 0
@@ -21512,6 +21515,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -47180,7 +47184,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -62915,6 +62919,26 @@ PrefabInstance:
     - target: {fileID: 6725490694392643837, guid: 05570880398752a4d822d3809b1e511b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841667398619847842, guid: 05570880398752a4d822d3809b1e511b,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841667398619847842, guid: 05570880398752a4d822d3809b1e511b,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841667398619847842, guid: 05570880398752a4d822d3809b1e511b,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841667398619847842, guid: 05570880398752a4d822d3809b1e511b,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6920219016113483490, guid: 05570880398752a4d822d3809b1e511b,

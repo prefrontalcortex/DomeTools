@@ -36,7 +36,7 @@
     "com.unity.xr.management": "https://github.com/Tunkali/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
     "com.unity.xr.oculus": "3.4.0",
     "com.unity.xr.openxr": "1.10.0",
-    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
+    "jp.keijiro.klak.ndi": "file:H:/git/KlakNDI/jp.keijiro.klak.ndi",
     "jp.keijiro.klak.spout": "2.0.3",
     "org.nuget.system.memory": "4.5.5",
     "com.unity.modules.ai": "1.0.0",

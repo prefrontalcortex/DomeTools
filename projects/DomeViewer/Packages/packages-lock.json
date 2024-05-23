@@ -234,13 +234,12 @@
       "url": "https://packages.unity.com"
     },
     "jp.keijiro.klak.ndi": {
-      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#feature/android-targetlevel-32-support",
+      "version": "file:H:/git/KlakNDI/jp.keijiro.klak.ndi",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.modules.screencapture": "1.0.0"
-      },
-      "hash": "6f66e95a1443a5b778c8e711d215bbd766d90b36"
+      }
     },
     "jp.keijiro.klak.spout": {
       "version": "2.0.3",
