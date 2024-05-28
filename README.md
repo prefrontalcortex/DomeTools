@@ -49,7 +49,7 @@ Supported **Render Pipelines**:
 - ✅ High Definition Render Pipeline (HDRP)
 
 ### Viewing content 
-[Download Dome Viewer for Windows]()  
+[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
 [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/en-gb/experiences/4747161018651543/)   
 <!-- (Coming soon) [Download Dome Viewer for Quest from SideQuest]()  -->
 
