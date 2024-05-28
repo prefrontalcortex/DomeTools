@@ -7,6 +7,9 @@ namespace pfc.Fulldome
     [CustomEditor(typeof(InstallNDIPackage))]
     public class InstallNDIPackageInspector : Editor
     {
+        // This is the prefrontal cortex fork with NDI Audio support.
+        private const string KlakNdiForkVersion = "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7";
+        
         public override void OnInspectorGUI()
         {
 #if HAVE_NDI
@@ -26,7 +29,7 @@ namespace pfc.Fulldome
                 ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
                 ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
-            ManifestUtility.AddPackage("jp.keijiro.klak.ndi");
+            ManifestUtility.AddPackage("jp.keijiro.klak.ndi", KlakNdiForkVersion);
         }
     }
     
