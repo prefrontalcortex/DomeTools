@@ -95,7 +95,6 @@ namespace pfc.Fulldome
             
             // Check that we have
             var audioListenersInScene = FindObjectsOfType<AudioListener>();
-            var ndiSenderInScene = FindFirstObjectByType<NdiSender>();
             
             // - the camera rig
             // - NDI package and NDI output
@@ -106,6 +105,7 @@ namespace pfc.Fulldome
             EditorGUILayout.Space();
             GUILayout.Label(new GUIContent("Scene Checks", "Verify that your scene is set up to create interactive fulldome content."), EditorStyles.boldLabel);
 #if HAVE_NDI
+            var ndiSenderInScene = FindFirstObjectByType<NdiSender>();
             Utils.DrawCheck("NDI Package is installed");
             Utils.DrawCheck("NDI Output is configured", ndiSenderInScene, () =>
             {
@@ -121,9 +121,9 @@ namespace pfc.Fulldome
             Utils.DrawCheck("Dome Camera Rig is set up", t.GetComponentInChildren<DomeRenderer>());
 
             var haveOneAudioSource = audioListenersInScene.Length == 1;
-            var audioListenerOnSender = ndiSenderInScene && ndiSenderInScene.GetComponent<AudioListener>();
             Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);
 #if HAVE_NDI
+            var audioListenerOnSender = ndiSenderInScene && ndiSenderInScene.GetComponent<AudioListener>();
             Utils.DrawCheck("Audio Listener is on NDI Sender", audioListenerOnSender, () =>
             {
                 foreach (var t1 in audioListenersInScene)
