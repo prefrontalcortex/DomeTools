@@ -3,9 +3,13 @@ All notable changes to this package will be documented in this file.\
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [0.7.0] - 2024-05-28
-- add Dome Tools root prefab and editor UI
 - fix banding due to wrong render texture setting
 - fix cube map and dome warp cameras not using Post Processing and platform settings for MSAA/HDR
+- fix Readme using outdated prefab names
+- change Readme to reflect new features and include more information on how to get started
+- change sample project Unity versions to latest LTS
+- add Dome Tools root prefab and editor UI
+- add Audio example
 
 ## [0.6.0] - 2024-03-27
 - versioning, naming
