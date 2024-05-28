@@ -201,7 +201,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "https://github.com/Tunkali/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
+      "version": "https://github.com/prefrontalcortex/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -234,12 +234,13 @@
       "url": "https://packages.unity.com"
     },
     "jp.keijiro.klak.ndi": {
-      "version": "file:H:/git/KlakNDI/jp.keijiro.klak.ndi",
+      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.unity.modules.screencapture": "1.0.0"
-      }
+      },
+      "hash": "8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7"
     },
     "jp.keijiro.klak.spout": {
       "version": "2.0.3",
