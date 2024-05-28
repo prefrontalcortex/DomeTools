@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,13 +15,18 @@ namespace pfc.Fulldome
             EditorGUILayout.HelpBox("Sending the dome texture over the network requires the NDI package. Install it with the button below or using Package Manager.", MessageType.Info);
             if (GUILayout.Button("Install NDI Package"))
             {
-                if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
-                    ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
-                if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                    ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
-                ManifestUtility.AddPackage("jp.keijiro.klak.ndi");
+                Install();
             }
 #endif
+        }
+
+        public static void Install()
+        {
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
+                ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
+                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
+            ManifestUtility.AddPackage("jp.keijiro.klak.ndi");
         }
     }
     
@@ -38,27 +44,43 @@ namespace pfc.Fulldome
                 EditorGUILayout.HelpBox("Sending the dome texture to other software on the same computer requires the Spout package. Install it with the button below or using Package Manager.", MessageType.Info);
                 if(GUILayout.Button("Install Spout Package"))
                 {
-                    if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
-                        ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
-                    if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                        ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
-                    ManifestUtility.AddPackage("jp.keijiro.klak.spout");
+                    Install();
                 }
             }
+        }
+
+        public static void Install()
+        {
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
+                ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
+                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
+            ManifestUtility.AddPackage("jp.keijiro.klak.spout");
         }
     }
 
     internal class Utils
     {
-        public static void DrawCheck(string label)
+        public static void DrawCheck(string label, bool check = true, Action fixAction = null, string fixTooltip = null)
         {            
             var rect = EditorGUILayout.GetControlRect();
+            var w = rect.width;
             rect.width = 20;
             rect.height = 20;
-            EditorGUI.LabelField(rect, "✓");
+            var needsFixButton = !check && fixAction != null;
+            EditorGUI.LabelField(rect, check ? "✓" : "✗");
             rect.x += 20;
-            rect.width = EditorGUIUtility.currentViewWidth - EditorGUIUtility.labelWidth - 20;
+            rect.width = w - 20;
+            if (needsFixButton)
+                rect.width -= 50;
             EditorGUI.LabelField(rect, label);
+            if (needsFixButton)
+            {
+                rect.x += rect.width;
+                rect.width = 50;
+                if (GUI.Button(rect, new GUIContent("Fix", fixTooltip)))
+                    fixAction();
+            }
         }
     }
 }

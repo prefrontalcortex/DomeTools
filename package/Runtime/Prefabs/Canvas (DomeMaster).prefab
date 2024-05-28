@@ -129,10 +129,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 5
-  far clip plane: 15
+  near clip plane: 0.01
+  far clip plane: 3000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -420,7 +420,6 @@ RectTransform:
   - {fileID: 5045854458634627797}
   - {fileID: 3220160068330768170}
   - {fileID: 3174523913719835235}
-  - {fileID: 6203306036889707521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -444,7 +443,7 @@ MonoBehaviour:
   domeRenderer: {fileID: 0}
   domeContentOutput: {fileID: 3329627783523486614}
   domeOutputCamera: {fileID: 6048725073360513756}
-  ndiSender: {fileID: 1481025587787148119}
+  ndiSender: {fileID: 0}
   texts:
   - {fileID: 145908485900080471}
   - {fileID: 145908485585897377}
@@ -517,85 +516,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &7900465527127176892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6203306036889707521}
-  - component: {fileID: 1481025587787148119}
-  - component: {fileID: 4443627990299767621}
-  - component: {fileID: 6521200269087368851}
-  m_Layer: 0
-  m_Name: NDI Sender
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6203306036889707521
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900465527127176892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 102.4, y: 102.4, z: 102.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3220217515065572380}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1481025587787148119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900465527127176892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d98e5bfcdff4847ad69efa861a8e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ndiName: DomeMaster
-  audioMode: 0
-  virtualListenerDistance: 10
-  useCameraPositionForVirtualAttenuation: 0
-  _keepAlpha: 0
-  _captureMethod: 2
-  _sourceCamera: {fileID: 0}
-  _sourceTexture: {fileID: 8400000, guid: 0937d98d4f905fc44b66134d830a5b62, type: 2}
-  _resources: {fileID: 11400000, guid: 69304b86950074db7ba8caba75214004, type: 2}
---- !u!114 &4443627990299767621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900465527127176892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e72d6ad2c044aa9ab1e15497b2e49a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6521200269087368851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900465527127176892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e51e7770ef58a8458b437a9f6770491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7219181776715357842
 PrefabInstance:
   m_ObjectHideFlags: 0

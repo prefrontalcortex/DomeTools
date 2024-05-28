@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,5 +69,12 @@ namespace pfc.Fulldome
         }
 
         private void OnValidate() => SetTargetTextureFromDomeRenderer();
+
+        private void Update()
+        {   
+            // correct scale so that we always have world scale = 1
+            var scale = transform.lossyScale;
+            transform.localScale = new Vector3(1f / scale.x, 1f / scale.y, 1f / scale.z);
+        }
     }
 }

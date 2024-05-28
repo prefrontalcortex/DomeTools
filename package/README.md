@@ -1,23 +1,32 @@
-# Dome Tools
+# Dome Creator
 by prefrontal cortex
 
 ## Description
 
-This package provides a highly efficient realtime fulldome toolkit for Unity.  
-It has two modes: 
+This package provides a **highly efficient realtime fulldome toolkit** for Unity. It allows you to **create, transmit and view** fulldome video and audio in real-time. 
 
-1. **Dome Warp, a novel invariant distortion technique**
-   Much faster (single view), can be used with postprocessing, can be used with volumetric effects   
-   Best suited for real-time applications  
-   Best suited for spatial content (content that is around the viewer, not just on the floor plane)  
-   View angle is limited to 180°  
+It has two rendering modes: 
+
+1. **Dome Warp – A novel single-view dome-invariant rendering technique**
+   - Much faster (single view)
+   - Can be used with postprocessing effects without visible seams
+   - Can be used with volumetric effects   
+   - Excellent for real-time applications  
+   - Best suited for spatial content (content that is around the viewer, not just on the floor plane)  
+   - View angle is limited to 180°  
+   - Ability to art direct the perceived depth of the scene
    
-2. **A traditional cubemap-based approach**
-   Much slower (renders 5-6 views)  
-   Flexible view angle (up to 360°)  
+2. **Traditional Cubemap-based approach**
+   - Much slower (renders 5-6 views)  
+   - Postprocessing with local effects will lead to visible seams
+   - Best suited for horizon-focussed content (e.g. streets, landscapes)
+   - Fixed viewpoint (center of the dome)
+   - Flexible view angle (up to 360°)  
 
-Both result in a fulldome projection in the common "Dome Master" format (equidistant azimuthal fisheye).    
+Both result in a fulldome projection in the common "Dome Master" format (formally known as _Equidistant Azimuthal Fisheye Projection_). 
 The toolkit supports BiRP, URP, and HDRP render pipelines, and is provided as UPM package.  
+
+Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools) in VR or on a desktop monitor. 
 
 ## Installation
 
