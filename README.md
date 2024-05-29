@@ -50,7 +50,7 @@ Supported **Render Pipelines**:
 
 ### Viewing content 
 [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
-[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/en-gb/experiences/4747161018651543/)    
+[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
 [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
 The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
