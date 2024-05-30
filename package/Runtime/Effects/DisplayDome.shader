@@ -10,12 +10,16 @@
         
     }
     SubShader
-    {
+    {        
+    	PackageRequirements
+        {
+            "com.unity.render-pipelines.universal": "10.0.0"
+        }
+    	
         Tags { "RenderType"="Opaque" "Queue"="Geometry" }
         LOD 100
 
 		// Blend SrcAlpha OneMinusSrcAlpha
-
 
         Pass
         {
