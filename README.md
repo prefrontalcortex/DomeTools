@@ -25,10 +25,16 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 3. **Install the NDI packages**
    Select Dome Tools and click <kbd>Fix</kbd> next to "NDI Package is not installed". This will install the `KlakNDI` package. 
 
-3. **Create content.**  
+3. **(Optional) Learn from the samples**
+   Open `Window > Package Manager` and select the `pfc Dome Tools` package.  
+   Unfold the `Samples` section, then import the sample labelled "Import this first!".  
+   Now, import the sample for your current render pipeline (BiRP, URP, HDRP).  
+   Samples will be copied to your project's `Assets / Samples / pfc Dome Tools` folder.  
+
+4. **Create content.**  
    Create your scene, animate the dome rig or its parameters, create and animate postprocessing effects, place and animate audio sources, and so on. Iterate quickly by previewing your content in the **Dome Viewer**.
 
-4. **Preview and showcase your content**  
+5. **Preview and showcase your content**  
    By default, your content gets streamed with NDI on your local network for easy viewing. Use the **Dome Viewer** to display the output on a Virtual Dome either on desktop or in VR, or display the NDI stream on a physical dome directly.     
 
 Typically, you will use the **Dome Creator** package in your Unity project, and start the **Dome Viewer** app on Quest 2/3 in the same local network. Once you're ready, the same NDI stream can be received by many planetarium AV systems directly – in realtime. 

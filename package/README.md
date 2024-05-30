@@ -14,22 +14,31 @@ This repository contains two main components:
 Use **Dome Creator** to produce real-time, interactive fulldome content. Stream it over the network with **NewTek NDI** and view your content in **Dome Viewer** and other NDI-enabled applications.
 
 1. **Add Dome Creator to your project.**
-   Add the Dome Creator package to your Unity project using the installer:    
-   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.)
+   - Add the Dome Creator package to your Unity project using the installer:    
+   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
 
 2. **Add the "Dome Tools" prefab to your scene.**  
-   You can find the prefab under `Packages > pfc Dome Tools > Runtime > Dome Tools`.  
-   Position , rotate, and scale the object to fit your scene.   
-   See the [Dome Creator](#dome-creator) section for more details on how to use this package.  
+   - You can find the prefab under `Packages > pfc Dome Tools > Runtime > Dome Tools`.  
+   - Position , rotate, and scale the object to fit your scene.   
+   - See the [Dome Creator](#dome-creator) section for more details on how to use this package.  
 
 3. **Install the NDI packages**
-   Select Dome Tools and click <kbd>Fix</kbd> next to "NDI Package is not installed". This will install the `KlakNDI` package. 
+   - Select Dome Tools and click <kbd>Fix</kbd> next to "NDI Package is not installed". This will install the `KlakNDI` package. 
 
-3. **Create content.**  
-   Create your scene, animate the dome rig or its parameters, create and animate postprocessing effects, place and animate audio sources, and so on. Iterate quickly by previewing your content in the **Dome Viewer**.
+3. **(Optional) Learn from the samples**
+   - Open `Window > Package Manager` and select the `pfc Dome Tools` package.  
+   - Unfold the `Samples` section, then import the sample labelled "Import this first!".  
+   - Now, import the sample for your current render pipeline (BiRP, URP, HDRP).  
+   - You can find the sammples in the `Assets / Samples / pfc Dome Tools` folder.  
 
-4. **Preview and showcase your content**  
-   By default, your content gets streamed with NDI on your local network for easy viewing. Use the **Dome Viewer** to display the output on a Virtual Dome either on desktop or in VR, or display the NDI stream on a physical dome directly.     
+4. **Create content.**  
+   - Create your scene, animate the dome rig or its parameters, create and animate postprocessing effects, place and animate audio sources, and so on.
+   - Iterate quickly by previewing your content in the **Dome Viewer**.
+
+5. **Preview and showcase your content**  
+   - By default, your content gets streamed with NDI on your local network for easy viewing.
+   - Use the **Dome Viewer** to display the output on a Virtual Dome either on desktop or in VR, 
+   - or display the NDI stream on a physical dome directly.     
 
 Typically, you will use the **Dome Creator** package in your Unity project, and start the **Dome Viewer** app on Quest 2/3 in the same local network. Once you're ready, the same NDI stream can be received by many planetarium AV systems directly – in realtime. 
 
@@ -49,9 +58,9 @@ Supported **Render Pipelines**:
 - ✅ High Definition Render Pipeline (HDRP)
 
 ### Viewing content 
-[Download Dome Viewer for Windows]()  
-[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/en-gb/experiences/4747161018651543/)   
-<!-- (Coming soon) [Download Dome Viewer for Quest from SideQuest]()  -->
+[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
 The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
 It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  

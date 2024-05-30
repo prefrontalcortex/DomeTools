@@ -1,28 +1,30 @@
 {
   "name": "com.pfc.dome-tools",
-  "description": "Tools for fulldome content production and viewing.",
+  "description": "Dome Content Creation at the Speed of Thought – Tools for Fulldome Content Production and Viewing.",
   "author": {
     "name": "prefrontal cortex",
     "email": "contact@prefrontalcortex.de",
     "url": "https://prefrontalcortex.de"
   },
-  "version": "0.7.1",
+  "version": "0.7.2",
   "unity": "2021.3",
   "displayName": "pfc Dome Tools",
   "keywords": [
     "unity",
     "pfc",
     "tools",
-    "packages"
+    "packages",
+    "fulldome",
+    "rendering"
   ],
   "license": "Proprietary",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/prefrontalcortex/packages/pfc-fulldome.git"
+    "url": "https://github.com/prefrontalcortex/dometools"
   },
-  "homepage": "https://gitlab.com/prefrontalcortex/packages/pfc-fulldome",
+  "homepage": "https://prefrontalcortex.de/en/projects/dome-tools/",
   "bugs": {
-    "url": "https://gitlab.com/prefrontalcortex/packages/pfc-fulldome/issues"
+    "url": "https://github.com/prefrontalcortex/dometools/issues"
   },
   "dependencies": {
     "com.unity.ugui": "1.0.0",

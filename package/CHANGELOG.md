@@ -2,6 +2,12 @@
 All notable changes to this package will be documented in this file.\
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] - 2024-05-30
+- fix shader compilation error when URP is not installed
+- fix two sample scenes not using the new Dome Tools prefab
+- fix NDI sender not properly being assigned in the Dome Tools prefab
+- add check to disable the "Warn if no cameras rendering" message in the Game View
+
 ## [0.7.1] - 2024-05-28
 - fix compilation error when the `KlakNDI` package is not present
 
