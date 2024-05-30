@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -8,7 +11,6 @@ using Klak.Ndi;
 
 namespace pfc.Fulldome
 {
-
     [CustomEditor(typeof(DomeTools))]
     public class DomeToolsEditor : Editor
     {
@@ -37,6 +39,13 @@ namespace pfc.Fulldome
         private static readonly GUIContent CameraSettings = new GUIContent("Camera Settings", "Adjust the rendering method (Dome Warp or Cubemap) and other camera settings.");
         private static readonly GUIContent DomeMasterSettings = new GUIContent("Dome Output Settings", "Adjust UI configuration for the Dome Master output image, like title, producer, logo and more.");
         private static readonly GUIContent NdiInstall = new GUIContent("Install NDI", "NDI is recommended for sending the Dome output over network to a dome (physical or virtual).");
+
+        private void OnEnable()
+        {
+            DomeRendererEditor.CollectGameViews(gameViews);
+        }
+
+        private List<EditorWindow> gameViews = new List<EditorWindow>();
         
         public override void OnInspectorGUI()
         {
@@ -119,6 +128,7 @@ namespace pfc.Fulldome
 #endif
             Utils.DrawCheck("Current Render Pipeline is supported"); // all supported 🎉
             Utils.DrawCheck("Dome Camera Rig is set up", t.GetComponentInChildren<DomeRenderer>());
+            Utils.DrawCheck("\"Warn if no cameras rendering\" is disabled", gameViews.All(DomeRendererEditor.GameViewHidesNoCameraWarning), () => gameViews.ForEach(DomeRendererEditor.HideGameViewNoCameraRenderingWarning));
 
             var haveOneAudioSource = audioListenersInScene.Length == 1;
             Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);

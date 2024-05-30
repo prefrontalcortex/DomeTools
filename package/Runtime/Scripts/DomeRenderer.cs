@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace pfc.Fulldome
 {
+    [HelpURL(DomeTools.DocumentationURL)]
     public class DomeRenderer : MonoBehaviour
     {
         public static event System.Action<DomeRenderer> OnDomeRendererChanged;

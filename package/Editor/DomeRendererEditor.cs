@@ -19,6 +19,14 @@ namespace pfc.Fulldome
         private List<Camera> cams = new List<Camera>();
         private void OnEnable()
         {
+            CollectGameViews(gameViews);
+
+            cams.Clear();
+            cams.AddRange(FindObjectsByType<Camera>(FindObjectsSortMode.None));
+        }
+
+        internal static void CollectGameViews(List<EditorWindow> gameViews)
+        {
             gameViews.Clear();
             var allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
             foreach (var w in allWindows)
@@ -27,9 +35,28 @@ namespace pfc.Fulldome
                 if (w.GetType().Name != "GameView") continue;
                 gameViews.Add(w);
             }
+        }
+        
+        internal static FieldInfo m_NoCameraWarning;
 
-            cams.Clear();
-            cams.AddRange(FindObjectsByType<Camera>(FindObjectsSortMode.None));
+        internal static bool GameViewHidesNoCameraWarning(EditorWindow w)
+        {
+            if (!w) return true;
+            if (w.GetType().Name != "GameView") return true;
+            if (m_NoCameraWarning == null) m_NoCameraWarning = w.GetType().GetField("m_NoCameraWarning", (BindingFlags)(-1));
+            if (m_NoCameraWarning == null) return true;
+            var warnValue = (bool) m_NoCameraWarning.GetValue(w);
+            return !warnValue;
+        }
+
+        internal static void HideGameViewNoCameraRenderingWarning(EditorWindow w)
+        {
+            if (m_NoCameraWarning == null) m_NoCameraWarning = w.GetType().GetField("m_NoCameraWarning", (BindingFlags)(-1));
+            if (m_NoCameraWarning == null) return;
+            
+            m_NoCameraWarning.SetValue(w, false);
+            EditorUtility.SetDirty(w);
+            RepaintForSure();
         }
         
         private List<Camera> notAllowedCams = new List<Camera>();
@@ -59,21 +86,11 @@ namespace pfc.Fulldome
             // Check if "Warn if No Cameras are rendering" is disabled
             foreach (var w in gameViews)
             {
-                if (!w) continue;
-                if (w.GetType().Name != "GameView") continue;
-                var warnProp = w.GetType().GetField("m_NoCameraWarning", (BindingFlags)(-1));
-                if (warnProp == null) continue;
-                var warnValue = (bool) warnProp.GetValue(w);
-                if (warnValue)
-                {
-                    EditorGUILayout.HelpBox("Please disable \"Warn if No Cameras Rendering\" in the Game View.", MessageType.Warning);
-                    if (GUILayout.Button("Fix"))
-                    {
-                        warnProp.SetValue(w, false);
-                        EditorUtility.SetDirty(w);
-                        RepaintForSure();
-                    }
-                }
+                if (GameViewHidesNoCameraWarning(w)) continue;
+                
+                EditorGUILayout.HelpBox("Please disable \"Warn if No Cameras Rendering\" in the Game View.", MessageType.Warning);
+                if (GUILayout.Button("Fix"))
+                    HideGameViewNoCameraRenderingWarning(w);
             }
             
             // Check if in HDRP
