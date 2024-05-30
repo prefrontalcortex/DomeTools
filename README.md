@@ -15,7 +15,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 
 1. **Add Dome Creator to your project.**
    Add the Dome Creator package to your Unity project using the installer:    
-   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.)
+   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
 
 2. **Add the "Dome Tools" prefab to your scene.**  
    You can find the prefab under `Packages > pfc Dome Tools > Runtime > Dome Tools`.  
@@ -50,8 +50,8 @@ Supported **Render Pipelines**:
 
 ### Viewing content 
 [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
-[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/en-gb/experiences/4747161018651543/)   
-<!-- (Coming soon) [Download Dome Viewer for Quest from SideQuest]()  -->
+[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
 The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
 It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
