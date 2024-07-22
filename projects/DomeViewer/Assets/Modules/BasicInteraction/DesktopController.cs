@@ -40,7 +40,8 @@ namespace pfc.Fulldome
             //add lerp in coroutine to smooth out the zoom
             targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * fovMultiplier, fovMinMax.x, fovMinMax.y);
             endSmoothZoomTime = Time.time + 1.0f;
-            if (smoothZoomCoroutine == null) StartCoroutine(SmoothZoom());
+            if (smoothZoomCoroutine == null) 
+                smoothZoomCoroutine = StartCoroutine(SmoothZoom());
         }
 
         private IEnumerator SmoothZoom()
