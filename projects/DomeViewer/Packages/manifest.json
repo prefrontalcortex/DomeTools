@@ -36,7 +36,7 @@
     "com.unity.xr.management": "https://github.com/prefrontalcortex/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
     "com.unity.xr.oculus": "3.4.0",
     "com.unity.xr.openxr": "1.10.0",
-    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#6f8865887d085666e8c6fc2b7fba2df3422fa253",
+    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#352548ad765fa9d43df61b56e12f3067334434a1",
     "jp.keijiro.klak.spout": "2.0.3",
     "org.nuget.system.memory": "4.5.5",
     "com.unity.modules.ai": "1.0.0",
