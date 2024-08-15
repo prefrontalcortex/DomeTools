@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [ExecuteAlways]
     public class SwitchPipeline : MonoBehaviour

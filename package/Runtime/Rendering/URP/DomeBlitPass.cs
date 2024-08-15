@@ -11,7 +11,7 @@ using UnityEngine.Rendering.LWRP;
 #endif
 
 #if HAVE_RENDERPIPELINE
-namespace pfc.Fulldome.Rendering
+namespace pfc.DomeTools.Rendering
 {
     /// <summary>
     /// Copy the given color buffer to the given destination color buffer.

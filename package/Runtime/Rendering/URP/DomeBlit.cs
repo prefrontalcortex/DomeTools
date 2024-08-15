@@ -10,7 +10,7 @@ using UnityEngine.Rendering.LWRP;
 #endif
 
 #if HAVE_RENDERPIPELINE
-namespace pfc.Fulldome.Rendering
+namespace pfc.DomeTools.Rendering
 {
     public class DomeBlit : ScriptableRendererFeature
     {

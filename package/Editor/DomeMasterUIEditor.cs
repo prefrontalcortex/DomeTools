@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [CustomEditor(typeof(DomeMasterUI))]
     public class DomeMasterUIEditor : UnityEditor.Editor

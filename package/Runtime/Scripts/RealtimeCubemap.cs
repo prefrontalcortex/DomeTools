@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace pfc.Fulldome {
+namespace pfc.DomeTools {
     
     [ExecuteInEditMode]
     public class RealtimeCubemap : MonoBehaviour

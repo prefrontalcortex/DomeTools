@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [HelpURL(DomeTools.DocumentationURL)]
     public class DomeRenderer : MonoBehaviour

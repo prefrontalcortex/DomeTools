@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [ExecuteAlways]
     public class TestPattern : MonoBehaviour

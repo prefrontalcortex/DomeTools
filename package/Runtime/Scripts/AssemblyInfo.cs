@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("pfc.Fulldome.Editor")]
+[assembly:InternalsVisibleTo("pfc.DomeTools.Editor")]

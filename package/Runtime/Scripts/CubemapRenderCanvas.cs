@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 using UnityEditor;
 #endif
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [ExecuteAlways]
     [RequireComponent(typeof(Camera))]

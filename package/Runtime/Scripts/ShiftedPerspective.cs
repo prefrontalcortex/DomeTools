@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace pfc.Fulldome {
+namespace pfc.DomeTools {
 
 	[ExecuteInEditMode]
 	public class ShiftedPerspective : MonoBehaviour

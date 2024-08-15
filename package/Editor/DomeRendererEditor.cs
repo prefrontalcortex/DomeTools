@@ -10,7 +10,7 @@ using UnityEngine.Rendering.HighDefinition;
 #endif
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [CustomEditor(typeof(DomeRenderer))]
     public class DomeRendererEditor : UnityEditor.Editor

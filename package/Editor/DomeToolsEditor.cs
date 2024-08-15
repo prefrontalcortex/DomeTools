@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OscJack;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -9,10 +10,10 @@ using UnityEngine.Rendering;
 using Klak.Ndi;
 #endif
 #if HAVE_OSCJACK
-using OscJack;
+// using OscJack;
 #endif
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [CustomEditor(typeof(DomeTools))]
     public class DomeToolsEditor : Editor
@@ -148,22 +149,37 @@ namespace pfc.Fulldome
                 FindObjectOfType<NdiSender>().gameObject.AddComponent<AudioListener>();
             }, "Remove Audio Listener(s) and place an Audio Listener on the NDI Sender");
 #endif
+            // check project settings
+            var AudioSpatializerExpectedName = "Dummy Spatializer (NDI)";
+            var haveCustomSpatializer = AudioSettings.GetSpatializerPluginName() == AudioSpatializerExpectedName;
+            Utils.DrawCheck($"Audio Spatializer is set to \"{AudioSpatializerExpectedName}\"", haveCustomSpatializer, () =>
+            {
+                AudioSettings.SetSpatializerPluginName(AudioSpatializerExpectedName);
+                if (AudioSettings.GetSpatializerPluginName() != AudioSpatializerExpectedName)
+                {
+                    Debug.LogError($"Failed to set the Audio Spatializer to \"{AudioSpatializerExpectedName}\". Please set it manually in Project Settings > Audio.");
+                }
+            });
+            
+            GUILayout.Label("ADM Object-Based Audio Output".ToUpper(), EditorStyles.miniBoldLabel);
+
 #if HAVE_OSCJACK
-            Utils.DrawCheck("OSCJack Package is installed for object-based audio ADM support");
+            Utils.DrawCheck("OSCJack Package is installed");
             var oscSenderInScene = FindFirstObjectByType<AdmOscSender>();
             Utils.DrawCheck("ADM OSC Sender in scene", oscSenderInScene, () =>
             {
                 new GameObject("ADM OSC Sender for object-based audio").AddComponent<AdmOscSender>();
+                Undo.RegisterCreatedObjectUndo(t, "Create ADM OSC Sender");
             });
             if (oscSenderInScene)
             {
                 var hasConfig = oscSenderInScene && oscSenderInScene._connection;
                 Utils.DrawCheck("ADM OSC Sender has configuration", hasConfig, () =>
                 {
-                    var config = ScriptableObject.CreateInstance<OscConnection>();
+                    var config = CreateInstance<OscConnection>();
                     AssetDatabase.CreateAsset(config, "Assets/ADM OSC Sender Configuration.asset");
-                    Undo.RegisterCreatedObjectUndo(config, "Add OSC Connection Configuration Asset");
-                    Undo.RecordObject(oscSenderInScene, "Add OSC Connection Configuration Asset");
+                    Undo.RegisterCreatedObjectUndo(config, "Create OSC Connection Configuration Asset");
+                    Undo.RecordObject(oscSenderInScene, "Assign OSC Connection Configuration");
                     oscSenderInScene._connection = config;
                     EditorUtility.SetDirty(oscSenderInScene);
                 });

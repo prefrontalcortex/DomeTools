@@ -1,11 +1,13 @@
 {
-    "name": "pfc.Fulldome.Editor",
+    "name": "pfc.DomeTools.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:5463658a07509d94bb3e5b1c66328633",
         "GUID:457756d89b35d2941b3e7b37b4ece6f1",
         "GUID:df380645f10b7bc4b97d4f5eb6303d95",
-        "GUID:b59f669f136310547b59ad72df53b42f"
+        "GUID:b59f669f136310547b59ad72df53b42f",
+        "GUID:dd8bc1162ef4ad24ab0f30ab491a04e8",
+        "GUID:9df4bb2434fa4444a85e58f9b2d5d6d2"
     ],
     "includePlatforms": [
         "Editor"
@@ -28,12 +30,12 @@
             "define": "HAVE_NDI"
         },
         {
-            "name": "jp.keijiro.klak.ndi",
+            "name": "jp.keijiro.osc-jack",
             "expression": "",
             "define": "HAVE_OSCJACK"
         },
         {
-            "name": "jp.keijiro.klak.ndi",
+            "name": "jp.keijiro.klak.spout",
             "expression": "",
             "define": "HAVE_SPOUT"
         }

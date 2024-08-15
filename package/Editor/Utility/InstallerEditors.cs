@@ -2,7 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [CustomEditor(typeof(InstallNDIPackage))]
     public class InstallNDIPackageEditor : Editor

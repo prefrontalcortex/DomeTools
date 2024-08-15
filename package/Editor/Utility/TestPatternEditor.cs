@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace pfc.Fulldome
+namespace pfc.DomeTools
 {
     [CustomEditor(typeof(TestPattern))]
     public class TestPatternEditor: Editor
