@@ -18,6 +18,16 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.collections": {
+      "version": "1.2.4",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.6.6",
+        "com.unity.test-framework": "1.1.31"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -181,13 +191,17 @@
       }
     },
     "jp.keijiro.klak.ndi": {
-      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7",
+      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#a3e8ae13e5a59457c54f81f5645bdcff8ac4e9a9",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.modules.screencapture": "1.0.0"
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.8.0",
+        "com.unity.collections": "1.2.4",
+        "com.unity.textmeshpro": "2.0.0"
       },
-      "hash": "8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7"
+      "hash": "a3e8ae13e5a59457c54f81f5645bdcff8ac4e9a9"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

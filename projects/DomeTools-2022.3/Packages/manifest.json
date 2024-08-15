@@ -9,6 +9,7 @@
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.4",
     "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#a3e8ae13e5a59457c54f81f5645bdcff8ac4e9a9",
+    "jp.keijiro.osc-jack": "2.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

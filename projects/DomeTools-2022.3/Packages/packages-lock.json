@@ -237,6 +237,13 @@
       },
       "hash": "a3e8ae13e5a59457c54f81f5645bdcff8ac4e9a9"
     },
+    "jp.keijiro.osc-jack": {
+      "version": "2.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
