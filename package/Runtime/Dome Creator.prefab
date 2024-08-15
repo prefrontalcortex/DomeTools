@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 377563585049913489}
   - component: {fileID: 4804606202303033847}
   - component: {fileID: 369450634236723350}
+  - component: {fileID: 1676623555708952740}
   - component: {fileID: 7056697000719188195}
   m_Layer: 0
-  m_Name: NDI Sender
+  m_Name: NDI Video + Audio Sender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +84,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e72d6ad2c044aa9ab1e15497b2e49a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1676623555708952740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245805188260733568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78774a4986bafb4090d6d1dbcfe6f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7056697000719188195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +119,7 @@ GameObject:
   - component: {fileID: 5718747801437189434}
   - component: {fileID: 7133800836807981307}
   m_Layer: 0
-  m_Name: Dome Tools
+  m_Name: Dome Creator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
