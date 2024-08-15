@@ -182,5 +182,5 @@ When building for Android, make sure to provide a unique application identifier 
 - [Fulldome on Wikipedia](https://en.wikipedia.org/wiki/Fulldome)
 
 ## Contact Us
-- contact@prefrontalcortex.de, refer to Felix Herbst
+- dometools@prefrontalcortex.de
 - [@prefrontlcortex](https://twitter.com/prefrontlcortex) and [@hybridherbst](https://twitter.com/hybridherbst) on Twitter
