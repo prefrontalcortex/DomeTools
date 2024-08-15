@@ -91,26 +91,28 @@ namespace pfc.DomeTools
 
     internal class Utils
     {
-        public static bool DrawCheck(string label, bool check = true, Action fixAction = null, string fixTooltip = null)
+        private static GUIStyle labelWithBreaks;
+        public static bool DrawCheck(string label, bool check = true, Action fixAction = null, string fixTooltip = null, string fixLabel = "Fix")
         {            
-            var rect = EditorGUILayout.GetControlRect();
-            var w = rect.width;
-            rect.width = 20;
-            rect.height = 20;
+            if (labelWithBreaks == null)
+            {
+                labelWithBreaks = new GUIStyle(EditorStyles.label);
+                labelWithBreaks.wordWrap = true;
+            }
+            
+            EditorGUILayout.BeginHorizontal();
+            var content = new GUIContent(label);
             var needsFixButton = !check && fixAction != null;
-            EditorGUI.LabelField(rect, check ? "✓" : "✗");
-            rect.x += 20;
-            rect.width = w - 20;
-            if (needsFixButton)
-                rect.width -= 50;
-            EditorGUI.LabelField(rect, label);
+            EditorGUILayout.LabelField(check ? "✓" : "✗", GUILayout.Width(20));
+            EditorGUILayout.LabelField(content, labelWithBreaks);
             if (needsFixButton)
             {
-                rect.x += rect.width;
-                rect.width = 50;
-                if (GUI.Button(rect, new GUIContent("Fix", fixTooltip)))
+                var fixContent = new GUIContent(fixLabel, fixTooltip);
+                var size = EditorStyles.label.CalcSize(fixContent);
+                if (GUILayout.Button(fixContent, GUILayout.Width(size.x + 12)))
                     fixAction();
             }
+            EditorGUILayout.EndHorizontal();
             return check;
         }
     }
