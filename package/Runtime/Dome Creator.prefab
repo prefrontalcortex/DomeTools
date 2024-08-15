@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1561954332140534184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3560329421039686327}
+  m_Layer: 0
+  m_Name: Audio Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3560329421039686327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561954332140534184}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3162953881194843084}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5245805188260733568
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,11 +79,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d98e5bfcdff4847ad69efa861a8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioOrientation: 1
-  customAudioOrientationTransform: {fileID: 0}
+  audioOrigin: {fileID: 3560329421039686327}
+  addMissingAudioSourceListenersAtRuntime: 0
   _ndiName: DomeMaster
   playCenteredAudioSourcesOnAllSpeakers: 1
-  audioMode: 0
+  audioMode: 3
   virtualListenerDistance: 10
   useCameraPositionForVirtualAttenuation: 1
   maxObjectBasedChannels: 32
@@ -318,7 +349,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7257554234104454538, guid: babfeaa0629cdcd4f8cf2a708d60297d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3560329421039686327}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: babfeaa0629cdcd4f8cf2a708d60297d, type: 3}
 --- !u!4 &3162953881194843084 stripped

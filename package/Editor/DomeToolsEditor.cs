@@ -118,15 +118,17 @@ namespace pfc.DomeTools
             EditorGUILayout.Space();
             GUILayout.Label(new GUIContent("Scene Checks", "Verify that your scene is set up to create interactive fulldome content."), EditorStyles.boldLabel);
             GUILayout.Label("Dome Master Rendering".ToUpper(), EditorStyles.miniBoldLabel);
-            Utils.DrawCheck("Current Render Pipeline is supported"); // all supported 🎉
             Utils.DrawCheck("Dome Camera Rig is set up", t.GetComponentInChildren<DomeRenderer>());
+            Utils.DrawCheck("Current Render Pipeline is supported"); // all supported 🎉
             Utils.DrawCheck("\"Warn if no cameras rendering\" is disabled", gameViews.All(DomeRendererEditor.GameViewHidesNoCameraWarning), () => gameViews.ForEach(DomeRendererEditor.HideGameViewNoCameraRenderingWarning));
-
+            
+            EditorGUILayout.Space();
             GUILayout.Label("NDI Video Output".ToUpper(), EditorStyles.miniBoldLabel);
 #if HAVE_NDI
             var ndiSenderInScene = FindFirstObjectByType<NdiSender>();
-            Utils.DrawCheck("NDI Package is installed");
-            Utils.DrawCheck("NDI Sender is configured", ndiSenderInScene, () =>
+            var ndiFullySetUp = true;
+            ndiFullySetUp |= Utils.DrawCheck("NDI Package is installed");
+            ndiFullySetUp |= Utils.DrawCheck("NDI Sender is configured", ndiSenderInScene, () =>
             {
                 var go = new GameObject("NDI Sender").AddComponent<NdiSender>();
                 go.captureMethod = CaptureMethod.Texture;
@@ -134,15 +136,23 @@ namespace pfc.DomeTools
                 go.ndiName = "Dome Master";
             }, "Create NDI Sender and have it send the Dome Master texture");
 #else
-            Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageInspector.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
+            ndiFullySetUp |= Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageInspector.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
 #endif
+            if (ndiFullySetUp && ndiSenderInScene && ndiSenderInScene.sourceTexture)
+            {
+                var resolution = ndiSenderInScene.sourceTexture.width + "x" + ndiSenderInScene.sourceTexture.height;
+                var senderName = ndiSenderInScene.ndiName;
+                GUILayout.Label($"NDI Video Output is fully configured. You're sending with a resolution of {resolution} and the NDI stream is named \"{senderName}\".", Styles.miniLabelBreak);
+            }
 
+            EditorGUILayout.Space();
             GUILayout.Label("NDI Audio Output".ToUpper(), EditorStyles.miniBoldLabel);
             var haveOneAudioSource = audioListenersInScene.Length == 1;
-            Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);
+            var audioFullySetUp = true;
+            audioFullySetUp |= Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);
 #if HAVE_NDI
             var audioListenerOnSender = ndiSenderInScene && ndiSenderInScene.GetComponent<AudioListener>();
-            Utils.DrawCheck("Audio Listener is on NDI Sender", audioListenerOnSender, () =>
+            audioFullySetUp |= Utils.DrawCheck("Audio Listener is on NDI Sender", audioListenerOnSender, () =>
             {
                 foreach (var t1 in audioListenersInScene)
                     DestroyImmediate(t1);
@@ -152,7 +162,7 @@ namespace pfc.DomeTools
             // check project settings
             var AudioSpatializerExpectedName = "Dummy Spatializer (NDI)";
             var haveCustomSpatializer = AudioSettings.GetSpatializerPluginName() == AudioSpatializerExpectedName;
-            Utils.DrawCheck($"Audio Spatializer is set to \"{AudioSpatializerExpectedName}\"", haveCustomSpatializer, () =>
+            audioFullySetUp |= Utils.DrawCheck($"Audio Spatializer is set to \"{AudioSpatializerExpectedName}\"", haveCustomSpatializer, () =>
             {
                 AudioSettings.SetSpatializerPluginName(AudioSpatializerExpectedName);
                 if (AudioSettings.GetSpatializerPluginName() != AudioSpatializerExpectedName)
@@ -160,13 +170,20 @@ namespace pfc.DomeTools
                     Debug.LogError($"Failed to set the Audio Spatializer to \"{AudioSpatializerExpectedName}\". Please set it manually in Project Settings > Audio.");
                 }
             });
+            if (audioFullySetUp && ndiSenderInScene)
+            {
+                var audioSetupType = ndiSenderInScene.audioMode.ToString();
+                GUILayout.Label($"NDI Audio Output is fully configured. You're sending {audioSetupType}.", Styles.miniLabelBreak);
+            }
             
-            GUILayout.Label("ADM Object-Based Audio Output".ToUpper(), EditorStyles.miniBoldLabel);
+            EditorGUILayout.Space();
+            GUILayout.Label("ADM Object-Based Audio Output (optional)".ToUpper(), EditorStyles.miniBoldLabel);
 
 #if HAVE_OSCJACK
-            Utils.DrawCheck("OSCJack Package is installed");
+            var admFullySetUp = true;
+            admFullySetUp |= Utils.DrawCheck("OSCJack Package is installed");
             var oscSenderInScene = FindFirstObjectByType<AdmOscSender>();
-            Utils.DrawCheck("ADM OSC Sender in scene", oscSenderInScene, () =>
+            admFullySetUp |= Utils.DrawCheck("ADM OSC Sender in scene", oscSenderInScene, () =>
             {
                 new GameObject("ADM OSC Sender for object-based audio").AddComponent<AdmOscSender>();
                 Undo.RegisterCreatedObjectUndo(t, "Create ADM OSC Sender");
@@ -174,7 +191,7 @@ namespace pfc.DomeTools
             if (oscSenderInScene)
             {
                 var hasConfig = oscSenderInScene && oscSenderInScene._connection;
-                Utils.DrawCheck("ADM OSC Sender has configuration", hasConfig, () =>
+                admFullySetUp |= Utils.DrawCheck("ADM OSC Sender has configuration", hasConfig, () =>
                 {
                     var config = CreateInstance<OscConnection>();
                     AssetDatabase.CreateAsset(config, "Assets/ADM OSC Sender Configuration.asset");
@@ -184,8 +201,20 @@ namespace pfc.DomeTools
                     EditorUtility.SetDirty(oscSenderInScene);
                 });
             }
+            var audioModeIsObjectBased = ndiSenderInScene && ndiSenderInScene.audioMode == NdiSender.AudioMode.ObjectBased;
+            admFullySetUp |= Utils.DrawCheck("Virtual Audio Mode is set to \"Object Based\"", audioModeIsObjectBased, () =>
+            {
+                ndiSenderInScene.audioMode = NdiSender.AudioMode.ObjectBased;
+                EditorUtility.SetDirty(ndiSenderInScene);
+            }, "Set Virtual Audio Mode to \"Object Based\"");
+            
+            if (admFullySetUp)
+            {
+                var hostAndPort = oscSenderInScene._connection ? oscSenderInScene._connection.host + ":" + oscSenderInScene._connection.port : "<none>";
+                GUILayout.Label($"Object-Based Audio Output is fully configured. You're sending ADM over OSC to {hostAndPort}", Styles.miniLabelBreak);
+            }
 #else
-            Utils.DrawCheck("OSCJack Package is not installed", false, InstallOSCJackPackageInspector.Install, "Installs OSCJack (jp.keijiro.osc-jack) for object-based audio ADM support.");
+            admFullySetUp |=  Utils.DrawCheck("OSCJack Package is not installed", false, InstallOSCJackPackageInspector.Install, "Installs OSCJack (jp.keijiro.osc-jack) for object-based audio ADM support.");
 #endif
             EditorGUILayout.Space();
             EditorGUILayout.Space();

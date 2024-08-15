@@ -91,7 +91,7 @@ namespace pfc.DomeTools
 
     internal class Utils
     {
-        public static void DrawCheck(string label, bool check = true, Action fixAction = null, string fixTooltip = null)
+        public static bool DrawCheck(string label, bool check = true, Action fixAction = null, string fixTooltip = null)
         {            
             var rect = EditorGUILayout.GetControlRect();
             var w = rect.width;
@@ -111,6 +111,7 @@ namespace pfc.DomeTools
                 if (GUI.Button(rect, new GUIContent("Fix", fixTooltip)))
                     fixAction();
             }
+            return check;
         }
     }
 }
