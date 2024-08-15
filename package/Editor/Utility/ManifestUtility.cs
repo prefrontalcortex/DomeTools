@@ -39,31 +39,7 @@ namespace pfc.Fulldome
         
         public static void AddPackage(string package, string version = null)
         {
-            if (string.IsNullOrEmpty(version))
-            {
-                UnityEditor.PackageManager.Client.Add(package);
-                return;
-            }
-            
-            AssetDatabase.ImportPackage(package, true);
-            var path = GetPathToManifest();
-            if (path == null) return;
-            
-            var manifest = File.ReadAllText(path);
-            var lines = manifest.Split('\n');
-            var newLines = new string[lines.Length + 1];
-            for (var i = 0; i < lines.Length; i++)
-            {
-                newLines[i] = lines[i];
-                if (lines[i].Contains("\"dependencies\": {"))
-                {
-                    newLines[i + 1] = $"    \"{package}\": \"{version}\",";
-                    newLines[i + 1] += "\n"+lines[i + 1];
-                    i++;
-                }
-            }
-            File.WriteAllText(path, string.Join("\n", newLines));
-            UnityEditor.PackageManager.Client.Resolve();
+            UnityEditor.PackageManager.Client.Add(package + (string.IsNullOrWhiteSpace(version) ? "" : "@" + version));
         }
         
         public static bool CheckIfScopedRegistryAvailable(string url)

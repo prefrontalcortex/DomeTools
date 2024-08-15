@@ -5,7 +5,7 @@ using UnityEngine;
 namespace pfc.Fulldome
 {
     [CustomEditor(typeof(InstallNDIPackage))]
-    public class InstallNDIPackageInspector : Editor
+    public class InstallNDIPackageEditor : Editor
     {
         // This is the prefrontal cortex fork with NDI Audio support.
         private const string KlakNdiForkVersion = "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#8f8e7f9120f2b0334b7fd5430b6101ff6538c2e7";
@@ -34,7 +34,7 @@ namespace pfc.Fulldome
     }
     
     [CustomEditor(typeof(InstallSpoutPackage))]
-    public class InstallSpoutPackageInspector : Editor
+    public class InstallSpoutPackageEditor : Editor
     {
         public override void OnInspectorGUI()
         {
@@ -59,6 +59,33 @@ namespace pfc.Fulldome
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
                 ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
             ManifestUtility.AddPackage("jp.keijiro.klak.spout");
+        }
+    }
+    
+    [CustomEditor(typeof(InstallOSCJackPackage))]
+    public class InstallOSCJackPackageEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            if (ManifestUtility.CheckIfPackageAvailable("jp.keijiro.osc-jack"))
+            {
+                Utils.DrawCheck("OSC Jack (jp.keijiro.osc-jack) is installed.");
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("Sending virtual audio object positions over ADM/OSC requires the OSC Jack package. Install it with the button below or using Package Manager.", MessageType.Info);
+                if(GUILayout.Button("Install OSC Jack Package"))
+                {
+                    Install();
+                }
+            }
+        }
+
+        public static void Install()
+        {
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
+                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
+            ManifestUtility.AddPackage("jp.keijiro.osc-jack");
         }
     }
 

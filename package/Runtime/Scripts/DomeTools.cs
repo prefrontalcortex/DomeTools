@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace pfc.Fulldome
 {
+    [AddComponentMenu("Dome Creator")]
     [HelpURL(DocumentationURL)]
     public class DomeTools : MonoBehaviour
     {

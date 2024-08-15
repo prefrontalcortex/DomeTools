@@ -26,6 +26,16 @@
             "name": "jp.keijiro.klak.ndi",
             "expression": "",
             "define": "HAVE_NDI"
+        },
+        {
+            "name": "jp.keijiro.klak.ndi",
+            "expression": "",
+            "define": "HAVE_OSCJACK"
+        },
+        {
+            "name": "jp.keijiro.klak.ndi",
+            "expression": "",
+            "define": "HAVE_SPOUT"
         }
     ],
     "noEngineReferences": false

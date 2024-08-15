@@ -8,6 +8,9 @@ using UnityEngine.Rendering;
 #if HAVE_NDI
 using Klak.Ndi;
 #endif
+#if HAVE_OSCJACK
+using OscJack;
+#endif
 
 namespace pfc.Fulldome
 {
@@ -113,10 +116,16 @@ namespace pfc.Fulldome
             EditorGUILayout.Space();
             EditorGUILayout.Space();
             GUILayout.Label(new GUIContent("Scene Checks", "Verify that your scene is set up to create interactive fulldome content."), EditorStyles.boldLabel);
+            GUILayout.Label("Dome Master Rendering".ToUpper(), EditorStyles.miniBoldLabel);
+            Utils.DrawCheck("Current Render Pipeline is supported"); // all supported 🎉
+            Utils.DrawCheck("Dome Camera Rig is set up", t.GetComponentInChildren<DomeRenderer>());
+            Utils.DrawCheck("\"Warn if no cameras rendering\" is disabled", gameViews.All(DomeRendererEditor.GameViewHidesNoCameraWarning), () => gameViews.ForEach(DomeRendererEditor.HideGameViewNoCameraRenderingWarning));
+
+            GUILayout.Label("NDI Video Output".ToUpper(), EditorStyles.miniBoldLabel);
 #if HAVE_NDI
             var ndiSenderInScene = FindFirstObjectByType<NdiSender>();
             Utils.DrawCheck("NDI Package is installed");
-            Utils.DrawCheck("NDI Output is configured", ndiSenderInScene, () =>
+            Utils.DrawCheck("NDI Sender is configured", ndiSenderInScene, () =>
             {
                 var go = new GameObject("NDI Sender").AddComponent<NdiSender>();
                 go.captureMethod = CaptureMethod.Texture;
@@ -126,10 +135,8 @@ namespace pfc.Fulldome
 #else
             Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageInspector.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
 #endif
-            Utils.DrawCheck("Current Render Pipeline is supported"); // all supported 🎉
-            Utils.DrawCheck("Dome Camera Rig is set up", t.GetComponentInChildren<DomeRenderer>());
-            Utils.DrawCheck("\"Warn if no cameras rendering\" is disabled", gameViews.All(DomeRendererEditor.GameViewHidesNoCameraWarning), () => gameViews.ForEach(DomeRendererEditor.HideGameViewNoCameraRenderingWarning));
 
+            GUILayout.Label("NDI Audio Output".ToUpper(), EditorStyles.miniBoldLabel);
             var haveOneAudioSource = audioListenersInScene.Length == 1;
             Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);
 #if HAVE_NDI
@@ -141,7 +148,29 @@ namespace pfc.Fulldome
                 FindObjectOfType<NdiSender>().gameObject.AddComponent<AudioListener>();
             }, "Remove Audio Listener(s) and place an Audio Listener on the NDI Sender");
 #endif
-            
+#if HAVE_OSCJACK
+            Utils.DrawCheck("OSCJack Package is installed for object-based audio ADM support");
+            var oscSenderInScene = FindFirstObjectByType<AdmOscSender>();
+            Utils.DrawCheck("ADM OSC Sender in scene", oscSenderInScene, () =>
+            {
+                new GameObject("ADM OSC Sender for object-based audio").AddComponent<AdmOscSender>();
+            });
+            if (oscSenderInScene)
+            {
+                var hasConfig = oscSenderInScene && oscSenderInScene._connection;
+                Utils.DrawCheck("ADM OSC Sender has configuration", hasConfig, () =>
+                {
+                    var config = ScriptableObject.CreateInstance<OscConnection>();
+                    AssetDatabase.CreateAsset(config, "Assets/ADM OSC Sender Configuration.asset");
+                    Undo.RegisterCreatedObjectUndo(config, "Add OSC Connection Configuration Asset");
+                    Undo.RecordObject(oscSenderInScene, "Add OSC Connection Configuration Asset");
+                    oscSenderInScene._connection = config;
+                    EditorUtility.SetDirty(oscSenderInScene);
+                });
+            }
+#else
+            Utils.DrawCheck("OSCJack Package is not installed", false, InstallOSCJackPackageInspector.Install, "Installs OSCJack (jp.keijiro.osc-jack) for object-based audio ADM support.");
+#endif
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
