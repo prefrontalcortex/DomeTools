@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using OscJack;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -10,7 +9,7 @@ using UnityEngine.Rendering;
 using Klak.Ndi;
 #endif
 #if HAVE_OSCJACK
-// using OscJack;
+using OscJack;
 #endif
 
 namespace pfc.DomeTools
@@ -111,7 +110,7 @@ namespace pfc.DomeTools
 #endif
             
             // Check that we have
-            var audioListenersInScene = FindObjectsOfType<AudioListener>();
+            var audioListenersInScene = FindObjectsByType<AudioListener>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             
             // - the camera rig
             // - NDI package and NDI output
@@ -252,7 +251,7 @@ namespace pfc.DomeTools
                 }
             }
 #else
-            admFullySetUp |=  Utils.DrawCheck("OSCJack Package is not installed", false, InstallOSCJackPackageInspector.Install, "Installs OSCJack (jp.keijiro.osc-jack) for object-based audio ADM support.");
+            Utils.DrawCheck("OSCJack Package is not installed", false, InstallOSCJackPackageEditor.Install, "Installs OSCJack (jp.keijiro.osc-jack) for object-based audio ADM support.");
 #endif
             EditorGUILayout.Space();
             EditorGUILayout.Space();
