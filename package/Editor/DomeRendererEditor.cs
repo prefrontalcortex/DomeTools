@@ -76,8 +76,8 @@ namespace pfc.DomeTools
                 if (!cam) continue;
                 if (!cam.isActiveAndEnabled) continue;
                 // Check if it's one of ours
-                // Orthographic camera with UI layer is allowed
-                if (cam.orthographic && cam.cullingMask == 1 << 5) continue;
+                // camera with UI layer only is allowed
+                if (cam.cullingMask == 1 << 5) continue;
                 // Has ShiftedPerspective or RealtimeCubemap
                 if (cam.GetComponent<ShiftedPerspective>() || cam.GetComponent<RealtimeCubemap>()) continue;
                 notAllowedCams.Add(cam);

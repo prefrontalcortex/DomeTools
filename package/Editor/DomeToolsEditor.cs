@@ -169,7 +169,7 @@ namespace pfc.DomeTools
             var haveOneAudioSource = audioListenersInScene.Length == 1;
             var audioListenerOnSender = ndiSenderInScene && ndiSenderInScene.GetComponent<AudioListener>();
             // check project settings
-            var AudioSpatializerExpectedName = "Dummy Spatializer (NDI)";
+            var AudioSpatializerExpectedName = "Passthrough Spatializer (NDI)";
             var haveCustomSpatializer = AudioSettings.GetSpatializerPluginName() == AudioSpatializerExpectedName;
             var audioFullySetUp = haveOneAudioSource && audioListenerOnSender && haveCustomSpatializer;
             

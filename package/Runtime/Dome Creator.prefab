@@ -80,10 +80,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioOrigin: {fileID: 3560329421039686327}
-  addMissingAudioSourceListenersAtRuntime: 0
+  addMissingAudioSourceListenersAtRuntime: 1
   _ndiName: DomeMaster
   playCenteredAudioSourcesOnAllSpeakers: 1
   audioMode: 3
+  spatializingCalculationMode: 1
   virtualListenerDistance: 10
   useCameraPositionForVirtualAttenuation: 1
   maxObjectBasedChannels: 32
