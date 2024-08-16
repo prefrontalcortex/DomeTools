@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561954332140534184}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3162953881194843084}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5245805188260733568
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,9 +84,8 @@ MonoBehaviour:
   _ndiName: DomeMaster
   playCenteredAudioSourcesOnAllSpeakers: 1
   audioMode: 3
-  spatializingCalculationMode: 1
   virtualListenerDistance: 10
-  useCameraPositionForVirtualAttenuation: 1
+  useAudioOriginPositionForVirtualAttenuation: 1
   maxObjectBasedChannels: 32
   customSpeakerConfig: {fileID: 0}
   frameRate: 6
