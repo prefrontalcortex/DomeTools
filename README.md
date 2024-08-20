@@ -44,15 +44,29 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 ### Creating content
 [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
-Supported **Unity versions**:  
+### Supported **Unity versions**  
 - ✅ Unity 2021 LTS
 - ✅ Unity 2022 LTS
 - ❌ Unity 6.0 (not supported yet)
 
-Supported **Render Pipelines**: 
+### Supported **Render Pipelines**
 - ✅ Built-In Render Pipeline (BiRP), 
 - ✅ Universal Render Pipeline (URP), 
 - ✅ High Definition Render Pipeline (HDRP)
+
+### Verified **Dome Systems**
+[Learn more about setting up your Dome System for realtime video and audio.](#output-to-a-dome-av-system)
+
+- ✅ **Pixera 1.8+ and 2.x+**  
+      Dome Master via NDI and multi-channel audio via NDI.
+  
+- ✅ **Spatial Audio Designer by New Audio Technology**  
+      Multi-channel audio via NDI-to-ASIO bridge or ASIO-to-Dante and object positions via ADM-OSC.
+- ✅ **Vioso Player 2.x+**  
+      Dome Master via NDI. Currently no audio support, but NDI-to-ASIO can be used.
+- ✅ **L-ISA**  
+      Multi-channel audio via NDI, object positions via ADM-OSC  
+
 
 ### Viewing content 
 [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
