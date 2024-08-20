@@ -7,6 +7,15 @@ This repository contains two main components:
 
 - A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.  
 
+```mermaid
+graph TD;
+    A("Dome Creator") --> n1((("NDI / Spout")))
+    A --> n4((("Live Input")))
+    n4 --> n3("Fulldome Playback Application")
+    n1 --> n3
+    n1 --> n2["Dome Viewer (Desktop / VR)<br>"]
+```
+
 **Dome Creator** and **Dome Viewer** are developed and maintained by [prefrontal cortex](https://prefrontalcortex.de).  
 
 ## Getting Started
@@ -131,6 +140,76 @@ Depending on your needs, you can either:
 a) Use Unity Recorder and record the DomeMaster render texture into a video or image sequence
 b) Use a hardware capture card to capture the monitor output
 c) Capture the NDI stream directly using NDI Tools or an external software
+
+## Dome Viewer
+
+This tool together with the **Dome Creator** package is part of the **Dome Tools** suite by prefrontal cortex. 
+It is mainly used for screening dome content while creating it without having a dome available. It's unique main feature is receiving a NDI livestream from any source of your network.
+This allows simultaneously editing your dome content and watching it on your target medium. 
+
+### Features
+- receiving a NDI stream with video and audio live from your ndi capable editing software
+- you can watch the same stream which is send for dome screening
+- receiving surround sound also if you don't have any surround sound device
+- first person moving inside your dome
+- outside view
+- choose between different dome sizes and seating setups
+- use VR for full dome experience
+- Desktop and VR mode at the same time (useful for presenter situation)
+- standalone build for standalone VR devices (Meta Quest 2 and above)
+- playback videofiles / images from local drive
+  
+![grafik](https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42)
+
+### Viewing content 
+[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
+
+The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
+It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
+
+For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
+
+
+### Desktop Controls
+
+**Menu**
+
+![grafik](https://github.com/user-attachments/assets/cabfc486-6865-4405-a946-036b17ba4dfe)
+
+- Media Sources: (choose between ndi and local files) - **don't forget to refresh!**
+- Environment: select between domesize / seating setup / projector on-off
+- Real Size View / Miniature View: toggle between first person and outside view
+- ? About: Description and version number
+
+**Movement**
+- WASD - Move
+- Mouse Drag - Rotate
+- Mouse Wheel - Field of View / Zoom
+
+### VR Controls
+
+**Menu**
+
+see desktop menu
+
+**Movement**
+Input via Controller:
+- left menu - dome viewer menu
+- right menu - system menu
+- right stick front - teleport
+- right stick left - rotate 90° left
+- right stick right - rotate 90° right
+- right stick back - rotate 180°
+- left stick - movement in all directions
+
+Input via hands:
+- left menu gesture - dome viewer menu
+- right menu gesture - system menu
+- teleport gesture - teleport
+
+
 
 ## Output to a Dome AV System
 
