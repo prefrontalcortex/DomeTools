@@ -158,19 +158,42 @@ Select an audio mode from `NDI Sender` in your scene. You can either use your lo
 
 If your sender system is capable of generating surround sound, you can use Unity's native AudioListener in 5.1 or 7.1 mode and stream the resulting tracks over NDI audio.
 
-### Virtual Microphones
+### Virtual Audio
 
-Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Microphones to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
+Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Audio to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
+
+You can change the audio send settings in Ndi Sender component from the Dome Creator prefab:
+
+![Screenshot 2024-08-20 164908](https://github.com/user-attachments/assets/c8a26101-68a8-4158-8298-024cc5d65546)
+
+This system will create virtual microphones in the scene to capture the audio and mixes it to the outgoing ndi audio channels. 
+To capture the audio from the AudioSources, it's important that all AudioSources must have the AudioSourceListener Component. Per default, when starting playmode, the Ndi Sender Component will search for all AudioSource Components and add the AudioSourceListener Component to them. When you load at runtime prefabs with AudioSources, you should add the AudioSourceListener Component by yourself. There is also a add button on the AudioSource Component.
+
+![image](https://github.com/user-attachments/assets/bbc3934c-f87d-43d0-902e-bd4956cb4210)
+
+This Virtual Audio system supports most of the AudioSource settings. 
+Not supported are: 
+- Audio Mixer
+- Spatializer Plugins
+- Ambisonic Audio Files (can be played, but get handled as mono)
+- 3d Sound Settings: Spread, Priority, Stereo Pan
+  
+ When you want to use filters/effects, you can use the legacy Unity Filter components. Just make sure the components are ordered before the AudioSourceListener component.  
+ 
+ ![image](https://github.com/user-attachments/assets/3c6e2a51-ed41-4e5d-8ddc-b65237b58c8b)
+ 
+[TODO] Custom Speaker Configs
+
 
 ### Object Based Audio
 
 Products like the [Spatial Audio Designer Processor](https://www.newaudiotechnology.com/products/spatial-audio-designer-processor/) from New Audio Technology is capable of receiving individual audio objects as separate tracks and placing them in a 3D space. This moves the spatialization to the end of the audio processing stage and cam improve acoustic quality considerably.  
 
-To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the Ndi Sender Component to "Object Based" in the Dome Creator package.
+To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the Ndi Sender Component to "Object Based" in the Dome Creator prefab.
 
 ![359512673-2bc57359-6202-4e4d-919e-647bbdcb9dfe](https://github.com/user-attachments/assets/40303528-d899-42b8-b78d-f2c2218a0002)
 
-The audio object positions will be send within the NDI Audio Metadata or optional with ADM-OSC over the network. To Use ADM-OSC, you will need to install the OSC Jack Package (install button can be found on Ndi Sender when "Object Based" is selected) and also add the "Adm Osc Sender"-Component (can also be added via Ndi Sender with the "Add ADM OSC Sender Component" Button)
+The audio object positions will be send within the NDI Audio Metadata or optional with ADM-OSC over the network. To use ADM-OSC, you will need to install the OSC Jack Package (install button can be found on Ndi Sender when "Object Based" is selected) and also add the "Adm Osc Sender"-Component (can also be added via Ndi Sender with the "Add ADM OSC Sender Component" Button)
 
 ![359517102-76f627b0-b119-41b0-9ca6-b8c98f0698e5](https://github.com/user-attachments/assets/37f4cff4-ae69-48b2-8736-5e3503f67c0b)
 
