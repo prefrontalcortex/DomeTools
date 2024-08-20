@@ -227,7 +227,7 @@
       }
     },
     "jp.keijiro.klak.ndi": {
-      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#a3e8ae13e5a59457c54f81f5645bdcff8ac4e9a9",
+      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#4506dd15f305b72c4085aa8092d7941edddc57dc",
       "depth": 0,
       "source": "git",
       "dependencies": {
