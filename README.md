@@ -162,11 +162,17 @@ If your sender system is capable of generating surround sound, you can use Unity
 
 Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Microphones to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
 
-### Virtual Audio Objects
+### Object Based Audio
 
 Products like the [Spatial Audio Designer Processor](https://www.newaudiotechnology.com/products/spatial-audio-designer-processor/) from New Audio Technology is capable of receiving individual audio objects as separate tracks and placing them in a 3D space. This moves the spatialization to the end of the audio processing stage and cam improve acoustic quality considerably.  
 
-To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by using the Virtual Microphones in the Dome Creator package. Currently, we send the positions of audio objects along as part of NDI Metadata. [Contact us](contact@prefrontalcortex.de) for OSC position streaming support.  
+To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the Ndi Sender Component to "Object Based" in the Dome Creator package.
+![image](https://github.com/user-attachments/assets/2bc57359-6202-4e4d-919e-647bbdcb9dfe)
+The audio object positions will be send within the NDI Audio Metadata or optional with ADM-OSC over the network. To Use ADM-OSC, you will need to install the OSC Jack Package (install button can be found on Ndi Sender when "Object Based" is selected) and also add the "Adm Osc Sender"-Component (can also be added via Ndi Sender with the "Add ADM OSC Sender Component" Button)
+![image](https://github.com/user-attachments/assets/76f627b0-b119-41b0-9ca6-b8c98f0698e5)
+Please don't forget to create a OSC Connection Asset and assign them to the ADM OSC Component!
+![image](https://github.com/user-attachments/assets/e32b463d-a3e8-4020-8722-9c18da367409)
+The ADM-OSC position data will contain both the spherical and the cartessian position. Distance will be send normalized by the range from near and far distance settings.
 
 ## Contributing
 
