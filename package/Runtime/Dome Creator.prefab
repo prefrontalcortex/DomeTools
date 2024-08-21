@@ -83,7 +83,7 @@ MonoBehaviour:
   addMissingAudioSourceListenersAtRuntime: 1
   _ndiName: DomeMaster
   playCenteredAudioSourcesOnAllSpeakers: 1
-  audioMode: 3
+  audioMode: 1
   virtualListenerDistance: 10
   useAudioOriginPositionForVirtualAttenuation: 1
   maxObjectBasedChannels: 32
