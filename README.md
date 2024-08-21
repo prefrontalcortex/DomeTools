@@ -228,9 +228,6 @@ In addition to NDI Video, Pixera supports multi-channel NDI Audio.
 
 ## Audio Support
 
-> **Under construction 🏗️**  
-More to come! Note that Dome Viewer does currently **not** support audio input, but it will be added in a future version. 
-
 Select an audio mode from `NDI Sender` in your scene. You can either use your local PCs sound card to produce surround audio (e.g. 5.1 or 7.1), or you can use our Virtual Microphones to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal. There are a number of predefined arrangements for Virtual Mics, but you can provide a custom one for your particular dome system.  
 
 ### Native Spatialization
@@ -246,9 +243,9 @@ You can change the audio send settings in Ndi Sender component from the Dome Cre
 ![Screenshot 2024-08-20 164908](https://github.com/user-attachments/assets/c8a26101-68a8-4158-8298-024cc5d65546)
 
 This system will create virtual microphones in the scene to capture the audio and mixes it to the outgoing ndi audio channels. 
-To capture the audio from the AudioSources, it's important that all AudioSources must have the AudioSourceListener Component. Per default, when starting playmode, the Ndi Sender Component will search for all AudioSource Components and add the AudioSourceListener Component to them. When you load at runtime prefabs with AudioSources, you should add the AudioSourceListener Component by yourself. There is also a add button on the AudioSource Component.
+To capture the audio from the AudioSources, it's important that all AudioSources must have the AudioSourceListener component. Per default, when starting playmode, the Ndi Sender component will search for all AudioSource components and add the AudioSourceListener component to them. When you load at runtime prefabs which contains AudioSources, you should add the AudioSourceListener component by yourself. There is also a add button on the AudioSource component for this.
 
-![image](https://github.com/user-attachments/assets/bbc3934c-f87d-43d0-902e-bd4956cb4210)
+![359531170-bbc3934c-f87d-43d0-902e-bd4956cb4210](https://github.com/user-attachments/assets/2e85294e-0c77-42af-b6a2-5127db1f0af0)
 
 This Virtual Audio system supports most of the AudioSource settings. 
 Not supported are: 
@@ -257,14 +254,22 @@ Not supported are:
 - Ambisonic Audio Files (can be played, but get handled as mono)
 - 3d Sound Settings: Spread, Priority, Stereo Pan
   
- When you want to use filters/effects, you can use the legacy Unity Filter components. Just make sure the components are ordered before the AudioSourceListener component.  
+When you want to use filters/effects, you can use the legacy Unity filter components. Just make sure the components are ordered before the AudioSourceListener component.  
  
- ![image](https://github.com/user-attachments/assets/3c6e2a51-ed41-4e5d-8ddc-b65237b58c8b)
- 
-[TODO] Custom Speaker Configs
+![image](https://github.com/user-attachments/assets/1c9a24de-7c78-4ec9-84ef-83b8aab235b2)
 
+Is it also possible to create custom speaker setups when 5.1 or 7.1 is not enough. Just select "Speaker Config Asset" as Audio Send Mode in the Ndi Sender component. Then you can create a Speaker Config Asset (Assets > Create > SpeakerConfig) and assign them to the Ndi Sender. 
+
+![image](https://github.com/user-attachments/assets/81e88a7e-2ac9-435c-8fd9-b9866630e537)
+
+Here you can add your speaker positions (positions are relative to the center in meters). They are organized in groups for better overview, but it's not  necessary to use more than one group. Regardless of the groups, the first speaker will have channel number 0, the second speaker channel number 1 and so on.
+With audio mode "Custom Virtual Audio Setup" you can setup the speaker by script. In C# use "VirtualAudio.AddListener" method to add a speaker. You will also find some settings in the VirtualAudio static class.
+ 
+> **The speaker positions will be included in the Audio Metadata when sending audio with Ndi. The Dome Viewer automatically creates a setup from this data to simulate the corresponding speaker setup.**  
 
 ### Object Based Audio
+
+> **Object Based Audio also uses the Virtual Audio system. For AudioSource setups and limitations please read the "Virtual Audio" section**  
 
 Products like the [Spatial Audio Designer Processor](https://www.newaudiotechnology.com/products/spatial-audio-designer-processor/) from New Audio Technology is capable of receiving individual audio objects as separate tracks and placing them in a 3D space. This moves the spatialization to the end of the audio processing stage and cam improve acoustic quality considerably.  
 
@@ -281,6 +286,8 @@ Please don't forget to create a OSC Connection Asset and assign them to the ADM 
 ![359517788-e32b463d-a3e8-4020-8722-9c18da367409](https://github.com/user-attachments/assets/86f73923-e91d-42b1-862a-01d570bc8871)
 
 The ADM-OSC position data will contain both the spherical and the cartessian position. Distance will be send normalized by the range from near and far distance settings.
+
+> **The Dome Viewer doesn't need ADM-OSC to play Object Based Audio from the Dome Tools. The NDI Receiver uses the included Audio Meta Data for object positions.**  
 
 ## Contributing
 
