@@ -273,7 +273,7 @@ With audio mode "Custom Virtual Audio Setup" you can setup the speaker by script
 
 Products like the [Spatial Audio Designer Processor](https://www.newaudiotechnology.com/products/spatial-audio-designer-processor/) from New Audio Technology is capable of receiving individual audio objects as separate tracks and placing them in a 3D space. This moves the spatialization to the end of the audio processing stage and cam improve acoustic quality considerably.  
 
-To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the Ndi Sender Component to "Object Based" in the Dome Creator prefab.
+To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the `NDI Sender` component to "Object Based" in the Dome Creator prefab.
 
 ![359512673-2bc57359-6202-4e4d-919e-647bbdcb9dfe](https://github.com/user-attachments/assets/40303528-d899-42b8-b78d-f2c2218a0002)
 
@@ -281,7 +281,7 @@ The audio object positions will be send within the NDI Audio Metadata or optiona
 
 ![359517102-76f627b0-b119-41b0-9ca6-b8c98f0698e5](https://github.com/user-attachments/assets/37f4cff4-ae69-48b2-8736-5e3503f67c0b)
 
-Please don't forget to create a OSC Connection Asset and assign them to the `Adm Osc Sender` component!
+Please don't forget to create a OSC Connection asset and assign them to the `Adm Osc Sender` component!
 
 ![359517788-e32b463d-a3e8-4020-8722-9c18da367409](https://github.com/user-attachments/assets/86f73923-e91d-42b1-862a-01d570bc8871)
 
