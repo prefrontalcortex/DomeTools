@@ -181,7 +181,7 @@ For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for
 - Media Sources: (choose between ndi and local files) - **don't forget to refresh!**
 - Environment: select between domesize / seating setup / projector on-off
 - Real Size View / Miniature View: toggle between first person and outside view
-- ? About: Description and version number
+- ? / About: Description and version number
 
 **Movement**
 - WASD - Move
@@ -192,7 +192,10 @@ For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for
 
 **Menu**
 
+![com oculus vrshell-20240822-100248](https://github.com/user-attachments/assets/870b4a15-e044-421f-938c-2e49dd896e8e)
+
 see desktop menu
+
 
 **Movement**
 Input via Controller:
@@ -209,6 +212,8 @@ Input via hands:
 - right menu gesture - system menu
 - teleport gesture - teleport
 
+![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
+![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
 
 
 ## Output to a Dome AV System
