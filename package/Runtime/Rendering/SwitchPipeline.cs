@@ -11,7 +11,7 @@ namespace pfc.DomeTools
         // Start is called before the first frame update
         void OnEnable()
         {
-            GraphicsSettings.renderPipelineAsset = asset;
+            GraphicsSettings.defaultRenderPipeline = asset;
         }
     }
 }
