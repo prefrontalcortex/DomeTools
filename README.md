@@ -176,7 +176,7 @@ For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for
 
 **Menu**
 
-![grafik](https://github.com/user-attachments/assets/cabfc486-6865-4405-a946-036b17ba4dfe)
+![image](https://github.com/user-attachments/assets/58fa1b86-bc53-4e90-a00c-10ee852b057c)
 
 - Media Sources: (choose between ndi and local files) - **don't forget to refresh!**
 - Environment: select between domesize / seating setup / projector on-off
