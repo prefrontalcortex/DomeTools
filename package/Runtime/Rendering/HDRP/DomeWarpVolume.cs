@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using System;
-using pfc.Fulldome;
+using pfc.DomeTools;
 
 using UnityEngine.Rendering.HighDefinition;
 
