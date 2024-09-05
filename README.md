@@ -216,7 +216,7 @@ Input via hands:
 ![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
 
 
-### Video Playback on Quest ###
+### Media Playback on Quest ###
 
 It is recommended using the NDI Workflow for watching Dome Content on your Quest Device. If you have NDI Tools installed you can use VLC Player (https://www.videolan.org) with NDI Output.
 
@@ -228,14 +228,13 @@ It is recommended using the NDI Workflow for watching Dome Content on your Quest
 
 The PC Screen will be black without any output. This is normal.
 
-For Local Playback on your Quest Device you have to get access to the local storage. There are several ways. The easiest is Sidequest:
+For Local Playback on your Quest Device you have to get access to the local storage.
 
-1. Get Sidequest from https://sidequestvr.com/
-2. Install
-3. Open Sidequest while your headset is connected via USB
-4. Choose Filemanager
-5. Put your files to Download / Domeviewer. There you will find our samples.
-6. Your files will now be found in the Dome Viewer
+1. Connect your quest with your computer (usb)
+2. Open the device storage with your computer
+3. place your media files to "Download/DomeViewer/" (jpg, png or mp4)
+4. In the Domeviewer App click the refresh Button next to the media dropdown on media sources
+5. choose the media file you want to show (image or video)
 
 
 ## Output to a Dome AV System
