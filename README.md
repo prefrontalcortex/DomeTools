@@ -3,9 +3,14 @@
 This repository contains two main components:
 
 - The **Dome Creator** Unity package, a highly efficient realtime fulldome toolkit.   
-  It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.  
+  It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.
+  
+![Heroimage](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
 
-- A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.  
+- A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.
+
+![QNEq7mlgV2](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
+
 
 ```mermaid
 graph TD;
