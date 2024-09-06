@@ -159,7 +159,7 @@ This allows simultaneously editing your dome content and watching it on your tar
 - standalone build for standalone VR devices (Meta Quest 2 and above)
 - playback videofiles / images from local drive
   
-![grafik](https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42)
+<img src="https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42" width="600" height="300">
 
 ### Viewing content 
 [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
