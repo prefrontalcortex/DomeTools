@@ -192,7 +192,7 @@ For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for
 
 **Menu**
 
-![com oculus vrshell-20240822-100248](https://github.com/user-attachments/assets/870b4a15-e044-421f-938c-2e49dd896e8e)
+![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
 
 see desktop menu
 
@@ -213,7 +213,6 @@ Input via hands:
 - teleport gesture - teleport
 
 ![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
-![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
 
 
 ### Media Playback on Quest ###
