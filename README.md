@@ -112,7 +112,7 @@ It has two rendering modes:
 Both result in a fulldome projection in the common "Dome Master" format (formally known as _Equidistant Azimuthal Fisheye Projection_). 
 The toolkit supports BiRP, URP, and HDRP render pipelines, and is provided as UPM package.  
 
-Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools) in VR or on a desktop monitor. 
+Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools/?tab=readme-ov-file#dome-viewer) in VR or on a desktop monitor. 
 
 ### Camera Rig Usage
 
