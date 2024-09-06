@@ -282,11 +282,11 @@ Not supported are:
   
 When you want to use filters/effects, you can use the legacy Unity filter components. Just make sure the components are ordered before the AudioSourceListener component.  
  
-![image](https://github.com/user-attachments/assets/1c9a24de-7c78-4ec9-84ef-83b8aab235b2)
+![image](https://github.com/user-attachments/assets/59457416-327b-4b76-bff6-79abba3d77e3)
 
 Is it also possible to create custom speaker setups when 5.1 or 7.1 is not enough. Just select "Speaker Config Asset" as Audio Send Mode in the `NDI Sender` component. Then you can create a Speaker Config Asset (Assets > Create > SpeakerConfig) and assign them to the `NDI Sender`. 
 
-![image](https://github.com/user-attachments/assets/81e88a7e-2ac9-435c-8fd9-b9866630e537)
+![image](https://github.com/user-attachments/assets/5ca9c0e8-e1b9-4024-b0c0-c52e0ac29a8b)
 
 Here you can add your speaker positions (positions are relative to the center in meters). They are organized in groups for better overview, but it's not  necessary to use more than one group. Regardless of the groups, the first speaker will have channel number 0, the second speaker channel number 1 and so on.
 With audio mode "Custom Virtual Audio Setup" you can setup the speaker by script. In C# use "VirtualAudio.AddListener" method to add a speaker. You will also find some settings in the VirtualAudio static class.
