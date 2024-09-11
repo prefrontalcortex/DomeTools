@@ -184,7 +184,11 @@ namespace pfc.DomeTools
                 {
                     foreach (var t1 in audioListenersInScene)
                         DestroyImmediate(t1);
+#if UNITY_2023_2_OR_NEWER
+                    FindFirstObjectByType<NdiSender>().gameObject.AddComponent<AudioListener>();
+#else
                     FindObjectOfType<NdiSender>().gameObject.AddComponent<AudioListener>();
+#endif
                 }, "Remove Audio Listener(s) and place an Audio Listener on the NDI Sender");
                 Utils.DrawCheck($"Audio Spatializer is set to \"{AudioSpatializerExpectedName}\"", haveCustomSpatializer, () =>
                 {
