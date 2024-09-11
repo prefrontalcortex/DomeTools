@@ -211,7 +211,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#c0169a634c3282e3a596180801c1191c6b3dc887",
+      "version": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#232afd3b8fc4923229ee09cf79636067f79eb708",
       "depth": 0,
       "source": "git",
       "dependencies": {

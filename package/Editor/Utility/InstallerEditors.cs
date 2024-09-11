@@ -8,7 +8,7 @@ namespace pfc.DomeTools
     public class InstallNDIPackageEditor : Editor
     {
         // This is the prefrontal cortex fork with NDI Audio support.
-        private const string KlakNdiForkVersion = "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#c0169a634c3282e3a596180801c1191c6b3dc887";
+        private const string KlakNdiForkVersion = "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#232afd3b8fc4923229ee09cf79636067f79eb708";
         
         public override void OnInspectorGUI()
         {
