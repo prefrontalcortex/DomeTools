@@ -61,8 +61,9 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 ### Supported **Unity versions**  
 - ✅ Unity 2021 LTS
 - ✅ Unity 2022 LTS
-- ❌ Unity 6.0 (not supported yet)
-
+- ✅ Unity 2023 LTS
+- ✅ Unity 6.0
+  
 ### Supported **Render Pipelines**
 - ✅ Built-In Render Pipeline (BiRP), 
 - ✅ Universal Render Pipeline (URP), 
@@ -272,6 +273,8 @@ You can change the audio send settings in `NDI Sender` component from the Dome C
 
 ![Screenshot 2024-08-20 164908](https://github.com/user-attachments/assets/c8a26101-68a8-4158-8298-024cc5d65546)
 
+> **Default Quad, 5.1 and 7.1 channels are ordered by the SMPTE ST 2110 channel order convention (L, R, C, LFE, Lss, Rss, Lrs, Rrs)**
+
 This system will places virtual microphones in the scene to capture the audio and mixes it to the outgoing NDI audio channels. 
 To capture the audio from the `AudioSource`s, it's important that all `AudioSource`s must have the `AudioSourceListener` component. Per default, when starting playmode, the `NDI Sender` component will search for all `AudioSource` components and add the `AudioSourceListener` component to them. When you load at runtime prefabs which contains `AudioSource`, you should add the `AudioSourceListener` component by yourself. There is also a add button on the `AudioSource` component for this.
 
@@ -318,6 +321,12 @@ Please don't forget to create a OSC Connection asset and assign them to the `Adm
 The ADM-OSC position data will contain both the spherical and the cartessian position. Distance will be send normalized by the range from near and far distance settings.
 
 > **The Dome Viewer doesn't need ADM-OSC to play Object Based Audio from the Dome Tools. The `NDI Receiver` uses the included Audio Meta Data for object positions.**  
+
+### ASIO output
+
+We also support ASIO output on the sender and on the receiver side. Just add the `ASIO Out` component, and select the sender/receiver mode. Enter a "Default Device Name" to automatically start the ASIO output with playmode. Othewise call the "SetAsioDevice" method on this script.
+
+![image](https://github.com/user-attachments/assets/55ac3815-0b8e-466a-8748-634d5533c489)
 
 ## Contributing
 
