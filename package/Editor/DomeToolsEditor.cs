@@ -105,7 +105,7 @@ namespace pfc.DomeTools
 #else
             if (GUILayout.Button(NdiInstall))
             {
-                InstallNDIPackageInspector.Install();
+                InstallNDIPackageEditor.Install();
             }
 #endif
             
@@ -138,9 +138,10 @@ namespace pfc.DomeTools
             
             EditorGUILayout.Space();
             GUILayout.Label("NDI Video Output".ToUpper(), EditorStyles.miniBoldLabel);
+            bool ndiFullySetUp = false;
 #if HAVE_NDI
             var ndiSenderInScene = FindFirstObjectByType<NdiSender>();
-            var ndiFullySetUp = ndiSenderInScene && ndiSenderInScene.sourceTexture;
+            ndiFullySetUp = ndiSenderInScene && ndiSenderInScene.sourceTexture;
             if (ndiFullySetUp)
             {
                 var resolution = ndiSenderInScene.sourceTexture.width + "x" + ndiSenderInScene.sourceTexture.height;
@@ -159,7 +160,7 @@ namespace pfc.DomeTools
                 }, "Create NDI Sender and have it send the Dome Master texture");    
             }
 #else
-            ndiFullySetUp |= Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageInspector.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
+            ndiFullySetUp |= Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageEditor.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
 #endif
 
             EditorGUILayout.Space();
