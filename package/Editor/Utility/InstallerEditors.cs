@@ -8,12 +8,12 @@ namespace pfc.DomeTools
     public class InstallNDIPackageEditor : Editor
     {
         // This is the prefrontal cortex fork with NDI Audio support.
-        private const string KlakNdiForkVersion = "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#232afd3b8fc4923229ee09cf79636067f79eb708";
+        private const string KlakNdiForkVersion = "2.1.3-pfc.1";
         
         public override void OnInspectorGUI()
         {
 #if HAVE_NDI
-            Utils.DrawCheck("NDI (jp.keijiro.klak.ndi) is installed.");
+            Utils.DrawCheck("NDI (com.pfc.jp.keijiro.klak.ndi) is installed.");
 #else
             EditorGUILayout.HelpBox("Sending the dome texture over the network requires the NDI package. Install it with the button below or using Package Manager.", MessageType.Info);
             if (GUILayout.Button("Install NDI Package"))
@@ -27,9 +27,9 @@ namespace pfc.DomeTools
         {
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
                 ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
-            if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
-            ManifestUtility.AddPackage("jp.keijiro.klak.ndi", KlakNdiForkVersion);
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("com.pfc.jp.keijiro.klak.ndi")) 
+                ManifestUtility.AddScopedRegistry("OpenUPM", "https://package.openupm.com", "com.pfc.jp.keijiro.klak.ndi");
+            ManifestUtility.AddPackage("com.pfc.jp.keijiro.klak.ndi", KlakNdiForkVersion);
         }
     }
     
@@ -57,7 +57,7 @@ namespace pfc.DomeTools
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
                 ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
+                ManifestUtility.AddScopedRegistry("OpenUPM", "https://registry.npmjs.com", "jp.keijiro.klak.spout");
             ManifestUtility.AddPackage("jp.keijiro.klak.spout");
         }
     }

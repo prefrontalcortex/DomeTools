@@ -29,11 +29,12 @@ namespace pfc.DomeTools
             // Rename Samples to Samples~ in packageFolder
             var samplesFolder = Path.Combine(packageFolder, "Samples");
             var samplesFolderNew = Path.Combine(packageFolder, "Samples~");
+            var tempMetaFileLocation = Path.GetTempFileName();
             if (Directory.Exists(samplesFolder))
             {
                 if (Directory.Exists(samplesFolderNew)) Directory.Delete(samplesFolderNew, true);
                 Directory.Move(samplesFolder, samplesFolderNew);
-                File.Move(samplesFolder + ".meta", samplesFolderNew + ".meta");
+                File.Move(samplesFolder + ".meta", tempMetaFileLocation);
             }
             
             var targetFolder = Path.GetFullPath(rootPath);
@@ -68,7 +69,7 @@ namespace pfc.DomeTools
             {
                 if (Directory.Exists(samplesFolder)) Directory.Delete(samplesFolder, true);
                 Directory.Move(samplesFolderNew, samplesFolder);
-                File.Move(samplesFolderNew + ".meta", samplesFolder + ".meta");
+                File.Move(tempMetaFileLocation, samplesFolder + ".meta");
             }
         }
     }

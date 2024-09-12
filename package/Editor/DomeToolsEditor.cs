@@ -160,7 +160,7 @@ namespace pfc.DomeTools
                 }, "Create NDI Sender and have it send the Dome Master texture");    
             }
 #else
-            ndiFullySetUp |= Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageEditor.Install, "Installs KlakNDI (jp.keijiro.klak.ndi) for sending the dome output over network.");
+            ndiFullySetUp |= Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageEditor.Install, "Installs KlakNDI (com.pfc.jp.keijiro.klak.ndi) for sending the dome output over network.");
 #endif
 
             EditorGUILayout.Space();
@@ -227,7 +227,7 @@ namespace pfc.DomeTools
             EditorGUI.indentLevel--;
             */
 
-#if HAVE_OSCJACK
+#if HAVE_OSCJACK && HAVE_NDI
             var oscSenderInScene = FindFirstObjectByType<AdmOscSender>();
             var hasConfig = oscSenderInScene && oscSenderInScene._connection;
             var audioModeIsObjectBased = ndiSenderInScene && ndiSenderInScene.audioMode == NdiSender.AudioMode.ObjectBased;

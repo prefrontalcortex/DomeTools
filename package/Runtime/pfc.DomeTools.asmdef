@@ -28,6 +28,11 @@
             "name": "jp.keijiro.klak.ndi",
             "expression": "",
             "define": "HAVE_NDI"
+        },
+        {
+            "name": "com.pfc.jp.keijiro.klak.ndi",
+            "expression": "",
+            "define": "HAVE_NDI"
         }
     ],
     "noEngineReferences": false

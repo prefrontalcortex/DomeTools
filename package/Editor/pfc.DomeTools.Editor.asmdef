@@ -38,6 +38,11 @@
             "name": "jp.keijiro.klak.spout",
             "expression": "",
             "define": "HAVE_SPOUT"
+        },
+        {
+            "name": "com.pfc.jp.keijiro.klak.ndi",
+            "expression": "",
+            "define": "HAVE_NDI"
         }
     ],
     "noEngineReferences": false

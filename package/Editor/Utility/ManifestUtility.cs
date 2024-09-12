@@ -60,7 +60,7 @@ namespace pfc.DomeTools
             var manifest = File.ReadAllText(path);
             if (manifest.Contains($"\"{url}\""))
             {
-                Debug.LogWarning($"Scoped registry {url} already exists in manifest.json");
+                Debug.LogWarning($"Scoped registry {url} already exists in manifest.json, please add {scope} to it manually.");
                 return;
             }
 
@@ -69,6 +69,7 @@ namespace pfc.DomeTools
                 int startIndex = manifest.LastIndexOf("}");
                 manifest = manifest.Insert(startIndex, ",\n"+"\"scopedRegistries\": [\n\n  ]\n");
             }
+            
             var lines = manifest.Split('\n');
             var newLines = new string[lines.Length + 1];
             var hasPreRegisteredRegistries = CheckCountOfScopedRegistries(manifest) > 0;
