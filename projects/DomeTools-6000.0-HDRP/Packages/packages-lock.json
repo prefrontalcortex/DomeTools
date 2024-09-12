@@ -1,18 +1,5 @@
 {
   "dependencies": {
-    "com.atteneder.gltfast": {
-      "version": "4.3.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.unitywebrequesttexture": "1.0.0",
-        "com.unity.mathematics": "1.2.1",
-        "com.unity.burst": "1.4.11"
-      },
-      "url": "https://package.openupm.com"
-    },
     "com.pfc.dome-tools": {
       "version": "file:../../../package",
       "depth": 0,
