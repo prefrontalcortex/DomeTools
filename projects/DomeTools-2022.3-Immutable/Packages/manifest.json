@@ -47,7 +47,8 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "org.nuget",
-        "com.pfc.jp.keijiro.klak.ndi"
+        "com.pfc.jp.keijiro.klak.ndi",
+        "jp.keijiro.osc-jack"
       ]
     }
   ]
