@@ -25,3 +25,4 @@ projects/*/*.sln.DotSettings
 /viewer/*.sln.DotSettings
 .DS_Store
 .idea
+projects/DomeTools-2022.3-Immutable/Packages/pfc-dome-tools.tgz
