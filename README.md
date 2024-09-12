@@ -2,14 +2,14 @@
 
 This repository contains two main components:
 
-- The **Dome Creator** Unity package, a highly efficient realtime fulldome toolkit.   
+1. The **Dome Creator** Unity package, a highly efficient realtime fulldome toolkit.   
   It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.
   
-![Heroimage](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
+   ![Heroimage](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
 
-- A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.
+2. A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.
 
-![QNEq7mlgV2](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
+   ![QNEq7mlgV2](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
 
 
 ```mermaid
@@ -32,12 +32,12 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
    [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
 
 2. **Add the "Dome Tools" prefab to your scene.**  
-   You can find the prefab under `Packages > pfc Dome Tools > Runtime > Dome Tools`.  
-   Position , rotate, and scale the object to fit your scene.   
+   You can find the prefab under `Packages / pfc Dome Tools / Runtime / Dome Creator`.  
+   Position , rotate, and scale the object to fit your scene and content.   
    See the [Dome Creator](#dome-creator) section for more details on how to use this package.  
 
 3. **Install the NDI packages**
-   Select Dome Tools and click <kbd>Fix</kbd> next to "NDI Package is not installed". This will install the `KlakNDI` package. 
+   Select Dome Tools and click <kbd>Fix</kbd> next to "NDI Package is not installed". This will install a modified version of the `KlakNDI` package that includes audio support and other improvements. 
 
 3. **(Optional) Learn from the samples**
    Open `Window > Package Manager` and select the `pfc Dome Tools` package.  
@@ -65,8 +65,8 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 - ✅ Unity 6.0
   
 ### Supported **Render Pipelines**
-- ✅ Built-In Render Pipeline (BiRP), 
-- ✅ Universal Render Pipeline (URP), 
+- ✅ Built-In Render Pipeline (BiRP)
+- ✅ Universal Render Pipeline (URP) 
 - ✅ High Definition Render Pipeline (HDRP)
 
 ### Verified **Dome Systems**
@@ -84,12 +84,15 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 
 
 ### Viewing content 
-[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
-[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
-[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
-The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
-It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
+#### Download Dome Viewer:
+- [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+- [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+- [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
+
+
+The Viewer supports **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
+The desktop version supports both **Screen usage** and **VR usage** with **hands or controllers**.  
 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
 
@@ -122,7 +125,7 @@ Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physic
 
 ### Camera Rig Usage
 
-The **Dome Tools** prefab contains several components that together form your camera and streaming setup.  
+The **Dome Creator** prefab contains several components that together form your camera and streaming setup.  
 
 Use **Dome (camera rig)** prefab as camera to position in your scene.   
 The camera is your viewer's position. It can of course be animated, for example via Timeline / Playable Director.  
