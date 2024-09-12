@@ -55,8 +55,32 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 
 ## Download and Installation
 
-### Creating content
+### Creating content with Dome Creator
 [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
+
+<details>
+<summary><strong>Manual installation instructions</strong></summary>
+
+Add the following entry to your `manifest.json`:  
+You can also add it via `Edit > Project Settings > Package Manager`.
+
+```json
+"scopedRegistries": [
+   {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+         "com.pfc.jp.keijiro.klak.ndi",
+         "org.nuget.system"
+      ]
+   }
+]
+```
+
+Then open Package Manager and install the package `com.pfc.dome-tools` by name.
+
+</details>
+
 
 ### Supported **Unity versions**  
 - ✅ Unity 2021 LTS
@@ -83,7 +107,7 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
       Multi-channel audio via NDI, object positions via ADM-OSC  
 
 
-### Viewing content 
+### Viewing content with Dome Viewer
 
 #### Download Dome Viewer:
 - [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
