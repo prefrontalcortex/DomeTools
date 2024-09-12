@@ -3,9 +3,23 @@
 This repository contains two main components:
 
 - The **Dome Creator** Unity package, a highly efficient realtime fulldome toolkit.   
-  It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.  
+  It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.
+  
+![Heroimage](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
 
-- A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.  
+- A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.
+
+![QNEq7mlgV2](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
+
+
+```mermaid
+graph TD;
+    A("Dome Creator") --> n1((("NDI / Spout")))
+    A --> n4((("Live Input")))
+    n4 --> n3("Fulldome Playback Application")
+    n1 --> n3
+    n1 --> n2["Dome Viewer (Desktop / VR)<br>"]
+```
 
 **Dome Creator** and **Dome Viewer** are developed and maintained by [prefrontal cortex](https://prefrontalcortex.de).  
 
@@ -44,15 +58,30 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 ### Creating content
 [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
-Supported **Unity versions**:  
+### Supported **Unity versions**  
 - ✅ Unity 2021 LTS
 - ✅ Unity 2022 LTS
-- ❌ Unity 6.0 (not supported yet)
-
-Supported **Render Pipelines**: 
+- ✅ Unity 2023 LTS
+- ✅ Unity 6.0
+  
+### Supported **Render Pipelines**
 - ✅ Built-In Render Pipeline (BiRP), 
 - ✅ Universal Render Pipeline (URP), 
 - ✅ High Definition Render Pipeline (HDRP)
+
+### Verified **Dome Systems**
+[Learn more about setting up your Dome System for realtime video and audio.](#output-to-a-dome-av-system)
+
+- ✅ **Pixera 1.8+ and 2.x+**  
+      Dome Master via NDI and multi-channel audio via NDI.
+  
+- ✅ **Spatial Audio Designer by New Audio Technology**  
+      Multi-channel audio via NDI-to-ASIO bridge or ASIO-to-Dante and object positions via ADM-OSC.
+- ✅ **Vioso Player 2.x+**  
+      Dome Master via NDI. Currently no audio support, but NDI-to-ASIO can be used.
+- ✅ **L-ISA**  
+      Multi-channel audio via NDI, object positions via ADM-OSC  
+
 
 ### Viewing content 
 [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
@@ -89,7 +118,7 @@ It has two rendering modes:
 Both result in a fulldome projection in the common "Dome Master" format (formally known as _Equidistant Azimuthal Fisheye Projection_). 
 The toolkit supports BiRP, URP, and HDRP render pipelines, and is provided as UPM package.  
 
-Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools) in VR or on a desktop monitor. 
+Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools/?tab=readme-ov-file#dome-viewer) in VR or on a desktop monitor. 
 
 ### Camera Rig Usage
 
@@ -118,6 +147,101 @@ a) Use Unity Recorder and record the DomeMaster render texture into a video or i
 b) Use a hardware capture card to capture the monitor output
 c) Capture the NDI stream directly using NDI Tools or an external software
 
+## Dome Viewer
+
+This tool together with the **Dome Creator** package is part of the **Dome Tools** suite by prefrontal cortex. 
+It is mainly used for screening dome content while creating it without having a dome available. It's unique main feature is receiving a NDI livestream from any source of your network.
+This allows simultaneously editing your dome content and watching it on your target medium. 
+
+### Features
+- receiving a NDI stream with video and audio live from your ndi capable editing software
+- you can watch the same stream which is send for dome screening
+- receiving surround sound also if you don't have any surround sound device
+- first person moving inside your dome
+- outside view
+- choose between different dome sizes and seating setups
+- use VR for full dome experience
+- Desktop and VR mode at the same time (useful for presenter situation)
+- standalone build for standalone VR devices (Meta Quest 2 and above)
+- playback videofiles / images from local drive
+  
+<img src="https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42" width="600" height="300">
+
+### Viewing content 
+[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
+
+The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
+It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
+
+For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
+
+
+### Desktop Controls
+
+**Menu**
+
+![image](https://github.com/user-attachments/assets/58fa1b86-bc53-4e90-a00c-10ee852b057c)
+
+- Media Sources: (choose between ndi and local files) - **don't forget to refresh!**
+- Environment: select between domesize / seating setup / projector on-off
+- Real Size View / Miniature View: toggle between first person and outside view
+- ? / About: Description and version number
+
+**Movement**
+- WASD - Move
+- Mouse Drag - Rotate
+- Mouse Wheel - Field of View / Zoom
+
+### VR Controls
+
+**Menu**
+
+![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
+
+see desktop menu
+
+
+**Movement**
+Input via Controller:
+- left menu - dome viewer menu
+- right menu - system menu
+- right stick front - teleport
+- right stick left - rotate 90° left
+- right stick right - rotate 90° right
+- right stick back - rotate 180°
+- left stick - movement in all directions
+
+Input via hands:
+- left menu gesture - dome viewer menu
+- right menu gesture - system menu
+- teleport gesture - teleport
+
+![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
+
+
+### Media Playback on Quest ###
+
+It is recommended using the NDI Workflow for watching Dome Content on your Quest Device. If you have NDI Tools installed you can use VLC Player (https://www.videolan.org) with NDI Output.
+
+1. Install NDI Tools (always recommended) - https://ndi.video
+2. Install VLC Player (if you haven't already) - https://www.videolan.org
+3. Go to Tools -> Settings -> Video -> Output -> Set to NDI Video Output
+4. Repeat with Audio
+5. Play your video, there will be a new NDI Stream named YOUR COMPUTER / VLC.
+
+The PC Screen will be black without any output. This is normal.
+
+For Local Playback on your Quest Device you have to get access to the local storage.
+
+1. Connect your quest with your computer (usb)
+2. Open the device storage with your computer
+3. place your media files to "Download/DomeViewer/" (jpg, png or mp4)
+4. In the Domeviewer App click the refresh Button next to the media dropdown on media sources
+5. choose the media file you want to show (image or video)
+
+
 ## Output to a Dome AV System
 
 > **Under construction 🏗️**  
@@ -135,24 +259,74 @@ In addition to NDI Video, Pixera supports multi-channel NDI Audio.
 
 ## Audio Support
 
-> **Under construction 🏗️**  
-More to come! Note that Dome Viewer does currently **not** support audio input, but it will be added in a future version. 
-
-Select an audio mode from `NDI Sender` in your scene. You can either use your local PCs sound card to produce surround audio (e.g. 5.1 or 7.1), or you can use our Virtual Microphones to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal. There are a number of predefined arrangements for Virtual Mics, but you can provide a custom one for your particular dome system.  
+Select an audio mode from `NDI Sender` in your scene. You can either use your local PCs sound card to produce surround audio (e.g. 5.1 or 7.1), or you can use our Virtual Audio to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal. There are a number of predefined arrangements for Virtual Mics, but you can provide a custom one for your particular dome system.  
 
 ### Native Spatialization
 
-If your sender system is capable of generating surround sound, you can use Unity's native AudioListener in 5.1 or 7.1 mode and stream the resulting tracks over NDI audio.
+If your sender system is capable of generating surround sound, you can use Unity's native AudioListener in 5.1 or 7.1 mode and stream the resulting tracks over NDI Audio.
 
-### Virtual Microphones
+### Virtual Audio
 
-Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Microphones to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
+Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Audio to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
 
-### Virtual Audio Objects
+You can change the audio send settings in `NDI Sender` component from the Dome Creator prefab:
+
+![Screenshot 2024-08-20 164908](https://github.com/user-attachments/assets/c8a26101-68a8-4158-8298-024cc5d65546)
+
+> **Default Quad, 5.1 and 7.1 channels are ordered by the SMPTE ST 2110 channel order convention (L, R, C, LFE, Lss, Rss, Lrs, Rrs)**
+
+This system will places virtual microphones in the scene to capture the audio and mixes it to the outgoing NDI audio channels. 
+To capture the audio from the `AudioSource`s, it's important that all `AudioSource`s must have the `AudioSourceListener` component. Per default, when starting playmode, the `NDI Sender` component will search for all `AudioSource` components and add the `AudioSourceListener` component to them. When you load at runtime prefabs which contains `AudioSource`, you should add the `AudioSourceListener` component by yourself. There is also a add button on the `AudioSource` component for this.
+
+![359531170-bbc3934c-f87d-43d0-902e-bd4956cb4210](https://github.com/user-attachments/assets/2e85294e-0c77-42af-b6a2-5127db1f0af0)
+
+This Virtual Audio system supports most of the `AudioSource` settings. 
+Not supported are: 
+- Audio Mixer
+- Spatializer Plugins
+- Ambisonic Audio Files (can be played, but get handled as mono)
+- 3d Sound Settings: Spread, Priority, Stereo Pan
+  
+When you want to use filters/effects, you can use the legacy Unity filter components. Just make sure the components are ordered before the AudioSourceListener component.  
+ 
+![image](https://github.com/user-attachments/assets/59457416-327b-4b76-bff6-79abba3d77e3)
+
+Is it also possible to create custom speaker setups when 5.1 or 7.1 is not enough. Just select "Speaker Config Asset" as Audio Send Mode in the `NDI Sender` component. Then you can create a Speaker Config Asset (Assets > Create > SpeakerConfig) and assign them to the `NDI Sender`. 
+
+![image](https://github.com/user-attachments/assets/5ca9c0e8-e1b9-4024-b0c0-c52e0ac29a8b)
+
+Here you can add your speaker positions (positions are relative to the center in meters). They are organized in groups for better overview, but it's not  necessary to use more than one group. Regardless of the groups, the first speaker will have channel number 0, the second speaker channel number 1 and so on.
+With audio mode "Custom Virtual Audio Setup" you can setup the speaker by script. In C# use "VirtualAudio.AddListener" method to add a speaker. You will also find some settings in the VirtualAudio static class.
+ 
+> **The speaker positions will be included in the Audio Metadata when sending audio with Ndi. The Dome Viewer automatically creates a setup from this data to simulate the corresponding speaker setup.**  
+
+### Object Based Audio
+
+> **Object Based Audio also uses the Virtual Audio system. For `AudioSource` setups and limitations please read the "Virtual Audio" section**  
 
 Products like the [Spatial Audio Designer Processor](https://www.newaudiotechnology.com/products/spatial-audio-designer-processor/) from New Audio Technology is capable of receiving individual audio objects as separate tracks and placing them in a 3D space. This moves the spatialization to the end of the audio processing stage and cam improve acoustic quality considerably.  
 
-To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by using the Virtual Microphones in the Dome Creator package. Currently, we send the positions of audio objects along as part of NDI Metadata. [Contact us](contact@prefrontalcortex.de) for OSC position streaming support.  
+To send audio to the SAD Processor, you need to send the audio as separate tracks. This can be done by change the "Audio Send Mode" at the `NDI Sender` component to "Object Based" in the Dome Creator prefab.
+
+![359512673-2bc57359-6202-4e4d-919e-647bbdcb9dfe](https://github.com/user-attachments/assets/40303528-d899-42b8-b78d-f2c2218a0002)
+
+The audio object positions will be send within the NDI Audio Metadata or optional with ADM-OSC over the network. To use ADM-OSC, you will need to install the OSC Jack Package (install button can be found on `NDI Sender` when "Object Based" is selected) and also add the `Adm Osc Sender` component (can also be added via `NDI Sender` with the "Add ADM OSC Sender Component" button)
+
+![359517102-76f627b0-b119-41b0-9ca6-b8c98f0698e5](https://github.com/user-attachments/assets/37f4cff4-ae69-48b2-8736-5e3503f67c0b)
+
+Please don't forget to create a OSC Connection asset and assign them to the `Adm Osc Sender` component!
+
+![359517788-e32b463d-a3e8-4020-8722-9c18da367409](https://github.com/user-attachments/assets/86f73923-e91d-42b1-862a-01d570bc8871)
+
+The ADM-OSC position data will contain both the spherical and the cartessian position. Distance will be send normalized by the range from near and far distance settings.
+
+> **The Dome Viewer doesn't need ADM-OSC to play Object Based Audio from the Dome Tools. The `NDI Receiver` uses the included Audio Meta Data for object positions.**  
+
+### ASIO output
+
+We also support ASIO output on the sender and on the receiver side. Just add the `ASIO Out` component, and select the sender/receiver mode. Enter a "Default Device Name" to automatically start the ASIO output with playmode. Othewise call the "SetAsioDevice" method on this script.
+
+![image](https://github.com/user-attachments/assets/55ac3815-0b8e-466a-8748-634d5533c489)
 
 ## Contributing
 
