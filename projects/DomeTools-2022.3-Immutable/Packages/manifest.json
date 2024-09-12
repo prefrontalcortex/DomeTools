@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.atteneder.gltfast": "4.3.1",
     "com.pfc.dome-tools": "file:pfc-dome-tools.tgz",
     "com.unity.feature.development": "1.0.1",
     "com.unity.render-pipelines.universal": "14.0.11",
@@ -8,7 +7,7 @@
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.4",
-    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#c0169a634c3282e3a596180801c1191c6b3dc887",
+    "com.pfc.jp.keijiro.klak.ndi": "2.1.3-pfc.1",
     "jp.keijiro.osc-jack": "2.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
@@ -47,23 +46,8 @@
       "name": "OpenUPM",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.atteneder",
-        "com.pathightree.spacenavigator-driver",
-        "com.halodi.halodi-unity-package-registry-manager"
-      ]
-    },
-    {
-      "name": "Keijiro",
-      "url": "https://registry.npmjs.com",
-      "scopes": [
-        "jp.keijiro"
-      ]
-    },
-    {
-      "name": "Unity NuGet",
-      "url": "https://unitynuget-registry.azurewebsites.net",
-      "scopes": [
-        "org.nuget"
+        "org.nuget",
+        "com.pfc.jp.keijiro.klak.ndi"
       ]
     }
   ]

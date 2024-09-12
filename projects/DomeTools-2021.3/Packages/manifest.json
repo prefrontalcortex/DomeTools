@@ -9,7 +9,7 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.5",
     "com.unity.ugui": "1.0.0",
-    "jp.keijiro.klak.ndi": "https://github.com/prefrontalcortex/KlakNDI.git?path=jp.keijiro.klak.ndi#232afd3b8fc4923229ee09cf79636067f79eb708",
+    "com.pfc.jp.keijiro.klak.ndi": "2.1.3-pfc.1",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -47,17 +47,8 @@
       "name": "OpenUPM",
       "url": "https://package.openupm.com",
       "scopes": [
-        "org.nuget.system.memory",
-        "org.nuget.system.runtime.compilerservices.unsafe",
-        "org.nuget.system.buffers",
-        "org.nuget.system.numerics.vectors"
-      ]
-    },
-    {
-      "name": "Keijiro",
-      "url": "https://registry.npmjs.com",
-      "scopes": [
-        "jp.keijiro.klak.ndi"
+        "com.pfc.jp.keijiro.klak.ndi",
+        "org.nuget.system"
       ]
     }
   ]

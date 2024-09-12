@@ -30,18 +30,8 @@ MonoBehaviour:
     m_Name: OpenUPM
     m_Url: https://package.openupm.com
     m_Scopes:
-    - org.nuget.system.memory
-    - org.nuget.system.runtime.compilerservices.unsafe
-    - org.nuget.system.buffers
-    - org.nuget.system.numerics.vectors
-    m_IsDefault: 0
-    m_Capabilities: 0
-    m_ConfigSource: 4
-  - m_Id: scoped:project:Keijiro
-    m_Name: Keijiro
-    m_Url: https://registry.npmjs.com
-    m_Scopes:
-    - jp.keijiro.klak.ndi
+    - com.pfc.jp.keijiro.klak.ndi
+    - org.nuget.system
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4

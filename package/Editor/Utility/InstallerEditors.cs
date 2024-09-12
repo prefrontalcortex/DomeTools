@@ -57,7 +57,7 @@ namespace pfc.DomeTools
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
                 ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
             if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                ManifestUtility.AddScopedRegistry("OpenUPM", "https://registry.npmjs.com", "jp.keijiro.klak.spout");
+                ManifestUtility.AddScopedRegistry("OpenUPM", "https://package.openupm.com", "jp.keijiro.klak.spout");
             ManifestUtility.AddPackage("jp.keijiro.klak.spout");
         }
     }
@@ -83,8 +83,8 @@ namespace pfc.DomeTools
 
         public static void Install()
         {
-            if(!ManifestUtility.CheckIfScopedRegistryAvailable("jp.keijiro")) 
-                ManifestUtility.AddScopedRegistry("Keijiro", "https://registry.npmjs.com", "jp.keijiro");
+            if(!ManifestUtility.CheckIfScopedRegistryAvailable("OpenUPM")) 
+                ManifestUtility.AddScopedRegistry("Keijiro", "https://package.openupm.com", "jp.keijiro.osc-jack");
             ManifestUtility.AddPackage("jp.keijiro.osc-jack");
         }
     }

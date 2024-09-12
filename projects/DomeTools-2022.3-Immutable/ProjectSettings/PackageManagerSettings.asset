@@ -30,33 +30,16 @@ MonoBehaviour:
     m_Name: OpenUPM
     m_Url: https://package.openupm.com
     m_Scopes:
-    - com.atteneder
-    - com.pathightree.spacenavigator-driver
-    - com.halodi.halodi-unity-package-registry-manager
-    m_IsDefault: 0
-    m_Capabilities: 0
-    m_ConfigSource: 4
-  - m_Id: scoped:project:Keijiro
-    m_Name: Keijiro
-    m_Url: https://registry.npmjs.com
-    m_Scopes:
-    - jp.keijiro
-    m_IsDefault: 0
-    m_Capabilities: 0
-    m_ConfigSource: 4
-  - m_Id: scoped:project:Unity NuGet
-    m_Name: Unity NuGet
-    m_Url: https://unitynuget-registry.azurewebsites.net
-    m_Scopes:
     - org.nuget
+    - com.pfc.jp.keijiro.klak.ndi
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  m_UserSelectedRegistryName: Keijiro
+  m_UserSelectedRegistryName: OpenUPM
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -852
-    m_OriginalInstanceId: -856
+    m_UserModificationsInstanceId: -830
+    m_OriginalInstanceId: -834
   m_LoadAssets: 0
