@@ -1,30 +1,32 @@
 # Dome Tools: Dome Creator and Dome Viewer
 
-This repository contains two main components:  
-[Dome Creator](#overview-dome-creator) and [Dome Viewer](#overview-dome-viewer).  
-Together, they allow you to create and review interactive, realtime fulldome content, and stream it live to a dome system.
+This repository contains two main components: [Dome Creator](#overview-dome-creator) and [Dome Viewer](#overview-dome-viewer).  
+Together, they allow you to create and review interactive, realtime fulldome video and audio, and stream it live to a dome system.
 
 
 ```mermaid
 flowchart LR;
     Creator("**<a href="https://github.com/prefrontalcortex/dometools#overview-dome-creator">Dome Creator</a>**<br>Unity plugin for real-time dome production")
-    NDI("**Video** as NDI Stream<br>**Audio** as NDI Stream, ASIO, or Dante")
+    NDI("**NDI Stream**<br>Audio and Video")
     Viewer("**<a href="https://github.com/prefrontalcortex/dometools#overview-dome-viewer">Dome Viewer</a>**<br>Virtual Dome for Quest and Desktop")
     P("**Projection System**<br>Dome, Planetarium, ...")
     AV(**AV System**<br>Pixera, Vioso, Resolume, D3, ...)
 
     Creator --> NDI --> Viewer
+    Footage("**Video Files**<br>Dome Master format") --> Viewer
     NDI --> AV
     Creator .- n4("Alternative: Video Grabber") .-> AV
+    AV --> NDI2("NDI") --> Viewer
     AV --> P
-    AV -- NDI --> Viewer
 
     style Creator stroke-width:3px
     style Viewer stroke-width:3px
     style P stroke-width: 3px
     style NDI stroke-width: 0px;
+    style NDI2 stroke-width: 0px;
     style n4 stroke-width: 0px;
     style AV stroke-width: 0px;
+    style Footage stroke-width: 0px;
 ```
 
 ## Overview: Dome Creator
@@ -213,23 +215,24 @@ It is mainly used for screening dome content while creating it without having a 
 This allows simultaneously editing your dome content and watching it on your target medium. 
 
 ### Features
-- receiving a NDI stream with video and audio live from your ndi capable editing software
-- you can watch the same stream which is send for dome screening
-- receiving surround sound also if you don't have any surround sound device
-- first person moving inside your dome
-- outside view
-- choose between different dome sizes and seating setups
-- use VR for full dome experience
-- Desktop and VR mode at the same time (useful for presenter situation)
-- standalone build for standalone VR devices (Meta Quest 2 and above)
-- playback videofiles / images from local drive
-  
+- Receive **high-resolution NDI streams** with video and audio, live from Dome Creator or your NDI capable editing software
+- Test **surround sound** in a virtual dome environment
+- Review content in **first-person view**
+- View your dome from the outside as **miniature**
+- Choose between different **dome sizes and seating setups**
+- Both **VR and Screen** support
+- Supported on **Quest 2, 3, Pro, Pico 4, and Windows (OpenXR)**
+- **Present content** with Desktop and VR modes at the same time
+- Play back video files and images from your **local storage**
+  - on Quest, put content in the `Downloads/DomeViewer` folder
+  - on Desktop, put content in the `StreamingAssets` folder   
+
 <img src="https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42" width="600" height="300">
 
-### Viewing content 
-[Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
-[Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
-[Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
+### Downloads and Installation  
+- [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+- [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
+- [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
 The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
 It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
@@ -237,33 +240,24 @@ It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
 
 
-### Desktop Controls
+### Controls
 
-**Menu**
+**Menu Overview**
 
 ![image](https://github.com/user-attachments/assets/58fa1b86-bc53-4e90-a00c-10ee852b057c)
 
-- Media Sources: (choose between ndi and local files) - **don't forget to refresh!**
-- Environment: select between domesize / seating setup / projector on-off
-- Real Size View / Miniature View: toggle between first person and outside view
-- ? / About: Description and version number
+- <kbd>Media Sources</kbd>: (choose between ndi and local files) - **don't forget to refresh!**
+- <kbd>Environment</kbd>: select between domesize / seating setup / projector on-off
+- <kbd>Real Size View / Miniature View</kbd>: toggle between first person and outside view
+- <kbd>? / About</kbd>: Description and version number
 
-**Movement**
+**Desktop Controls**
+
 - WASD - Move
 - Mouse Drag - Rotate
 - Mouse Wheel - Field of View / Zoom
 
-### VR Controls
-
-**Menu**
-
-![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
-
-see desktop menu
-
-
-**Movement**
-Input via Controller:
+**VR with Controllers**
 - left menu - dome viewer menu
 - right menu - system menu
 - right stick front - teleport
@@ -272,36 +266,45 @@ Input via Controller:
 - right stick back - rotate 180°
 - left stick - movement in all directions
 
-Input via hands:
+![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
+
+**VR with Hands**
 - left menu gesture - dome viewer menu
 - right menu gesture - system menu
 - teleport gesture - teleport
 
 ![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
 
+### Viewing Content in Dome Viewer
 
-### Media Playback on Quest ###
+Content can either be viewed via NDI stream from your local network, or by playing back local video files and images.  
 
-It is recommended using the NDI Workflow for watching Dome Content on your Quest Device. If you have NDI Tools installed you can use VLC Player (https://www.videolan.org) with NDI Output.
+We generally recommend the NDI workflow, as it's more flexible and allows multiple users to view the same content at the same time.  
+NDI streams need to be on the same network as the receiving device. You can send streams from any device (PC, Mac, etc.) that supports NDI.  
 
-1. Install NDI Tools (always recommended) - https://ndi.video
-2. Install VLC Player (if you haven't already) - https://www.videolan.org
-3. Go to Tools -> Settings -> Video -> Output -> Set to NDI Video Output
-4. Repeat with Audio
-5. Play your video, there will be a new NDI Stream named YOUR COMPUTER / VLC.
+#### Video Playback with VLC Player and the NDI Plugin
 
-The PC Screen will be black without any output. This is normal.
+1. Make sure the PC where you're playing video from and the receiving device (Quest or PC) are on the same network.   
+   *You can also play back the video on the same PC where the Dome Viewer is running.*
 
-For Local Playback on your Quest Device you have to get access to the local storage.
+2. Install [VLC Player](https://www.videolan.org)
+1. Install [NDI Tools](https://ndi.video)
+3. In VLC Player, go to `Tools > Settings > Video > Output` and set it to `NDI Video Output`
+4. Repeat the same with Audio and set it to `NDI Audio Output`
+5. Play your video. The screen will be black, and there will be a new NDI Stream named `YOUR COMPUTER / VLC`.  
+   *You can view the NDI stream with the "Studio Monitor" or "Video Monitor" app that comes with NDI Tools.*
+6. On Quest or in Dome Viewer, select `Media Sources > NDI` and choose the new stream there.
 
-1. Connect your quest with your computer (usb)
-2. Open the device storage with your computer
-3. place your media files to "Download/DomeViewer/" (jpg, png or mp4)
-4. In the Domeviewer App click the refresh Button next to the media dropdown on media sources
-5. choose the media file you want to show (image or video)
+#### Local File Playback on your Quest Device
 
+1. Connect your Quest with your Computer via USB
 
-## Output to a Dome AV System
+2. Open the device storage with your Explorer/Finder
+3. Place your media files in `Download/DomeViewer`. Supported formats are `jpg`, `png` and `mp4`.
+4. In Dome Viewer, click the <kbd>Refresh</kbd> Button next to the media dropdown on media sources
+5. Choose the media file you want to show.
+
+## Output to a AV System
 
 > **Under construction 🏗️**  
 This section will contain information regarding various dome systems and how to display NDI content on them.  
