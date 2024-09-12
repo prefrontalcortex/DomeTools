@@ -2,6 +2,15 @@
 All notable changes to this package will be documented in this file.\
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2024-09-12
+- add: audio support via NDI or ASIO, including object-based audio streams
+- add: modified KlakNDI package dependency with audio support
+- add: OSCJack installer for object-based audio
+- add: Unity 6.0 support
+- add: Viking sample scene now has audio sources
+- change: adjusted script namespace to `pfc.DomeTools`
+- change: clean up package dependencies in test projects
+
 ## [0.7.3] - 2024-06-04
 - fix world-space UI not rendering in Cubemap mode (supported in URP and HDRP but not in BiRP)
 
