@@ -179,17 +179,26 @@ namespace pfc.DomeTools
                 Utils.DrawCheck($"NDI Audio Output is fully configured. You're sending {audioSetupType}.");
             }
             else {
-                Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource);
-                Utils.DrawCheck("Audio Listener is on NDI Sender", audioListenerOnSender, () =>
+                // Removes extra audio listeners and ensures there is one to the NDI Sender
+                void FixAudioListeners()
                 {
-                    foreach (var t1 in audioListenersInScene)
-                        DestroyImmediate(t1);
 #if UNITY_2023_2_OR_NEWER
-                    FindFirstObjectByType<NdiSender>().gameObject.AddComponent<AudioListener>();
+                    var ndiSender = FindFirstObjectByType<NdiSender>();
 #else
-                    FindObjectOfType<NdiSender>().gameObject.AddComponent<AudioListener>();
+                    var ndiSender = FindObjectOfType<NdiSender>(); 
 #endif
-                }, "Remove Audio Listener(s) and place an Audio Listener on the NDI Sender");
+                    var listenerOnSender = ndiSender.GetComponent<AudioListener>();
+                    
+                    foreach (var t1 in audioListenersInScene)
+                        if (t1 != listenerOnSender)
+                            DestroyImmediate(t1);
+
+                    if (!listenerOnSender)
+                        ndiSender.gameObject.AddComponent<AudioListener>();
+                }
+                
+                Utils.DrawCheck("Exactly one Audio Listener in scene", haveOneAudioSource, FixAudioListeners,"Remove additional Audio Listener(s) and place an Audio Listener on the NDI Sender");
+                Utils.DrawCheck("Audio Listener is on NDI Sender", audioListenerOnSender, FixAudioListeners, "Remove Audio Listener(s) and place an Audio Listener on the NDI Sender");
                 Utils.DrawCheck($"Audio Spatializer is set to \"{AudioSpatializerExpectedName}\"", haveCustomSpatializer, () =>
                 {
                     AudioSettings.SetSpatializerPluginName(AudioSpatializerExpectedName);
@@ -197,7 +206,7 @@ namespace pfc.DomeTools
                     {
                         Debug.LogError($"Failed to set the Audio Spatializer to \"{AudioSpatializerExpectedName}\". Please set it manually in Project Settings > Audio.");
                     }
-                });
+                }, "Set global Audio Spatializer to \"Passthrough Spatializer (NDI)\" to send audio with the NDI stream");
             }
 #endif
             
