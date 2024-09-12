@@ -87,9 +87,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 
 Typically, you will use the **Dome Creator** package in your Unity project, and start the **Dome Viewer** app on Quest 2/3 in the same local network. Once you're ready, the same NDI stream can be received by many planetarium AV systems directly – in realtime. 
 
-## Download and Installation
-
-### Download Dome Creator
+## Download Dome Creator
 [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
 <details>
@@ -113,21 +111,23 @@ You can also add it via `Edit > Project Settings > Package Manager`.
 
 Then open Package Manager and install the package `com.pfc.dome-tools` by name.
 
-</details>
+</details>  
 
 
-#### Supported **Unity versions**  
+
+
+**Supported Unity versions**  
 - ✅ Unity 2021 LTS
 - ✅ Unity 2022 LTS
 - ✅ Unity 2023 LTS
 - ✅ Unity 6.0
   
-#### Supported **Render Pipelines**
+**Supported Render Pipelines**
 - ✅ Built-In Render Pipeline (BiRP)
 - ✅ Universal Render Pipeline (URP) 
 - ✅ High Definition Render Pipeline (HDRP)
 
-#### Verified **Dome Systems**
+**Verified Dome Systems**  
 [Learn more about setting up your Dome System for realtime video and audio.](#output-to-a-dome-av-system)
 
 - ✅ **Pixera 1.8+ and 2.x+**  
@@ -140,10 +140,15 @@ Then open Package Manager and install the package `com.pfc.dome-tools` by name.
 - ✅ **L-ISA**  
       Multi-channel audio via NDI, object positions via ADM-OSC  
 
+- ✅ **Brainsalt Backstage** build 27d10725e, July 1st 2024 or later  
+      Dome Master via NDI and multi-channel audio via NDI.
 
-## Viewing content with Dome Viewer
+- **Other systems** that support NDI video and/or audio should work as well.  
+    If you test them, please let us know so we can include them here!
 
-### Download Dome Viewer
+[👉 Learn more about using Dome Creator.](#dome-creator)
+
+## Download Dome Viewer
 - [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
 - [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
 - [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
@@ -153,6 +158,8 @@ The Viewer supports **Windows** (with and without VR), **Quest 2/3/Pro**, and **
 The desktop version supports both **Screen usage** and **VR usage** with **hands or controllers**.  
 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
+
+[👉 Learn more about using Dome Viewer.](#dome-viewer)
 
 # Dome Creator
 
@@ -293,7 +300,7 @@ Dante can be bridged with external tools, either from ASIO or from NDI to be sen
 
 # Dome Viewer
 
-Our **Dome Viewer** can be used for screening realtime dome content while creating it, without having a physical dome available. It's unique main feature is receiving a NDI livestream from any source of your network, which allows to simultaneously edit your dome content and watching it with any number of people in VR headsets. They can all receive the same NDI stream coming from your authoring system.  
+The **Dome Viewer** can be used for screening realtime dome content while creating it, without having a physical dome available. It's unique main feature is receiving a NDI livestream from any source of your network, which allows to simultaneously edit your dome content and watching it with any number of people in VR headsets. They can all receive the same NDI stream coming from your authoring system.  
 
 ## Features
 - Receive **high-resolution NDI streams** with video and audio, live from Dome Creator or your NDI capable editing software
