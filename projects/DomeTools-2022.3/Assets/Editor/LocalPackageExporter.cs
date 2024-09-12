@@ -34,6 +34,7 @@ namespace pfc.DomeTools
             {
                 if (Directory.Exists(samplesFolderNew)) Directory.Delete(samplesFolderNew, true);
                 Directory.Move(samplesFolder, samplesFolderNew);
+                File.Delete(tempMetaFileLocation);
                 File.Move(samplesFolder + ".meta", tempMetaFileLocation);
             }
             
@@ -69,7 +70,8 @@ namespace pfc.DomeTools
             {
                 if (Directory.Exists(samplesFolder)) Directory.Delete(samplesFolder, true);
                 Directory.Move(samplesFolderNew, samplesFolder);
-                File.Move(tempMetaFileLocation, samplesFolder + ".meta");
+                if (!File.Exists(samplesFolder + ".meta"))
+                    File.Move(tempMetaFileLocation, samplesFolder + ".meta");
             }
         }
     }
