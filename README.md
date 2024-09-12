@@ -17,7 +17,7 @@ flowchart LR;
     NDI --> AV
     Creator .- n4("Alternative: Video Grabber") .-> AV
     AV --> P
-    AV --> Viewer
+    AV -- NDI --> Viewer
 
     style Creator stroke-width:3px
     style Viewer stroke-width:3px
@@ -45,6 +45,9 @@ It also includes helpers to **stream both video and audio** in realtime via [NDI
 ## Overview: Dome Viewer
 
 **Dome Viewer** is a virtual planetarium compatible with Windows, Quest 2, 3 and more. It can play back local **video and image files**, receive **NDI streams** with audio and video, or play back local **Spout sources**.  
+
+With Dome Viewer, you can view the output from Dome Creator in realtime, but you can also view any other NDI stream – for example video and audio signals coming from Resolume, Notch or D3.  
+
 The viewer is provided as Quest App download, and as executable for Windows, as well as APK download on SideQuest. It can also be modified and compiled from source.  
 
 ![Dome Viewer – Overview](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
