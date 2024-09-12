@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5718747801437189429, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
       propertyPath: m_Name
-      value: Dome Tools
+      value: Dome Creator
       objectReference: {fileID: 0}
     - target: {fileID: 5718747801437189429, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
       propertyPath: m_IsActive
@@ -395,6 +395,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200512906470252900, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200569809757526610, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200569809757526610, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200569809757526610, guid: 5f59b1ee65447b04f973467c44011280, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
