@@ -57,7 +57,7 @@ The viewer is provided as Quest App download, and as executable for Windows, as 
 
 **Dome Creator** and **Dome Viewer** are developed and maintained by [prefrontal cortex](https://prefrontalcortex.de).  
 
-## Getting Started
+# Getting Started
 
 Use **Dome Creator** to produce real-time, interactive fulldome content. Stream it over the network with **NewTek NDI** and view your content in **Dome Viewer** and other NDI-enabled applications.
 
@@ -89,7 +89,7 @@ Typically, you will use the **Dome Creator** package in your Unity project, and 
 
 ## Download and Installation
 
-### Creating content with Dome Creator
+### Download Dome Creator
 [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
 <details>
@@ -116,18 +116,18 @@ Then open Package Manager and install the package `com.pfc.dome-tools` by name.
 </details>
 
 
-### Supported **Unity versions**  
+#### Supported **Unity versions**  
 - ✅ Unity 2021 LTS
 - ✅ Unity 2022 LTS
 - ✅ Unity 2023 LTS
 - ✅ Unity 6.0
   
-### Supported **Render Pipelines**
+#### Supported **Render Pipelines**
 - ✅ Built-In Render Pipeline (BiRP)
 - ✅ Universal Render Pipeline (URP) 
 - ✅ High Definition Render Pipeline (HDRP)
 
-### Verified **Dome Systems**
+#### Verified **Dome Systems**
 [Learn more about setting up your Dome System for realtime video and audio.](#output-to-a-dome-av-system)
 
 - ✅ **Pixera 1.8+ and 2.x+**  
@@ -141,9 +141,9 @@ Then open Package Manager and install the package `com.pfc.dome-tools` by name.
       Multi-channel audio via NDI, object positions via ADM-OSC  
 
 
-### Viewing content with Dome Viewer
+## Viewing content with Dome Viewer
 
-#### Download Dome Viewer:
+### Download Dome Viewer
 - [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
 - [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
 - [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
@@ -154,7 +154,7 @@ The desktop version supports both **Screen usage** and **VR usage** with **hands
 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
 
-## Dome Creator
+# Dome Creator
 
 This package provides a **highly efficient realtime fulldome toolkit** for Unity. It allows you to **create, transmit and view** fulldome video and audio in real-time. Together with **Dome Viewer**, it's part of the **Dome Tools** suite by prefrontal cortex. 
 
@@ -181,7 +181,7 @@ The toolkit supports BiRP, URP, and HDRP render pipelines, and is provided as UP
 
 Content can be streamed via [NDI](https://ndi.video/tools/download/) to a physical dome or [viewed on a simulated dome](https://github.com/prefrontalcortex/DomeTools/?tab=readme-ov-file#dome-viewer) in VR or on a desktop monitor. 
 
-### Camera Rig Usage
+## Camera Rig Usage
 
 The **Dome Creator** prefab contains several components that together form your camera and streaming setup.  
 
@@ -196,11 +196,11 @@ The camera is your viewer's position. It can of course be animated, for example 
 
 > **Note:** [NDI](https://newtek.com) is a high-bandwidth protocol. For best results, use a wired network connection. Audio support is currently experimental.  
 
-### Producing real-time dome content
+## Producing real-time dome content
 
 We recommend streaming to your physical or virtual dome via NDI in 4k or higher (depending on your media server / machine).
 
-### Producing pre-rendered video content
+## Producing pre-rendered video content
 
 Depending on your needs, you can either:
 
@@ -208,116 +208,13 @@ a) Use Unity Recorder and record the DomeMaster render texture into a video or i
 b) Use a hardware capture card to capture the monitor output
 c) Capture the NDI stream directly using NDI Tools or an external software
 
-## Dome Viewer
-
-This tool together with the **Dome Creator** package is part of the **Dome Tools** suite by prefrontal cortex. 
-It is mainly used for screening dome content while creating it without having a dome available. It's unique main feature is receiving a NDI livestream from any source of your network.
-This allows simultaneously editing your dome content and watching it on your target medium. 
-
-### Features
-- Receive **high-resolution NDI streams** with video and audio, live from Dome Creator or your NDI capable editing software
-- Test **surround sound** in a virtual dome environment
-- Review content in **first-person view**
-- View your dome from the outside as **miniature**
-- Choose between different **dome sizes and seating setups**
-- Both **VR and Screen** support
-- Supported on **Quest 2, 3, Pro, Pico 4, and Windows (OpenXR)**
-- **Present content** with Desktop and VR modes at the same time
-- Play back video files and images from your **local storage**
-  - on Quest, put content in the `Downloads/DomeViewer` folder
-  - on Desktop, put content in the `StreamingAssets` folder   
-
-<img src="https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42" width="600" height="300">
-
-### Downloads and Installation  
-- [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
-- [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
-- [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
-
-The viewer supports both **Desktop usage** and **VR usage** with **hands or controllers**.  
-It has been tested on **Windows** (with and without VR), **Quest 2/3/Pro**, and **Pico 4**.  
-
-For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
-
-
-### Controls
-
-**Menu Overview**
-
-![image](https://github.com/user-attachments/assets/58fa1b86-bc53-4e90-a00c-10ee852b057c)
-
-- <kbd>Media Sources</kbd>: (choose between ndi and local files) - **don't forget to refresh!**
-- <kbd>Environment</kbd>: select between domesize / seating setup / projector on-off
-- <kbd>Real Size View / Miniature View</kbd>: toggle between first person and outside view
-- <kbd>? / About</kbd>: Description and version number
-
-**Desktop Controls**
-
-- WASD - Move
-- Mouse Drag - Rotate
-- Mouse Wheel - Field of View / Zoom
-
-**VR with Controllers**
-- left menu - dome viewer menu
-- right menu - system menu
-- right stick front - teleport
-- right stick left - rotate 90° left
-- right stick right - rotate 90° right
-- right stick back - rotate 180°
-- left stick - movement in all directions
-
-![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
-
-**VR with Hands**
-- left menu gesture - dome viewer menu
-- right menu gesture - system menu
-- teleport gesture - teleport
-
-![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
-
-### Viewing Content in Dome Viewer
-
-Content can either be viewed via NDI stream from your local network, or by playing back local video files and images.  
-
-We generally recommend the NDI workflow, as it's more flexible and allows multiple users to view the same content at the same time.  
-NDI streams need to be on the same network as the receiving device. You can send streams from any device (PC, Mac, etc.) that supports NDI.  
-
-#### Video Playback with VLC Player and the NDI Plugin
-
-1. Make sure the PC where you're playing video from and the receiving device (Quest or PC) are on the same network.   
-   *You can also play back the video on the same PC where the Dome Viewer is running.*
-
-2. Install [VLC Player](https://www.videolan.org)
-1. Install [NDI Tools](https://ndi.video)
-3. In VLC Player, go to `Tools > Settings > Video > Output` and set it to `NDI Video Output`
-4. Repeat the same with Audio and set it to `NDI Audio Output`
-5. Play your video. The screen will be black, and there will be a new NDI Stream named `YOUR COMPUTER / VLC`.  
-   *You can view the NDI stream with the "Studio Monitor" or "Video Monitor" app that comes with NDI Tools.*
-6. On Quest or in Dome Viewer, select `Media Sources > NDI` and choose the new stream there.
-
-#### Local File Playback on your Quest Device
-
-1. Connect your Quest with your Computer via USB
-
-2. Open the device storage with your Explorer/Finder
-3. Place your media files in `Download/DomeViewer`. Supported formats are `jpg`, `png` and `mp4`.
-4. In Dome Viewer, click the <kbd>Refresh</kbd> Button next to the media dropdown on media sources
-5. Choose the media file you want to show.
-
 ## Output to a AV System
 
 > **Under construction 🏗️**  
 This section will contain information regarding various dome systems and how to display NDI content on them.  
  If you want to provide steps for your dome system, please [open an issue](https://github.com/prefrontalcortex/DomeTools/issues/new/choose) or make a pull request.  
 
-NDI is a widely supported protocol for streaming video content. It is supported by many dome systems. Please refer to the docs of your dome system for instructions on how to receive NDI streams.  
-
-### Pixera
-
-In addition to NDI Video, Pixera supports multi-channel NDI Audio.  
-
-- ✅ Pixera 1.8.x
-- ✅ Pixera 2.0.x
+NDI is a widely supported protocol for streaming video content. It is supported by many dome systems. Please refer to the docs of your dome system for instructions on how to receive NDI streams.    
 
 ## Audio Support
 
@@ -327,7 +224,7 @@ Select an audio mode from `NDI Sender` in your scene. You can either use your lo
 
 If your sender system is capable of generating surround sound, you can use Unity's native AudioListener in 5.1 or 7.1 mode and stream the resulting tracks over NDI Audio.
 
-### Virtual Audio
+### Virtual Multi-Channel Audio
 
 Often, the sender system is not capable of generating surround sound. In this case, you can use our Virtual Audio to stream an arbitrary amount of channels via NDI Audio in lockstep with the video signal.
 
@@ -390,9 +287,96 @@ We also support ASIO output on the sender and on the receiver side. Just add the
 
 ![image](https://github.com/user-attachments/assets/55ac3815-0b8e-466a-8748-634d5533c489)
 
-## Contributing
+### Dante output
 
-### Testing and developing the Dome Tools package
+Dante can be bridged with external tools, either from ASIO or from NDI to be sent over the network.  
+
+# Dome Viewer
+
+Our **Dome Viewer** can be used for screening realtime dome content while creating it, without having a physical dome available. It's unique main feature is receiving a NDI livestream from any source of your network, which allows to simultaneously edit your dome content and watching it with any number of people in VR headsets. They can all receive the same NDI stream coming from your authoring system.  
+
+## Features
+- Receive **high-resolution NDI streams** with video and audio, live from Dome Creator or your NDI capable editing software
+- Test **surround sound** in a virtual dome environment
+- Review content in **first-person view**
+- View your dome from the outside as **miniature**
+- Choose between different **dome sizes and seating setups**
+- Both **VR and Screen** support
+- Supported on **Quest 2, 3, Pro, Pico 4, and Windows (OpenXR)**
+- **Present content** with Desktop and VR modes at the same time
+- Play back video files and images from your **local storage**
+  - on Quest, put content in the `Downloads/DomeViewer` folder
+  - on Desktop, put content in the `StreamingAssets` folder   
+
+<img src="https://github.com/user-attachments/assets/92d4a539-9d1d-47d8-9053-0b503887cf42" width="600" height="300">
+
+## Controls
+
+**Menu Overview**
+
+![image](https://github.com/user-attachments/assets/58fa1b86-bc53-4e90-a00c-10ee852b057c)
+
+- <kbd>Media Sources</kbd>: (choose between ndi and local files) - **don't forget to refresh!**
+- <kbd>Environment</kbd>: select between domesize / seating setup / projector on-off
+- <kbd>Real Size View / Miniature View</kbd>: toggle between first person and outside view
+- <kbd>? / About</kbd>: Description and version number
+
+**Desktop Controls**
+
+- WASD - Move
+- Mouse Drag - Rotate
+- Mouse Wheel - Field of View / Zoom
+
+**VR with Controllers**
+- left menu - dome viewer menu
+- right menu - system menu
+- right stick front - teleport
+- right stick left - rotate 90° left
+- right stick right - rotate 90° right
+- right stick back - rotate 180°
+- left stick - movement in all directions
+
+![com oculus vrshell-20240822-100557](https://github.com/user-attachments/assets/c599dae8-c450-468d-b66c-704132c18838)
+
+**VR with Hands**
+- left menu gesture - dome viewer menu
+- right menu gesture - system menu
+- teleport gesture - teleport
+
+![com oculus vrshell-20240822-101011](https://github.com/user-attachments/assets/ae5cf8a1-e6ab-4fca-b742-bd2eac0ab748)
+
+## Viewing Content in Dome Viewer
+
+Content can either be viewed via NDI stream from your local network, or by playing back local video files and images.  
+
+We generally recommend the NDI workflow, as it's more flexible and allows multiple users to view the same content at the same time.  
+NDI streams need to be on the same network as the receiving device. You can send streams from any device (PC, Mac, etc.) that supports NDI.  
+
+### Video Playback with VLC Player and the NDI Plugin
+
+1. Make sure the PC where you're playing video from and the receiving device (Quest or PC) are on the same network.   
+   *You can also play back the video on the same PC where the Dome Viewer is running.*
+
+2. Install [VLC Player](https://www.videolan.org)
+1. Install [NDI Tools](https://ndi.video)
+3. In VLC Player, go to `Tools > Settings > Video > Output` and set it to `NDI Video Output`
+4. Repeat the same with Audio and set it to `NDI Audio Output`
+5. Play your video. The screen will be black, and there will be a new NDI Stream named `YOUR COMPUTER / VLC`.  
+   *You can view the NDI stream with the "Studio Monitor" or "Video Monitor" app that comes with NDI Tools.*
+6. On Quest or in Dome Viewer, select `Media Sources > NDI` and choose the new stream there.
+
+### Local File Playback on your Quest Device
+
+1. Connect your Quest with your Computer via USB
+
+2. Open the device storage with your Explorer/Finder
+3. Place your media files in `Download/DomeViewer`. Supported formats are `jpg`, `png` and `mp4`.
+4. In Dome Viewer, click the <kbd>Refresh</kbd> Button next to the media dropdown on media sources
+5. Choose the media file you want to show.
+
+# Contributing
+
+## Testing and developing the Dome Tools package
 
 The `package` folder contains the UPM package for Dome Tools.   
 To work on the package, open one of the test projects inside `projects/DomeTools*`, for example <kbd>DomeTools-2021.3</kbd>.  
@@ -400,7 +384,7 @@ These projects already contain a local reference to the package, so all changes 
 
 Before making a package release, make sure to rename the `Samples` folder to `Samples~`. This will hide the folder inside Unity, and allows users of the package to install the provided Samples from the Package Manager window. When installing a sample, Unity will copy the files to the project's `Assets` folder, out of the immutable package folder.  
 
-### Testing and developing the Viewer
+## Testing and developing the Viewer
 
 The `projects/DomeViewer` folder contains the Unity project for the Virtual Dome Viewer. It currently uses Unity 2021.3 LTS.  
 
@@ -408,15 +392,16 @@ Before opening the project, **make sure you have git installed** since the proje
 
 > **Note**: If you get a warning regarding the klak.ndi package not being installed, please install git first as described above.  
 
-### Building
+### Building for Android / Quest
 
 When building for Android, make sure to provide a unique application identifier and either your own signing key or a development key. A custom Android manifest is provided that allows network access to receive NDI streams.  
 
-## Further Reading
+# Further Reading
 - [Interactive Domes – Fulldome Festival Presentation 2020/2024](https://www.youtube.com/watch?v=vjvYJ7hgbyo)
 - [NewTek NDI](https://ndi.video/)
 - [Fulldome on Wikipedia](https://en.wikipedia.org/wiki/Fulldome)
 
-## Contact Us
-- dometools@prefrontalcortex.de
-- [@prefrontlcortex](https://twitter.com/prefrontlcortex) and [@hybridherbst](https://twitter.com/hybridherbst) on Twitter
+# Contact Us
+- Send us an email: dometools@prefrontalcortex.de
+- Open an issue: [Create new Issue](https://github.com/prefrontalcortex/dometools/issues/new)
+- Ping [@prefrontlcortex](https://twitter.com/prefrontlcortex) or [@hybridherbst](https://twitter.com/hybridherbst) on X/Twitter
