@@ -1,25 +1,54 @@
 # Dome Tools: Dome Creator and Dome Viewer
 
-This repository contains two main components:
-
-1. The **Dome Creator** Unity package, a highly efficient realtime fulldome toolkit.   
-  It has two modes: **Dome Warp** – a novel single-view rendering technique, and a traditional **cubemap-based** approach. The toolkit supports **BiRP, URP, and HDRP** render pipelines, and is provided as easy-to-use UPM package. It outputs both audio and video as realtime NDI streams ready for display on a dome.
-  
-   ![Heroimage](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
-
-2. A **Dome Viewer** virtual planetarium compatible with Windows, Quest 2, 3 and more. It can receive **NDI streams**, **Spout sources**, and display local **video and image files**. The viewer is provided as executable for Windows as well as VR app on Meta App Lab and SideQuest, or can be modified and compiled from source.
-
-   ![QNEq7mlgV2](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
+This repository contains two main components:  
+[Dome Creator](#overview-dome-creator) and [Dome Viewer](#overview-dome-viewer).  
+Together, they allow you to create and review interactive, realtime fulldome content, and stream it live to a dome system.
 
 
 ```mermaid
-graph TD;
-    A("Dome Creator") --> n1((("NDI / Spout")))
-    A --> n4((("Live Input")))
-    n4 --> n3("Fulldome Playback Application")
-    n1 --> n3
-    n1 --> n2["Dome Viewer (Desktop / VR)<br>"]
+flowchart LR;
+    Creator("**<a href="https://github.com/prefrontalcortex/dometools#overview-dome-creator">Dome Creator</a>**<br>Unity plugin for real-time dome production")
+    NDI("**Video** as NDI Stream<br>**Audio** as NDI Stream, ASIO, or Dante")
+    Viewer("**<a href="https://github.com/prefrontalcortex/dometools#overview-dome-viewer">Dome Viewer</a>**<br>Virtual Dome for Quest and Desktop")
+    P("**Projection System**<br>Dome, Planetarium, ...")
+    AV(**AV System**<br>Pixera, Vioso, Resolume, D3, ...)
+
+    Creator --> NDI --> Viewer
+    NDI --> AV
+    Creator .- n4("Alternative: Video Grabber") .-> AV
+    AV --> P
+    AV --> Viewer
+
+    style Creator stroke-width:3px
+    style Viewer stroke-width:3px
+    style P stroke-width: 3px
+    style NDI stroke-width: 0px;
+    style n4 stroke-width: 0px;
+    style AV stroke-width: 0px;
 ```
+
+## Overview: Dome Creator
+
+**Dome Creator** is a Unity package that provides you with a highly efficient realtime fulldome toolkit.   
+It comes with a camera prefab that is completely set up for interactive fulldome production out of the box.  
+
+There are two rendering modes: 
+1. **Dome Warp** – a novel single-view rendering technique that's extremely fast at viewing angles ≤180°, and 
+2. A traditional **Cubemap-based** multi-view approach that allows for very wide viewing angles (180°–360°). 
+
+Dome Creator supports all Unity Render Pipelines – **BiRP, URP, and HDRP** – and is provided as easy-to-use UPM package. 
+
+It also includes helpers to **stream both video and audio** in realtime via [NDI](https://newtek.com), ready for display on a physical dome or our virtual [Dome Viewer](#overview-dome-viewer). 
+  
+![Dome Tools – Overview](https://github.com/user-attachments/assets/10502c08-7bb5-404d-bce9-d9b46fa59a5b)
+
+## Overview: Dome Viewer
+
+**Dome Viewer** is a virtual planetarium compatible with Windows, Quest 2, 3 and more. It can play back local **video and image files**, receive **NDI streams** with audio and video, or play back local **Spout sources**.  
+The viewer is provided as Quest App download, and as executable for Windows, as well as APK download on SideQuest. It can also be modified and compiled from source.  
+
+![Dome Viewer – Overview](https://github.com/user-attachments/assets/8cda35c8-ea94-4a11-ba40-4bb600c29403)
+
 
 **Dome Creator** and **Dome Viewer** are developed and maintained by [prefrontal cortex](https://prefrontalcortex.de).  
 
