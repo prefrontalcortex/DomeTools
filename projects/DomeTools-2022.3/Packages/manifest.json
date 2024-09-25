@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.pfc.dome-tools": "file:../../../package",
-    "com.pfc.jp.keijiro.klak.ndi": "2.1.3-pfc.1",
+    "com.pfc.jp.keijiro.klak.ndi": "2.1.3-pfc.3",
     "com.unity.feature.development": "1.0.1",
     "com.unity.render-pipelines.universal": "14.0.11",
     "com.unity.textmeshpro": "3.0.6",
