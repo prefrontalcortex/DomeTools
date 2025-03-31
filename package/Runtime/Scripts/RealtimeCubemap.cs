@@ -81,7 +81,11 @@ namespace pfc.DomeTools {
                 
                 // HDRP uses the BiRP shader graph as well. HDRP would be pass 6 and requires custom matrices.
                 // See https://forum.unity.com/threads/graphics-blit-with-hdrp-shadergraph.724112/#post-8201697
+                var target = targetTexture;
+                Graphics.SetRenderTarget(targetTexture);
+                GL.Clear(true, true, Color.clear);
                 Graphics.Blit(null, targetTexture, blitMaterial, 0);
+                Graphics.SetRenderTarget(target);
             }
         }
 
