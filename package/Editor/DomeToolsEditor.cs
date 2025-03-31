@@ -172,7 +172,8 @@ namespace pfc.DomeTools
             var AudioSpatializerExpectedName = "Passthrough Spatializer (NDI)";
             var haveCustomSpatializer = AudioSettings.GetSpatializerPluginName() == AudioSpatializerExpectedName;
             var audioFullySetUp = haveOneAudioSource && audioListenerOnSender && haveCustomSpatializer;
-            
+          
+#if HAVE_NDI_PFC
             if (audioFullySetUp)
             {
                 var audioSetupType = ndiSenderInScene.audioMode.ToString();
@@ -208,6 +209,7 @@ namespace pfc.DomeTools
                     }
                 }, "Set global Audio Spatializer to \"Passthrough Spatializer (NDI)\" to send audio with the NDI stream");
             }
+#endif
 #endif
             
             EditorGUILayout.Space();
