@@ -9365,6 +9365,7 @@ MonoBehaviour:
   _audioSource: {fileID: 0}
   _createVirtualSpeakers: 1
   _resources: {fileID: 11400000, guid: 69304b86950074db7ba8caba75214004, type: 2}
+  overrideReceivedSpeakerDistances: 1
   virtualSpeakerDistances: 10
   receivedVirtualSpeakerPositionAsWorldPosition: 0
 --- !u!4 &374287693
@@ -11158,6 +11159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412145114}
+  - component: {fileID: 412145115}
   m_Layer: 0
   m_Name: 20m
   m_TagString: Untagged
@@ -11189,6 +11191,21 @@ Transform:
   m_Father: {fileID: 32781373825380335}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412145115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412145113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bfb3460717a92419ad65b812fd1642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _receiver: {fileID: 374287692}
+  _distance: 10
+  _onEnable: 1
 --- !u!1001 &414724738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42095,6 +42112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451093990}
+  - component: {fileID: 1451093991}
   m_Layer: 0
   m_Name: 12m
   m_TagString: Untagged
@@ -42127,6 +42145,21 @@ Transform:
   m_Father: {fileID: 32781373825380335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451093991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451093989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bfb3460717a92419ad65b812fd1642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _receiver: {fileID: 374287692}
+  _distance: 6
+  _onEnable: 1
 --- !u!1 &1455559859
 GameObject:
   m_ObjectHideFlags: 0
@@ -53775,6 +53808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1878322768}
+  - component: {fileID: 1878322769}
   m_Layer: 0
   m_Name: 30m
   m_TagString: Untagged
@@ -53806,6 +53840,21 @@ Transform:
   m_Father: {fileID: 32781373825380335}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878322769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878322767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bfb3460717a92419ad65b812fd1642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _receiver: {fileID: 374287692}
+  _distance: 15
+  _onEnable: 1
 --- !u!114 &1880783648 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2947400529598707299, guid: b28efc7d916fd724c99703ee995bf8a5,
