@@ -10,7 +10,7 @@
       }
     },
     "com.pfc.jp.keijiro.klak.ndi": {
-      "version": "2.1.4-pfc.4",
+      "version": "2.1.4-pfc.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
