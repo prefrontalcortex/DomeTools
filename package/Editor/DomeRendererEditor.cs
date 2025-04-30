@@ -260,7 +260,7 @@ namespace pfc.DomeTools
                 }
                 EditorGUI.BeginDisabledGroup(!canBeEdited);
                 var size = Mathf.Min(rt.width, rt.height);
-                var newSize = EditorGUILayout.IntPopup("Size", size, new[] { "128", "256", "512", "1024", "2048", "4096", "8192" }, new[] { 128, 256, 512, 1024, 2048, 4096, 8192 });
+                var newSize = EditorGUILayout.IntPopup("Size", size, new[] { "128", "256", "512", "1024", "2048", "3072", "4096", "6144", "8192" }, new[] { 128, 256, 512, 1024, 2048,3072, 4096, 6144, 8192 });
                 if (EditorGUI.EndChangeCheck())
                 {
                     rt.Release();
