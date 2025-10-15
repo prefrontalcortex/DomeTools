@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de02f9e1d18f588468e474319d09a723, type: 3}
+  m_Script: {fileID: 11500000, guid: 26665fb87b1e43f0944abcb2688aa8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderVariantLimit: 2048
-  customInterpolatorErrorThreshold: 32
-  customInterpolatorWarningThreshold: 16
+  overrideEnterPlaymode: 1
+  smartExport: 0
+  debugMode: 0
+  generateReport: 0
+  allowRunningProjectFixes: 1
+  npmSearchPathDirectories: []
+  useHotReload: 1
