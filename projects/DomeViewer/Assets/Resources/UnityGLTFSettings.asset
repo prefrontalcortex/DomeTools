@@ -104,6 +104,45 @@ MonoBehaviour:
   m_Name: GPUInstancingImport
   m_EditorClassIdentifier: 
   enabled: 1
+--- !u!114 &-4848905033368801936
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59cc7d090dc43ef86b454e445bdbf9a, type: 3}
+  m_Name: AudioExport
+  m_EditorClassIdentifier: 
+  enabled: 0
+--- !u!114 &-4123503653987766850
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3011a000a64498d8297909d5cc472a, type: 3}
+  m_Name: SpriteRendererExport
+  m_EditorClassIdentifier: 
+  enabled: 1
+--- !u!114 &-3795363353027241392
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13416558369ebcb46a99c28ceb137930, type: 3}
+  m_Name: VisualScriptingExportPlugin
+  m_EditorClassIdentifier: 
+  enabled: 0
 --- !u!114 &-3494335800018427335
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -211,6 +250,7 @@ MonoBehaviour:
   - {fileID: -1628758447132883198}
   - {fileID: 2171423826131000320}
   - {fileID: 1691456635369369575}
+  - {fileID: 9064298688674808110}
   ExportPlugins:
   - {fileID: -8056459006959432757}
   - {fileID: -6877335187719557791}
@@ -224,6 +264,9 @@ MonoBehaviour:
   - {fileID: -8029153276420162680}
   - {fileID: 2913949764372375515}
   - {fileID: -3494335800018427335}
+  - {fileID: -4848905033368801936}
+  - {fileID: -4123503653987766850}
+  - {fileID: -3795363353027241392}
   exportNames: 1
   exportFullPath: 0
   EditorExportTransformMode: 0
@@ -263,6 +306,7 @@ MonoBehaviour:
   KHR_materials_sheen: 1
   KHR_materials_pbrSpecularGlossiness: 1
   KHR_materials_emissive_strength: 1
+  KHR_materials_anisotropy: 1
 --- !u!114 &1691456635369369575
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -349,6 +393,7 @@ MonoBehaviour:
   KHR_materials_clearcoat: 1
   KHR_materials_emissive_strength: 1
   KHR_materials_sheen: 1
+  KHR_materials_anisotropy: 1
 --- !u!114 &3743401400737675736
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -388,3 +433,16 @@ MonoBehaviour:
   m_Name: TextureTransformImport
   m_EditorClassIdentifier: 
   enabled: 1
+--- !u!114 &9064298688674808110
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d106e4b0674b44e09e9c8d85ba6216df, type: 3}
+  m_Name: AudioImport
+  m_EditorClassIdentifier: 
+  enabled: 0
