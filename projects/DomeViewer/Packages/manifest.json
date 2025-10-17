@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.needle.engine-exporter": "4.11.0-beta.1",
+    "com.needle.engine-exporter": "4.11.1",
     "com.pfc.dome-tools": "file:../../../package",
     "com.pfc.jp.keijiro.klak.ndi": "2.1.4-pfc.6",
     "com.unity.2d.sprite": "1.0.0",
@@ -15,8 +15,8 @@
     "com.unity.timeline": "1.8.9",
     "com.unity.ugui": "2.0.0",
     "com.unity.xr.hands": "1.5.1",
-    "com.unity.xr.interaction.toolkit": "3.0.8",
-    "com.unity.xr.management": "https://github.com/prefrontalcortex/com.unity.xr.management.git?path=#fix-android-no-internet-permission",
+    "com.unity.xr.interaction.toolkit": "3.2.1",
+    "com.unity.xr.management": "4.5.2",
     "com.unity.xr.oculus": "4.5.2",
     "com.unity.xr.openxr": "1.15.1",
     "jp.keijiro.klak.spout": "2.0.3",
