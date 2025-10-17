@@ -27,6 +27,12 @@ public class AudioListenerSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
+        if(!vrMode || !desktopMode)
+        {
+            Debug.LogWarning("AudioListenerSwitcher: One or both AudioListeners are not assigned.", this);
+            return;
+        }
+            
         vrTransform = vrMode.transform;
         desktopTransform = desktopMode.transform;
         
