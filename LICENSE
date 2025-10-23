@@ -19,3 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Additional Licensing Information
+
+This repository also includes certain image and test pattern files that are **not** covered by the MIT License.
+
+Each of these media files retains its own license or copyright, as noted in `CREDITS.md`.
+
+- The MIT License applies only to the code and non-media assets explicitly created by prefrontal cortex.
+- For details on third-party files, references, and external licenses, consult the `CREDITS.md` file included in this repository.
