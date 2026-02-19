@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 38e052ca7fd05954aad17306f599bdfb
+labels:
+- ExportShader
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
