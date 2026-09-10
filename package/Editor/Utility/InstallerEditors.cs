@@ -8,12 +8,18 @@ namespace pfc.DomeTools
     public class InstallNDIPackageEditor : Editor
     {
         // This is the prefrontal cortex fork with NDI Audio support.
-        private const string KlakNdiForkVersion = "2.1.3-pfc.1";
+        private const string KlakNdiForkVersion = "2.1.3-pfc.3";
         
         public override void OnInspectorGUI()
         {
-#if HAVE_NDI
+#if HAVE_NDI_PFC
             Utils.DrawCheck("NDI (com.pfc.jp.keijiro.klak.ndi) is installed.");
+#elif HAVE_NDI
+            EditorGUILayout.HelpBox("The standard KlakNDI package supports video only. Dome Tools requires its audio-enabled KlakNDI fork for NDI audio output.", MessageType.Warning);
+            if (GUILayout.Button("Replace with NDI Audio Package"))
+            {
+                Install();
+            }
 #else
             EditorGUILayout.HelpBox("Sending the dome texture over the network requires the NDI package. Install it with the button below or using Package Manager.", MessageType.Info);
             if (GUILayout.Button("Install NDI Package"))
@@ -25,11 +31,9 @@ namespace pfc.DomeTools
 
         public static void Install()
         {
-            if(!ManifestUtility.CheckIfScopedRegistryAvailable("org.nuget.system")) 
-                ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system");
-            if(!ManifestUtility.CheckIfScopedRegistryAvailable("com.pfc.jp.keijiro.klak.ndi")) 
-                ManifestUtility.AddScopedRegistry("OpenUPM", "https://package.openupm.com", "com.pfc.jp.keijiro.klak.ndi");
-            ManifestUtility.AddPackage("com.pfc.jp.keijiro.klak.ndi", KlakNdiForkVersion);
+            ManifestUtility.AddScopedRegistry("OpenUPM","https://package.openupm.com","org.nuget.system", false);
+            ManifestUtility.AddScopedRegistry("OpenUPM", "https://package.openupm.com", "com.pfc.jp.keijiro.klak.ndi", false);
+            ManifestUtility.AddOrReplacePackage("com.pfc.jp.keijiro.klak.ndi", KlakNdiForkVersion, "jp.keijiro.klak.ndi");
         }
     }
     
