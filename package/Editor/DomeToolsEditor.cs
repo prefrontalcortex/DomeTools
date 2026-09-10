@@ -165,7 +165,7 @@ namespace pfc.DomeTools
 
             EditorGUILayout.Space();
             GUILayout.Label("NDI Audio Output".ToUpper(), EditorStyles.miniBoldLabel);
-#if HAVE_NDI
+#if HAVE_NDI_PFC
             var haveOneAudioSource = audioListenersInScene.Length == 1;
             var audioListenerOnSender = ndiSenderInScene && ndiSenderInScene.GetComponent<AudioListener>();
             // check project settings
@@ -173,7 +173,6 @@ namespace pfc.DomeTools
             var haveCustomSpatializer = AudioSettings.GetSpatializerPluginName() == AudioSpatializerExpectedName;
             var audioFullySetUp = haveOneAudioSource && audioListenerOnSender && haveCustomSpatializer;
           
-#if HAVE_NDI_PFC
             if (audioFullySetUp)
             {
                 var audioSetupType = ndiSenderInScene.audioMode.ToString();
@@ -209,7 +208,14 @@ namespace pfc.DomeTools
                     }
                 }, "Set global Audio Spatializer to \"Passthrough Spatializer (NDI)\" to send audio with the NDI stream");
             }
-#endif
+#elif HAVE_NDI
+            Utils.DrawCheck("The installed KlakNDI package does not include NDI audio support", false,
+                InstallNDIPackageEditor.Install,
+                "Replace the standard KlakNDI package with the Dome Tools audio-enabled fork",
+                "Replace");
+#else
+            Utils.DrawCheck("NDI Package is not installed", false, InstallNDIPackageEditor.Install,
+                "Install the audio-enabled KlakNDI package for NDI video and audio output.");
 #endif
             
             EditorGUILayout.Space();
