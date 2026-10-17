@@ -50,17 +50,42 @@ namespace pfc.DomeTools {
                 cubemap.Create();
             }
             
-            // Render all faces
-            var mask = 63;
-            // exclude bottom if possible. This is a rough number since there's also a bit of antialiasing etc going on
-            if (viewAngle <= 250)
-                mask &= ~(1 << (int)CubemapFace.NegativeY);
-            c.RenderToCubemap(cubemap, mask, Camera.MonoOrStereoscopicEye.Mono);
+            c.RenderToCubemap(cubemap, GetFaceMask(), Camera.MonoOrStereoscopicEye.Mono);
             targetTexture.IncrementUpdateCount();
 
             StartCoroutine(_BlitAtEndOfFrame());
         }
         
+        // Largest angle between a cube face normal and any direction on that face (the face corners).
+        private const float FaceHalfAngle = 54.7356f;
+        // Extra margin for filtering / antialiasing at the edge of the visible area.
+        private const float FaceMargin = 3f;
+
+        private static readonly (CubemapFace face, Vector3 normal)[] Faces =
+        {
+            (CubemapFace.PositiveX, Vector3.right),
+            (CubemapFace.NegativeX, Vector3.left),
+            (CubemapFace.PositiveY, Vector3.up),
+            (CubemapFace.NegativeY, Vector3.down),
+            (CubemapFace.PositiveZ, Vector3.forward),
+            (CubemapFace.NegativeZ, Vector3.back),
+        };
+
+        // The dome center looks along the local up axis of this transform (see UVToDirection in DomemasterInclude.cginc)
+        // and covers viewAngle / 2 around it. Only render the faces that are at least partly inside that cone.
+        private int GetFaceMask()
+        {
+            var halfAngle = viewAngle * 0.5f;
+            var axis = transform.rotation * Vector3.up;
+            var mask = 0;
+            foreach (var (face, normal) in Faces)
+            {
+                if (Vector3.Angle(axis, normal) - FaceHalfAngle - FaceMargin <= halfAngle)
+                    mask |= 1 << (int)face;
+            }
+            return mask;
+        }
+
         IEnumerator _BlitAtEndOfFrame()
         {
             yield return new WaitForEndOfFrame();
