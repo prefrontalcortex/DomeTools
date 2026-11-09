@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - Fix missing hands on Windows standalone by removing hand tracking modules there
 - Update manifest and project settings to meet Meta Store requirements
 - Add domemaster test image with directions
+- Add cursor keys to movement (#35)
+- Fix artifacts on the seat texture (#36)
+- Fix loading jpg / png images on Quest (#48)
+- Remove unused Needle Engine exporter package and an unused XR Controls prefab
 
 ## [1.1.0] - 2024-04-09
 - Add support for demo assets on Quest builds
