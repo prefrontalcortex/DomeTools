@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.needle.engine-exporter": "4.11.1",
     "com.pfc.dome-tools": "file:../../../package",
     "com.pfc.jp.keijiro.klak.ndi": "2.1.4-pfc.6",
     "com.unity.2d.sprite": "1.0.0",
@@ -70,14 +69,6 @@
       "scopes": [
         "com.pfc.jp.keijiro.klak.ndi",
         "org.nuget.system"
-      ]
-    },
-    {
-      "name": "needle",
-      "url": "https://packages.needle.tools",
-      "scopes": [
-        "com.needle",
-        "org.khronos"
       ]
     }
   ]
