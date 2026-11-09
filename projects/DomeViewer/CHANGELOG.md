@@ -2,6 +2,14 @@
 All notable changes to this package will be documented in this file.\
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-11-09
+- Update to Unity 6000.3 LTS, update XR packages and fix XR controller assets so VR controllers work again
+- Update NDI to 2.1.4 (pfc build) with audio support and Android receiving fixes
+- Add audio listener switching between VR and desktop, and set speaker distance based on dome size
+- Fix missing hands on Windows standalone by removing hand tracking modules there
+- Update manifest and project settings to meet Meta Store requirements
+- Add domemaster test image with directions
+
 ## [1.1.0] - 2024-04-09
 - Add support for demo assets on Quest builds
 - Add dithering when viewing miniature dome from below for clearer visibility
