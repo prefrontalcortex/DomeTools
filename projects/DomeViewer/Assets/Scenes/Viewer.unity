@@ -53972,7 +53972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: pfc.Fulldome.XRButtonRelay, pfc.Fulldome.Viewer
   node: 4
   buttons:
-  - button: 1
+  - button: 4
     threshold: 0.3
     OnDown:
       m_PersistentCalls:
