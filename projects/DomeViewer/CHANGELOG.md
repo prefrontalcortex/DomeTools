@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - Fix artifacts on the seat texture (#36)
 - Fix loading jpg / png images on Quest (#48)
 - Remove unused Needle Engine exporter package and an unused XR Controls prefab
+- Fix teleporting with controllers and bring back teleporting with hand tracking in the new XR rig
+- Fix the menu opening on grip instead of the left menu button
+- NDI sources are now discovered automatically (list updates every 3 seconds)
+- Local media: only list formats the device can play on Quest, and reset the selection when a file fails to load
 
 ## [1.1.0] - 2024-04-09
 - Add support for demo assets on Quest builds
