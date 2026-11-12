@@ -102,11 +102,11 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _GI_Amount: 5
+    - _GI_Amount: 4.33
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LOD: 10
+    - _LOD: 8.5
     - _Metallic: 0.271
     - _OcclusionStrength: 1
     - _Parallax: 0.005
