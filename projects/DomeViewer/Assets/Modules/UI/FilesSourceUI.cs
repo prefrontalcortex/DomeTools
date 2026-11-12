@@ -27,8 +27,14 @@ namespace pfc.Fulldome
         public VideoPlayer videoPlayer;
         public SetImageTexture imagePlayer;
         
+#if UNITY_ANDROID
+        // Only list formats that Android / Quest can actually decode.
+        private static string[] videoExtensions = {".mp4", ".mov"};
+        private static string[] imageExtensions = {".png", ".jpg", ".jpeg"};
+#else
         private static string[] videoExtensions = {".mp4", ".mov", ".avi", ".wmv", ".mkv"};
         private static string[] imageExtensions = {".png", ".jpg", ".jpeg", ".bmp", ".gif", ".tiff"};
+#endif
         private static List<string> extensions = videoExtensions.Concat(imageExtensions).ToList();
       
         private static string userAssetsPath => Application.persistentDataPath;
@@ -85,9 +91,26 @@ namespace pfc.Fulldome
                 }
                 else
                 {
+                    // The selected file is gone: show "None" and stop playing it.
                     dropdown.SetValueWithoutNotify(0);
+                    if (MediaSourceSelectionContainer.currentSelection.path == currentPath)
+                        MediaSourceSelectionContainer.Deselect();
                 }
             }
+        }
+
+        // A file that cannot be played is reset to "None" so the UI doesn't pretend it is playing.
+        private void FailSelection(string path, string reason)
+        {
+            Debug.LogWarning($"Could not play {path}: {reason}");
+            if (MediaSourceSelectionContainer.currentSelection.path != path) return;
+            if (dropdown) dropdown.SetValueWithoutNotify(0);
+            MediaSourceSelectionContainer.Deselect();
+        }
+
+        private void OnVideoError(VideoPlayer source, string message)
+        {
+            FailSelection(MediaSourceSelectionContainer.currentSelection.path, message);
         }
 
         private void OnApplicationFocus(bool hasFocus)
@@ -101,11 +124,15 @@ namespace pfc.Fulldome
         {
             dropdown = GetComponentInChildren<Dropdown>();
             dropdown.onValueChanged.AddListener(ActivateObjectFromIndex);
+            if (videoPlayer) videoPlayer.errorReceived += OnVideoError;
+            if (imagePlayer) imagePlayer.LoadFailed += FailSelection;
         }
 
         private void OnDisable()
         {
             dropdown.onValueChanged.RemoveListener(ActivateObjectFromIndex);
+            if (videoPlayer) videoPlayer.errorReceived -= OnVideoError;
+            if (imagePlayer) imagePlayer.LoadFailed -= FailSelection;
         }
         
         private void ActivateObjectFromIndex(int index)
@@ -172,7 +199,17 @@ namespace pfc.Fulldome
                     });
                 }
             }
-            foreach(var dir in Directory.GetDirectories(path))
+            string[] directories;
+            try
+            {
+                directories = Directory.GetDirectories(path);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Could not get folders from {path}: {e.Message}");
+                return eligibleFiles;
+            }
+            foreach(var dir in directories)
             {
                 eligibleFiles.AddRange(GetEligibleFiles(type, rootPath, dir, eligibleExtensions));
             }
