@@ -42,16 +42,21 @@ namespace pfc.Fulldome
         
         private IEnumerator LoadTexture()
         {
-            var request = UnityWebRequestTexture.GetTexture(path);
+            // Local files need the file:// scheme, otherwise UnityWebRequest treats the path as a host (fails on Android).
+            var url = path.Contains("://") ? path : $"file://{path}";
+            using var request = UnityWebRequestTexture.GetTexture(url);
             yield return request.SendWebRequest();
             if (request.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"Failed to load texture from {path}: {request.error}");
+                Debug.LogError($"Failed to load texture from {url}: {request.error}");
                 yield break;
             }
             
             var tex = DownloadHandlerTexture.GetContent(request);
             Graphics.Blit(tex, target);
+            // the render texture holds a copy now, free the downloaded one
+            if (Application.isPlaying) Destroy(tex);
+            else DestroyImmediate(tex);
         }
     }
 

@@ -1,0 +1,21 @@
+{
+    "name": "Unity.XR.Hands.Samples.Gestures.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:dc960734dc080426fa6612f1c5fe95f3",
+        "GUID:4ddd23ea56a3a40f0aa0036d1624a53e",
+        "GUID:ce522b6ed64c8be4c989a1d26d0e3275",
+        "GUID:43e9109b8cf6eec438823b2311391706"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
