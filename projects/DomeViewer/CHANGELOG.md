@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - Fix the menu opening on grip instead of the left menu button
 - NDI sources are now discovered automatically (list updates every 3 seconds)
 - Local media: only list formats the device can play on Quest, and reset the selection when a file fails to load
+- Quest: add "Open file from this device…" to the Media list. It opens the system file picker, so videos and images can be played from any folder on the headset without extra permissions
 
 ## [1.1.0] - 2024-04-09
 - Add support for demo assets on Quest builds

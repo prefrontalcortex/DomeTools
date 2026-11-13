@@ -1,0 +1,25 @@
+// Resource-only Android library: provides res/xml/domeviewer_network_security.xml,
+// which the main AndroidManifest.xml references as its network security config.
+apply plugin: 'com.android.library'
+
+android {
+    namespace "com.prefrontalcortex.domeviewer.network"
+    compileSdk((project.findProperty("unity.compileSdkVersion") ?: 32) as int)
+    buildToolsVersion = project.findProperty("unity.buildToolsVersion") ?: "36.0.0"
+
+    defaultConfig {
+        minSdk((project.findProperty("unity.minSdkVersion") ?: 30) as int)
+        targetSdk((project.findProperty("unity.targetSdkVersion") ?: 32) as int)
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            res.srcDirs = ['res']
+        }
+    }
+}

@@ -159,6 +159,13 @@ The desktop version supports both **Screen usage** and **VR usage** with **hands
 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
 
+### Playing your own videos and images on Quest
+Open the menu with the **menu button on the left controller**, then use the **Media** dropdown:
+- **Open file from this device…** opens the system file picker. Copy your files to any folder on the headset first (for example `Movies`, `Pictures` or `Download` via USB), then pick them there. Videos start right away, they are not copied.
+- Alternatively, copy files to `Android/data/com.prefrontalcortex.virtualdome/files` on the headset. They show up in the Media list directly.
+
+Supported on Quest: `.mp4` and `.mov` videos, `.png` and `.jpg` images, in Dome Master (1:1) format.  
+
 [👉 Learn more about using Dome Viewer.](#dome-viewer)
 
 # Dome Creator
