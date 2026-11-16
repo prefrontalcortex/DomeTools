@@ -99,7 +99,8 @@ namespace pfc.Fulldome
         private void FOV(Vector2 value, float deltaTime)
         {
             if (!isActiveAndEnabled) return;
-            targetZoomAmoumt -= value.y * zoomMultiplier * deltaTime;
+            // The mouse wheel reports 1 per notch now instead of 120, see DesktopController.ScrollUnitsPerNotch.
+            targetZoomAmoumt -= value.y * DesktopController.ScrollUnitsPerNotch * zoomMultiplier * deltaTime;
             targetZoomAmoumt = Mathf.Clamp(targetZoomAmoumt, 0, 1);
             endSmoothZoomTime = Time.fixedTime + 1.0f;
             if (smoothZoomCoroutine == null) smoothZoomCoroutine = StartCoroutine(LerpZoom());

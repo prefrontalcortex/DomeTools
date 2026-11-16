@@ -32,13 +32,17 @@ namespace pfc.Fulldome
         private Coroutine smoothZoomCoroutine = null;
         public Vector2 rotationLimit = new Vector2(-85,85);
 
+        // Since Input System 1.11 the mouse wheel reports 1 per notch on all platforms (it was 120 on
+        // Windows). fovMultiplier was tuned for the old range, so scale the value back up.
+        internal const float ScrollUnitsPerNotch = 120f;
+
         private void FOV(Vector2 value)
         {
             if (!isActiveAndEnabled || FirstPersonCamera == null) return;
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //add lerp in coroutine to smooth out the zoom
-            targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * fovMultiplier, fovMinMax.x, fovMinMax.y);
+            targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * ScrollUnitsPerNotch * fovMultiplier, fovMinMax.x, fovMinMax.y);
             endSmoothZoomTime = Time.time + 1.0f;
             if (smoothZoomCoroutine == null) 
                 smoothZoomCoroutine = StartCoroutine(SmoothZoom());
