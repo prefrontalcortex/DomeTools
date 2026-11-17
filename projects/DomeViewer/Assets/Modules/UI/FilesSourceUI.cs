@@ -27,13 +27,23 @@ namespace pfc.Fulldome
         public VideoPlayer videoPlayer;
         public SetImageTexture imagePlayer;
         
+#if UNITY_ANDROID
+        // Only list formats that Android / Quest can actually decode.
+        private static string[] videoExtensions = {".mp4", ".mov"};
+        private static string[] imageExtensions = {".png", ".jpg", ".jpeg"};
+#else
         private static string[] videoExtensions = {".mp4", ".mov", ".avi", ".wmv", ".mkv"};
         private static string[] imageExtensions = {".png", ".jpg", ".jpeg", ".bmp", ".gif", ".tiff"};
+#endif
         private static List<string> extensions = videoExtensions.Concat(imageExtensions).ToList();
       
         private static string userAssetsPath => Application.persistentDataPath;
         private const string UserAssetKey = "pfc-open-persistent-data-path";
-        
+        private const string PickFileKey = "pfc-pick-file";
+
+        // Files chosen with the system file picker in this session (absolutePath is a content:// uri).
+        private static readonly List<FileEntry> pickedFiles = new List<FileEntry>();
+
         private void Start()
         {
             CollectFilesAndFillDropdown();
@@ -55,7 +65,12 @@ namespace pfc.Fulldome
                 .ToList();
             
             files.Add(new FileEntry() { type = null, displayName = "Place assets in " + Application.persistentDataPath, absolutePath = UserAssetKey });
-            
+            if (AndroidFilePicker.IsSupported)
+            {
+                files.Add(new FileEntry() { type = null, displayName = "Open file from this device…", absolutePath = PickFileKey });
+                files.AddRange(pickedFiles);
+            }
+
             // restore absolute path on this platform
             var streamingAssetsData = GetStreamingAssets();
             foreach (var f in streamingAssetsData)
@@ -85,9 +100,140 @@ namespace pfc.Fulldome
                 }
                 else
                 {
+                    // The selected file is gone: show "None" and stop playing it.
                     dropdown.SetValueWithoutNotify(0);
+                    if (MediaSourceSelectionContainer.currentSelection.path == currentPath)
+                        MediaSourceSelectionContainer.Deselect();
                 }
             }
+        }
+
+        // A file that cannot be played is reset to "None" so the UI doesn't pretend it is playing.
+        private void FailSelection(string path, string reason)
+        {
+            Debug.LogWarning($"Could not play {path}: {reason}");
+            if (MediaSourceSelectionContainer.currentSelection.path != path) return;
+            if (dropdown) dropdown.SetValueWithoutNotify(0);
+            MediaSourceSelectionContainer.Deselect();
+        }
+
+        private void OnVideoError(VideoPlayer source, string message)
+        {
+            if (pickedVideo != null)
+            {
+                Debug.LogWarning($"Playing {pickedVideo.displayName} failed (attempt {pickedVideoAttempt}): {message}");
+                PlayPickedVideo(pickedVideoAttempt + 1);
+                return;
+            }
+            FailSelection(MediaSourceSelectionContainer.currentSelection.path, message);
+        }
+
+        // --- Files chosen with the Android system file picker -------------------------------------
+
+        private FileEntry pickedVideo;
+        private int pickedVideoAttempt;
+
+        private void SelectInDropdown(string path)
+        {
+            var index = dropdown.options.FindIndex(f => (f as FileOptionData)?.absolutePath == path);
+            dropdown.SetValueWithoutNotify(Mathf.Max(index, 0));
+            dropdown.RefreshShownValue();
+        }
+
+        private void OnFilePicked(string uri, string name)
+        {
+            Log($"Picked {name} ({uri})");
+            var entry = pickedFiles.Find(f => f.absolutePath == uri);
+            if (entry == null)
+            {
+                entry = new FileEntry { type = "Device", displayName = name, absolutePath = uri };
+                pickedFiles.Add(entry);
+            }
+            CollectFilesAndFillDropdown();
+            SelectInDropdown(uri);
+            ActivatePickedFile(entry);
+        }
+
+        private void OnFilePickFailed(string reason)
+        {
+            if (reason != null) Debug.LogWarning($"Could not open the file picker: {reason}");
+            // Cancelled or failed: show what is actually playing again.
+            SelectInDropdown(MediaSourceSelectionContainer.currentSelection.path);
+        }
+
+        private void ActivatePickedFile(FileEntry entry)
+        {
+            var ext = Path.GetExtension(entry.displayName).ToLower();
+            if (videoExtensions.Contains(ext))
+            {
+                pickedVideo = entry;
+                MediaSourceSelectionContainer.SetSelection(videoPlayer.gameObject, entry.absolutePath);
+                PlayPickedVideo(0);
+            }
+            else if (imageExtensions.Contains(ext))
+            {
+                pickedVideo = null;
+                AndroidFilePicker.CopyToCache(entry.absolutePath, entry.displayName, (file, _) =>
+                {
+                    imagePlayer.path = file;
+                    MediaSourceSelectionContainer.SetSelection(imagePlayer.gameObject, entry.absolutePath);
+                    imagePlayer.Set();
+                }, reason => FailSelection(entry.absolutePath, reason));
+            }
+            else
+            {
+                FailSelection(entry.absolutePath, $"unsupported file type '{ext}'");
+                SelectInDropdown(MediaSourceSelectionContainer.currentSelection.path);
+            }
+        }
+
+        // The video player cannot open content:// uris (tested on Quest 3, Unity 6000.3), so the file is
+        // streamed from a local http server, which starts at once even for very large files.
+        // 0 = local stream, 1 = copy into the app cache as a fallback.
+        private void PlayPickedVideo(int attempt)
+        {
+            var entry = pickedVideo;
+            pickedVideoAttempt = attempt;
+            switch (attempt)
+            {
+                case 0:
+                    var stream = AndroidFilePicker.Serve(entry.absolutePath, entry.displayName);
+                    if (stream == null) PlayPickedVideo(1);
+                    else StartVideo(stream);
+                    break;
+                case 1:
+                    Debug.Log($"Copying {entry.displayName} into the app cache");
+                    AndroidFilePicker.CopyToCache(entry.absolutePath, entry.displayName, (file, _) =>
+                    {
+                        if (pickedVideo == entry) StartVideo($"file://{file}");
+                    }, reason => { pickedVideo = null; FailSelection(entry.absolutePath, reason); });
+                    break;
+                default:
+                    pickedVideo = null;
+                    FailSelection(entry.absolutePath, "the video could not be played");
+                    break;
+            }
+        }
+
+        private void StartVideo(string url)
+        {
+            videoPlayer.Stop();
+            videoPlayer.url = url;
+            videoPlayer.Play();
+            if (!isActiveAndEnabled) return;
+            StopCoroutine(nameof(WatchPickedVideo));
+            StartCoroutine(nameof(WatchPickedVideo));
+        }
+
+        // Some failures never raise errorReceived: move on if the video isn't prepared after a while.
+        private System.Collections.IEnumerator WatchPickedVideo()
+        {
+            var attempt = pickedVideoAttempt;
+            var entry = pickedVideo;
+            yield return new WaitForSecondsRealtime(10f);
+            if (pickedVideo != entry || pickedVideoAttempt != attempt || videoPlayer.isPrepared) yield break;
+            Debug.LogWarning($"Playing {entry.displayName} timed out (attempt {attempt})");
+            PlayPickedVideo(attempt + 1);
         }
 
         private void OnApplicationFocus(bool hasFocus)
@@ -101,11 +247,15 @@ namespace pfc.Fulldome
         {
             dropdown = GetComponentInChildren<Dropdown>();
             dropdown.onValueChanged.AddListener(ActivateObjectFromIndex);
+            if (videoPlayer) videoPlayer.errorReceived += OnVideoError;
+            if (imagePlayer) imagePlayer.LoadFailed += FailSelection;
         }
 
         private void OnDisable()
         {
             dropdown.onValueChanged.RemoveListener(ActivateObjectFromIndex);
+            if (videoPlayer) videoPlayer.errorReceived -= OnVideoError;
+            if (imagePlayer) imagePlayer.LoadFailed -= FailSelection;
         }
         
         private void ActivateObjectFromIndex(int index)
@@ -128,10 +278,24 @@ namespace pfc.Fulldome
                 Application.OpenURL(userAssetsPath);
                 return;
             }
-            
+
+            if (path == PickFileKey)
+            {
+                AndroidFilePicker.Pick(new[] {"video/*", "image/*"}, OnFilePicked, OnFilePickFailed);
+                return;
+            }
+
+            var picked = pickedFiles.Find(f => f.absolutePath == path);
+            if (picked != null)
+            {
+                ActivatePickedFile(picked);
+                return;
+            }
+
             var ext = Path.GetExtension(path).ToLower();
             if (videoExtensions.Contains(ext))
             {
+                pickedVideo = null;
                 videoPlayer.url = $"file://{path}";
                 MediaSourceSelectionContainer.SetSelection(videoPlayer.gameObject, path);
                 videoPlayer.Play();
@@ -172,7 +336,17 @@ namespace pfc.Fulldome
                     });
                 }
             }
-            foreach(var dir in Directory.GetDirectories(path))
+            string[] directories;
+            try
+            {
+                directories = Directory.GetDirectories(path);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Could not get folders from {path}: {e.Message}");
+                return eligibleFiles;
+            }
+            foreach(var dir in directories)
             {
                 eligibleFiles.AddRange(GetEligibleFiles(type, rootPath, dir, eligibleExtensions));
             }

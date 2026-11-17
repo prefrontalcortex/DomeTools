@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 10
 --- !u!114 &-2129313374281378119
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -50,7 +50,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Boat2Bake
-  m_Shader: {fileID: -6465566751694194690, guid: 0e67c58a5c957d543b79e73db2053af7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0e67c58a5c957d543b79e73db2053af7,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -355,3 +356,4 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

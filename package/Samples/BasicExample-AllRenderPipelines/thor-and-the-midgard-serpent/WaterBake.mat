@@ -37,7 +37,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterBake
-  m_Shader: {fileID: -6465566751694194690, guid: 0e67c58a5c957d543b79e73db2053af7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0e67c58a5c957d543b79e73db2053af7,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -48,7 +49,7 @@ Material:
   - _EMISSION
   - _ENABLE_FOG_ON_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -233,6 +234,7 @@ Material:
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
+    - _DstBlendAlpha: 10
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -291,6 +293,7 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
@@ -333,7 +336,8 @@ Material:
     - _BaseColor: {r: 0.3910199, g: 0.70545685, b: 0.95283014, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.39101988, g: 0.70545685, b: 0.95283014, a: 0}
-    - _DiffusionProfileAsset: {r: 0.00000000598493, g: 0.0000002428073, b: 5768.1367, a: -41913748}
+    - _DiffusionProfileAsset: {r: 0.00000000598493, g: 0.0000002428073, b: 5768.1367,
+        a: -41913748}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0.32156858, g: 0.5882353, b: 0.74901956, a: 1}
@@ -347,6 +351,7 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &2616365113119406144
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -359,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 10
 --- !u!114 &8739219413828049535
 MonoBehaviour:
   m_ObjectHideFlags: 11

@@ -32,13 +32,19 @@ namespace pfc.Fulldome
         private Coroutine smoothZoomCoroutine = null;
         public Vector2 rotationLimit = new Vector2(-85,85);
 
+        // Since Input System 1.11 the mouse wheel reports 1 per notch on all platforms (it was 120 on
+        // Windows). fovMultiplier was tuned for the old range, so scale the value back up.
+        internal const float ScrollUnitsPerNotch = 120f;
+
         private void FOV(Vector2 value)
         {
             if (!isActiveAndEnabled || FirstPersonCamera == null) return;
+            // Update calls this every frame. Without input, resetting targetFov would cancel the running smooth zoom.
+            if (Mathf.Approximately(value.y, 0f)) return;
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //add lerp in coroutine to smooth out the zoom
-            targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * fovMultiplier, fovMinMax.x, fovMinMax.y);
+            targetFov = Mathf.Clamp(FirstPersonCamera.fieldOfView - value.y * ScrollUnitsPerNotch * fovMultiplier, fovMinMax.x, fovMinMax.y);
             endSmoothZoomTime = Time.time + 1.0f;
             if (smoothZoomCoroutine == null) 
                 smoothZoomCoroutine = StartCoroutine(SmoothZoom());
@@ -46,7 +52,7 @@ namespace pfc.Fulldome
 
         private IEnumerator SmoothZoom()
         {
-            while (Time.time < endSmoothZoomTime)
+            while (Time.time < endSmoothZoomTime && Mathf.Abs(FirstPersonCamera.fieldOfView - targetFov) > 0.01f)
             {
                 float currentFOV = FirstPersonCamera.fieldOfView;
                 FirstPersonCamera.fieldOfView = Mathf.Clamp(Mathf.Lerp(currentFOV, targetFov, fovLerpSpeed * Time.deltaTime), fovMinMax.x, fovMinMax.y);
@@ -55,6 +61,23 @@ namespace pfc.Fulldome
 
             FirstPersonCamera.fieldOfView = targetFov;
             smoothZoomCoroutine = null;
+        }
+
+        private void OnDisable()
+        {
+            // Deactivating the GameObject (switching to the miniature view) stops the coroutine without
+            // clearing the handle, after that FOV() would never start a new one.
+            if (smoothZoomCoroutine != null) StopCoroutine(smoothZoomCoroutine);
+            smoothZoomCoroutine = null;
+            if (FirstPersonCamera != null && targetFov > 0) FirstPersonCamera.fieldOfView = targetFov;
+            fovBuffer = lookBuffer = Vector2.zero;
+            canLook = false;
+        }
+
+        private void OnEnable()
+        {
+            // The input callbacks keep filling the buffers while this object is inactive.
+            fovBuffer = lookBuffer = Vector2.zero;
         }
 
         private void Start()

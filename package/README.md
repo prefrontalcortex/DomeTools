@@ -63,7 +63,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 
 1. **Add Dome Creator to your project.**
    Add the Dome Creator package to your Unity project using the installer:    
-   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
+   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.needle.tools/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
 
 2. **Add the "Dome Tools" prefab to your scene.**  
    You can find the prefab under `Packages / pfc Dome Tools / Runtime / Dome Creator`.  
@@ -88,7 +88,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 Typically, you will use the **Dome Creator** package in your Unity project, and start the **Dome Viewer** app on Quest 2/3 in the same local network. Once you're ready, the same NDI stream can be received by many planetarium AV systems directly – in realtime. 
 
 ## Download Dome Creator
-[Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
+[Download Dome Creator for Unity – Package Installer 📦](https://package-installer.needle.tools/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
 <details>
 <summary><strong>Manual installation instructions</strong></summary>

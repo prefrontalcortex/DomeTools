@@ -25,11 +25,18 @@ namespace pfc.Fulldome
         private void OnEnable()
         {
             ExternalCamera.gameObject.SetActive(true);
+            // The input callbacks keep filling the buffers while this object is inactive.
+            lookBuffer = fovBuffer = Vector2.zero;
         }
 
         private void OnDisable()
         {
             ExternalCamera.gameObject.SetActive(false);
+            // Deactivating stops the coroutine without clearing the handle, after that FOV() would never
+            // start a new one and zooming in the miniature view would stop working.
+            if (smoothZoomCoroutine != null) StopCoroutine(smoothZoomCoroutine);
+            smoothZoomCoroutine = null;
+            canLook = false;
         }
 
         private void Start()
@@ -87,21 +94,23 @@ namespace pfc.Fulldome
             transform.position = pos + (isOK ? finaLocalOffset : localOffset);
             transform.LookAt(pos + new Vector3(0, zoomAmountToFocusOffset.Evaluate(zoomAmount), 0));
             
-            // stop the smooth zoom coroutine if we're rotating,
-            // otherwise we're getting conflicting behaviour. Better would be one update loop applying both. 
-            if (smoothZoomCoroutine != null)
-            {
-                StopCoroutine(smoothZoomCoroutine);
-                smoothZoomCoroutine = null;
-            }
+            // The camera follows this transform in LerpZoom, so keep it running while orbiting.
+            EnsureCameraFollows();
         }
         
         private void FOV(Vector2 value, float deltaTime)
         {
             if (!isActiveAndEnabled) return;
-            targetZoomAmoumt -= value.y * zoomMultiplier * deltaTime;
+            if (Mathf.Approximately(value.y, 0f)) return;
+            // The mouse wheel reports 1 per notch now instead of 120, see DesktopController.ScrollUnitsPerNotch.
+            targetZoomAmoumt -= value.y * DesktopController.ScrollUnitsPerNotch * zoomMultiplier * deltaTime;
             targetZoomAmoumt = Mathf.Clamp(targetZoomAmoumt, 0, 1);
-            endSmoothZoomTime = Time.fixedTime + 1.0f;
+            EnsureCameraFollows();
+        }
+
+        private void EnsureCameraFollows()
+        {
+            endSmoothZoomTime = Time.time + 1.0f;
             if (smoothZoomCoroutine == null) smoothZoomCoroutine = StartCoroutine(LerpZoom());
         }
 

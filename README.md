@@ -63,7 +63,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 
 1. **Add Dome Creator to your project.**
    Add the Dome Creator package to your Unity project using the installer:    
-   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
+   [Download Dome Creator for Unity – Package Installer 📦](https://package-installer.needle.tools/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)
 
 2. **Add the "Dome Tools" prefab to your scene.**  
    You can find the prefab under `Packages / pfc Dome Tools / Runtime / Dome Creator`.  
@@ -88,7 +88,7 @@ Use **Dome Creator** to produce real-time, interactive fulldome content. Stream 
 Typically, you will use the **Dome Creator** package in your Unity project, and start the **Dome Viewer** app on Quest 2/3 in the same local network. Once you're ready, the same NDI stream can be received by many planetarium AV systems directly – in realtime. 
 
 ## Download Dome Creator
-[Download Dome Creator for Unity – Package Installer 📦](https://package-installer.glitch.me/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
+[Download Dome Creator for Unity – Package Installer 📦](https://package-installer.needle.tools/v1/installer/OpenUPM/com.pfc.dome-tools?registry=https://package.openupm.com)  
 
 <details>
 <summary><strong>Manual installation instructions</strong></summary>
@@ -149,7 +149,7 @@ Then open Package Manager and install the package `com.pfc.dome-tools` by name.
 [👉 Learn more about using Dome Creator.](#dome-creator)
 
 ## Download Dome Viewer
-- [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/release%2F1.1.1-Applab-Release)  
+- [Download Dome Viewer for Windows](https://github.com/prefrontalcortex/DomeTools/releases/tag/viewer%2F1.5.0-r25)  
 - [Download Dome Viewer for Quest 2/3/Pro from App Lab](https://www.meta.com/experiences/4747161018651543/)    
 - [Dome Viewer on SideQuest](https://sidequestvr.com/app/34419/dome-viewer)   
 
@@ -158,6 +158,13 @@ The Viewer supports **Windows** (with and without VR), **Quest 2/3/Pro**, and **
 The desktop version supports both **Screen usage** and **VR usage** with **hands or controllers**.  
 
 For VR support on Windows, use an **OpenXR-compatible headset and runtime** (for example, headsets supported by the Oculus App or Steam VR).  
+
+### Playing your own videos and images on Quest
+Open the menu with the **menu button on the left controller**, then use the **Media** dropdown:
+- **Open file from this device…** opens the system file picker. Copy your files to any folder on the headset first (for example `Movies`, `Pictures` or `Download` via USB), then pick them there. Videos start right away, they are not copied.
+- Alternatively, copy files to `Android/data/com.prefrontalcortex.virtualdome/files` on the headset. They show up in the Media list directly.
+
+Supported on Quest: `.mp4` and `.mov` videos, `.png` and `.jpg` images, in Dome Master (1:1) format.  
 
 [👉 Learn more about using Dome Viewer.](#dome-viewer)
 
