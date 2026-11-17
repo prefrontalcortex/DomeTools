@@ -43,6 +43,7 @@ Material:
     - _QueueOffset: 0
     - _Shrink: 1
     - _UpShift: 0
+    - _XRMotionVectorsPass: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0.7647059}
   m_BuildTextureStacks: []
