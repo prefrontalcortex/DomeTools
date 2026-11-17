@@ -49235,8 +49235,8 @@ MonoBehaviour:
   moveSpeed: 1
   damping: 0.85
   fovMinMax: {x: 15, y: 120}
-  fovLerpSpeed: 1
-  fovMultiplier: 0.333
+  fovLerpSpeed: 10
+  fovMultiplier: 0.05
   rotateSpeed: 20
   rotationLerpSpeed: 10
   LookAction: {fileID: 2345856494744509873, guid: 93da023f617efa74bb6acfcb099aeb96,
